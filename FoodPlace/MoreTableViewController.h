@@ -1,5 +1,5 @@
 //
-//  FoodPlaceFirstViewController.h
+//  MoreTableViewController.h
 //  FoodPlace
 //
 //  Created by vo on 2/26/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FoodPlaceFirstViewController : UIViewController
+@interface MoreTableViewController : UITableViewController
 
 @end

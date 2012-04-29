@@ -1,5 +1,5 @@
 //
-//  FoodPlaceSecondViewController.h
+//  MapViewController.h
 //  FoodPlace
 //
 //  Created by vo on 2/26/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FoodPlaceSecondViewController : UIViewController
+@interface MapViewController : UIViewController
 
 @end
