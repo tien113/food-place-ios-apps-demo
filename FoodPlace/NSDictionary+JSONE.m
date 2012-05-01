@@ -12,7 +12,7 @@
 
 - (NSData *)toJSON {
     
-    NSError *error =nil;
+    NSError *error = nil;
     id result = [NSJSONSerialization dataWithJSONObject:self 
                                                 options:kNilOptions 
                                                   error:&error];
