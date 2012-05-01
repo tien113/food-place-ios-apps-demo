@@ -33,7 +33,7 @@
     int responseCode = [(NSHTTPURLResponse *)response statusCode];
     NSLog(@"%d", responseCode);
     
-    if (responseCode == kHTTPRequestOK) {
+    if (responseCode == kHTTPRequestOK && [responseData length] > 0) {
         id foods = [responseData fromJSON];
         NSLog(@"Getting foods...");
         return foods;
@@ -67,7 +67,7 @@
     int responseCode = [(NSHTTPURLResponse *)response statusCode];
     NSLog(@"%d", responseCode);
     
-    if (responseCode == kHTTPRequestOK) {
+    if (responseCode == kHTTPRequestOK && [responseData length] > 0) {
         id places = [responseData fromJSON];
         NSLog(@"Getting places...");
         return places;
