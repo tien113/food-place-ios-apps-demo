@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface FoodPlaceAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
++ (UIManagedDocument *)sharedDocument;
++ (CLLocationManager *)sharedLocationManager;
 
 @end

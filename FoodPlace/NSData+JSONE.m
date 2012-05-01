@@ -10,4 +10,14 @@
 
 @implementation NSData (JSONE)
 
+- (NSDictionary *)fromJSON {
+    
+    NSError *error = nil;
+    id result = [NSJSONSerialization JSONObjectWithData:self 
+                                                options:NSJSONReadingMutableContainers
+                                                  error:&error];
+    if (error != nil) return nil;
+    return result;
+}
+
 @end

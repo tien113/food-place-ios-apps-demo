@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface LocationTableViewController : UITableViewController
+@interface LocationTableViewController : CoreDataTableViewController <CLLocationManagerDelegate>
+
+@property (nonatomic, strong) UIManagedDocument *document;
 
 @end

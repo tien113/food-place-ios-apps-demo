@@ -10,4 +10,14 @@
 
 @implementation NSDictionary (JSONE)
 
+- (NSData *)toJSON {
+    
+    NSError *error =nil;
+    id result = [NSJSONSerialization dataWithJSONObject:self 
+                                                options:kNilOptions 
+                                                  error:&error];
+    if (error != nil) return nil;
+    return result;
+}
+
 @end

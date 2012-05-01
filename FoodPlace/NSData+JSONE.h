@@ -10,4 +10,6 @@
 
 @interface NSData (JSONE)
 
+- (NSDictionary *)fromJSON;
+
 @end

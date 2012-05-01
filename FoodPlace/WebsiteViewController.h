@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kFoodPlaceWebSiteURL [NSURL URLWithString:@"http://www.apple.com"]
+
 @interface WebsiteViewController : UIViewController
 
 @end

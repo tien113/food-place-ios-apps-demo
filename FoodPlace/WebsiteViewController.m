@@ -7,38 +7,50 @@
 //
 
 #import "WebsiteViewController.h"
+#import "Helpers.h"
 
-@interface WebsiteViewController ()
+@interface WebsiteViewController () 
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
 @implementation WebsiteViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+@synthesize webView = _webView;
+
+#pragma mark - Check WebView Loading
+
+- (void)tick {
+    
+    if (self.webView.loading) 
+        ShowNetworkActivityIndicator();
+    else 
+        HideNetworkActivityIndicator();
 }
 
-- (void)loadView
-{
-    // If you create your views manually, you MUST override this method and use it to create your views.
-    // If you use Interface Builder to create your views, then you must NOT override this method.
-}
+#pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.title = @"Website";
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:kFoodPlaceWebSiteURL];
+    [self.webView loadRequest:request];
+    
+    [NSTimer scheduledTimerWithTimeInterval:(1.0f/2.0f) 
+                                     target:self 
+                                   selector:@selector(tick)
+                                   userInfo:nil 
+                                    repeats:YES];
 }
 
 - (void)viewDidUnload
 {
+    [self setWebView:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

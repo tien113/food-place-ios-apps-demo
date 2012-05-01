@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface CartTableViewController : UITableViewController
+@interface CartTableViewController : CoreDataTableViewController
+
+@property (nonatomic, strong) UIManagedDocument *document;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *checkOutBarButtonItem;
+@property (nonatomic, weak) IBOutlet UILabel *totalOrderLabel;
+
+- (IBAction)CheckOut:(id)sender;
 
 @end

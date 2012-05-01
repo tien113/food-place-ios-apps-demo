@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@interface PlaceAnnotation : NSObject
+@interface PlaceAnnotationView : NSObject <MKAnnotation>
+
+@property (nonatomic, strong) NSDictionary *place;
+
++ (PlaceAnnotationView *)annotationForPlace:(NSDictionary *)place;
 
 @end

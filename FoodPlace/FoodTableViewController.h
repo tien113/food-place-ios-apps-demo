@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
+#import "LazyImageDownloader.h"
 
-@interface FoodTableViewController : UITableViewController
+@interface FoodTableViewController : CoreDataTableViewController <UIScrollViewDelegate, LazyImageDownloaderDelegate>
+
+@property (nonatomic, strong) UIManagedDocument *document;
+@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
+
+- (void)imageDidLoad:(NSIndexPath *)indexPath;
 
 @end

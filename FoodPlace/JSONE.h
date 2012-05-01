@@ -7,7 +7,5 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface JSONE : NSObject
-
-@end
+#import "NSData+JSONE.h"
+#import "NSDictionary+JSONE.h"

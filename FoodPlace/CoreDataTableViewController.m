@@ -1,9 +1,3 @@
-//
-//  CoreDataTableViewController.m
-//
-//  Created for Stanford CS193p Fall 2011.
-//  Copyright 2011 Stanford University. All rights reserved.
-//
 
 #import "CoreDataTableViewController.h"
 
@@ -28,9 +22,8 @@
 #pragma mark - Fetching
 
 - (void)performFetch
-{
-    
-    NSError *error;
+{   
+    NSError *error = nil;
     [self.fetchedResultsController performFetch:&error];
     
     [self.tableView reloadData];

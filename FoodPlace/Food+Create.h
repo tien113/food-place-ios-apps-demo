@@ -10,4 +10,6 @@
 
 @interface Food (Create)
 
++ (Food *)foodWithWebService:(NSDictionary *)webService inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Food.h"
+#import "Helpers.h"
 
-@interface ImageDownloader2 : NSObject
+@protocol LazyImageDownloaderDelegate
+
+- (void)imageDidLoad:(NSIndexPath *)indexPath;
+
+@end
+
+@interface LazyImageDownloader : NSObject
+
+@property (nonatomic, strong) Food *food;
+@property (nonatomic, strong) NSIndexPath *indexPathInTableView;
+@property (nonatomic, strong) id <LazyImageDownloaderDelegate> delegate;
+
+- (void)startDownload;
 
 @end

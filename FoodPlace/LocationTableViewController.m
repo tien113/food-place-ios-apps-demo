@@ -7,6 +7,8 @@
 //
 
 #import "LocationTableViewController.h"
+#import "Place.h"
+#import "FoodPlaceAppDelegate.h"
 
 @interface LocationTableViewController ()
 
@@ -14,31 +16,58 @@
 
 @implementation LocationTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+@synthesize document = _document;
+
+#pragma mark - Initialize Data
+
+- (void)setupFetchedResultsController {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES]];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request 
+                                                                        managedObjectContext:self.document.managedObjectContext 
+                                                                          sectionNameKeyPath:nil 
+                                                                                   cacheName:nil];
+}
+
+- (void)useDocument {
+
+    if (self.document.documentState == UIDocumentStateClosed) {
+        [self.document openWithCompletionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+        }];
+    } else if (self.document.documentState == UIDocumentStateNormal) {
+        [self setupFetchedResultsController];
     }
-    return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)setDocument:(UIManagedDocument *)document {
+    
+    if (_document != document) {
+        _document = document;
+        [self useDocument];
+    }
+}
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.title = @"Location";
+    
+    self.document = [FoodPlaceAppDelegate sharedDocument];
+    
+    CLLocationManager *locationManager = [FoodPlaceAppDelegate sharedLocationManager];
+    locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    
+    [self setDocument:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -46,83 +75,74 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - CLLocationManagerDelegate
+
+- (void)sortPlacesByDistanceFrom:(CLLocation *)location {
+    
+    __block CLLocation *placeLocation;
+    NSMutableArray *places = [[self.fetchedResultsController fetchedObjects] mutableCopy];
+    [places enumerateObjectsUsingBlock:^(Place *place, NSUInteger idx, BOOL *stop) {
+        placeLocation = [[CLLocation alloc] initWithLatitude:[place.lat doubleValue] longitude:[place.log doubleValue]];
+        place.distance = [NSNumber numberWithDouble:[placeLocation distanceFromLocation:location] / 1000];
+    }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocatio
+{
+    [self sortPlacesByDistanceFrom:newLocation];
+    [self.tableView reloadData];
+    [manager stopUpdatingLocation];  
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error 
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Error obtaining location."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    });
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+- (UITableViewCell *)tableView:(UITableView *)sender cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{        
+    UITableViewCell *cell = [sender dequeueReusableCellWithIdentifier:@"Place Cell"];
     
-    // Configure the cell...
+    Place *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    float place_distance = [place.distance floatValue];
+    
+    if (place_distance && place.name) {
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", place.name];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f km", place_distance];
+    } else {
+        
+        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"";
+    }
     
     return cell;
+    
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#pragma mark - Segue
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender 
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    Place *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([segue.destinationViewController respondsToSelector:@selector(setPlace:)]) {
+        [segue.destinationViewController performSelector:@selector(setPlace:) withObject:place];
+    }
+    if ([segue.destinationViewController respondsToSelector:@selector(setDocument:)]) {
+        [segue.destinationViewController performSelector:@selector(setDocument:) withObject:self.document];
+    }
 }
 
 @end

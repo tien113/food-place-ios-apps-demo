@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40140B814FC0C1C00B42B86 /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40140B714FC0C1C00B42B86 /* AboutMeViewController.m */; };
+		D4072B7B15288BAC00EF3198 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D4072B7A15288BAC00EF3198 /* Helpers.m */; };
 		D40C73EF14FA5CF3005FCD04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40C73EE14FA5CF3005FCD04 /* UIKit.framework */; };
 		D40C73F114FA5CF3005FCD04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40C73F014FA5CF3005FCD04 /* Foundation.framework */; };
 		D40C73F314FA5CF3005FCD04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40C73F214FA5CF3005FCD04 /* CoreGraphics.framework */; };
@@ -14,34 +16,206 @@
 		D40C73FB14FA5CF3005FCD04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D40C73FA14FA5CF3005FCD04 /* main.m */; };
 		D40C73FF14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */; };
 		D40C740214FA5CF3005FCD04 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40C740014FA5CF3005FCD04 /* MainStoryboard.storyboard */; };
-		D40C740514FA5CF3005FCD04 /* FoodPlaceFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40C740414FA5CF3005FCD04 /* FoodPlaceFirstViewController.m */; };
-		D40C740714FA5CF3005FCD04 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = D40C740614FA5CF3005FCD04 /* first.png */; };
-		D40C740914FA5CF3005FCD04 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40C740814FA5CF3005FCD04 /* first@2x.png */; };
-		D40C740C14FA5CF3005FCD04 /* FoodPlaceSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40C740B14FA5CF3005FCD04 /* FoodPlaceSecondViewController.m */; };
-		D40C740E14FA5CF3005FCD04 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D40C740D14FA5CF3005FCD04 /* second.png */; };
-		D40C741014FA5CF3005FCD04 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40C740F14FA5CF3005FCD04 /* second@2x.png */; };
+		D4103A98150E15E6004DDDAA /* FoodPlaceFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D4103A97150E15E6004DDDAA /* FoodPlaceFetcher.m */; };
+		D4103A9C150E169C004DDDAA /* FoodPlace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4103A9A150E169C004DDDAA /* FoodPlace.xcdatamodeld */; };
+		D4103ABA150E1933004DDDAA /* Food+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = D4103AB9150E1933004DDDAA /* Food+Create.m */; };
+		D4103ABD150E1959004DDDAA /* Place+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = D4103ABC150E1958004DDDAA /* Place+Create.m */; };
+		D42B59D2151907E700B77D7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B59D1151907E700B77D7E /* QuartzCore.framework */; };
+		D42CD7FE151A8860000397BA /* LocationDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42CD7FD151A885F000397BA /* LocationDetailTableViewController.m */; };
+		D45F56B6151FC45D00198F37 /* CartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D45F56B5151FC45D00198F37 /* CartCell.m */; };
+		D471D34C1540810F00219083 /* LazyImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D471D34B1540810F00219083 /* LazyImageDownloader.m */; };
+		D472DCC11507484100BF63F7 /* FoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472DCC01507484100BF63F7 /* FoodTableViewController.m */; };
+		D49A2D52154AAA6C00460699 /* NSData+JSONE.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A2D51154AAA6C00460699 /* NSData+JSONE.m */; };
+		D49A2D5A154AAC9F00460699 /* NSDictionary+JSONE.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */; };
+		D4B04BA9152F438E00B81539 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B04BA8152F438E00B81539 /* SpinnerView.m */; };
+		D4B066F414FB99E100DF647F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B066F314FB99E100DF647F /* MessageUI.framework */; };
+		D4B066F714FB9E9500DF647F /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B066F614FB9E9500DF647F /* EmailViewController.m */; };
+		D4B077B914FB8CCD00D1C2CF /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B077B814FB8CCD00D1C2CF /* WebsiteViewController.m */; };
+		D4C0F55F150D490F00C7BE8B /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F52F150D490F00C7BE8B /* 07-map-marker.png */; };
+		D4C0F560150D490F00C7BE8B /* 07-map-marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F530150D490F00C7BE8B /* 07-map-marker@2x.png */; };
+		D4C0F561150D490F00C7BE8B /* 09-chat-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F531150D490F00C7BE8B /* 09-chat-2.png */; };
+		D4C0F562150D490F00C7BE8B /* 09-chat-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F532150D490F00C7BE8B /* 09-chat-2@2x.png */; };
+		D4C0F563150D490F00C7BE8B /* 12-eye.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F533150D490F00C7BE8B /* 12-eye.png */; };
+		D4C0F564150D490F00C7BE8B /* 12-eye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F534150D490F00C7BE8B /* 12-eye@2x.png */; };
+		D4C0F565150D490F00C7BE8B /* 125-food.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F535150D490F00C7BE8B /* 125-food.png */; };
+		D4C0F566150D490F00C7BE8B /* 125-food@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F536150D490F00C7BE8B /* 125-food@2x.png */; };
+		D4C0F567150D490F00C7BE8B /* 13-target.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F537150D490F00C7BE8B /* 13-target.png */; };
+		D4C0F568150D490F00C7BE8B /* 13-target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F538150D490F00C7BE8B /* 13-target@2x.png */; };
+		D4C0F569150D490F00C7BE8B /* 133-ufo.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F539150D490F00C7BE8B /* 133-ufo.png */; };
+		D4C0F56A150D490F00C7BE8B /* 133-ufo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F53A150D490F00C7BE8B /* 133-ufo@2x.png */; };
+		D4C0F56B150D490F00C7BE8B /* 148-doghouse.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F53B150D490F00C7BE8B /* 148-doghouse.png */; };
+		D4C0F56C150D490F00C7BE8B /* 148-doghouse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F53C150D490F00C7BE8B /* 148-doghouse@2x.png */; };
+		D4C0F56D150D490F00C7BE8B /* 18-envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F53D150D490F00C7BE8B /* 18-envelope.png */; };
+		D4C0F56E150D490F00C7BE8B /* 18-envelope@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F53E150D490F00C7BE8B /* 18-envelope@2x.png */; };
+		D4C0F56F150D490F00C7BE8B /* 183-genie-lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F53F150D490F00C7BE8B /* 183-genie-lamp.png */; };
+		D4C0F570150D490F00C7BE8B /* 183-genie-lamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F540150D490F00C7BE8B /* 183-genie-lamp@2x.png */; };
+		D4C0F571150D490F00C7BE8B /* 193-location-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F541150D490F00C7BE8B /* 193-location-arrow.png */; };
+		D4C0F572150D490F00C7BE8B /* 193-location-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F542150D490F00C7BE8B /* 193-location-arrow@2x.png */; };
+		D4C0F573150D490F00C7BE8B /* 196-radiation.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F543150D490F00C7BE8B /* 196-radiation.png */; };
+		D4C0F574150D490F00C7BE8B /* 196-radiation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F544150D490F00C7BE8B /* 196-radiation@2x.png */; };
+		D4C0F575150D490F00C7BE8B /* 22-skull-n-bones.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F545150D490F00C7BE8B /* 22-skull-n-bones.png */; };
+		D4C0F576150D490F00C7BE8B /* 22-skull-n-bones@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F546150D490F00C7BE8B /* 22-skull-n-bones@2x.png */; };
+		D4C0F577150D490F00C7BE8B /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F547150D490F00C7BE8B /* 23-bird.png */; };
+		D4C0F578150D490F00C7BE8B /* 23-bird@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F548150D490F00C7BE8B /* 23-bird@2x.png */; };
+		D4C0F579150D490F00C7BE8B /* 28-star.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F549150D490F00C7BE8B /* 28-star.png */; };
+		D4C0F57A150D490F00C7BE8B /* 28-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F54A150D490F00C7BE8B /* 28-star@2x.png */; };
+		D4C0F57B150D490F00C7BE8B /* 34-coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F54B150D490F00C7BE8B /* 34-coffee.png */; };
+		D4C0F57C150D490F00C7BE8B /* 34-coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F54C150D490F00C7BE8B /* 34-coffee@2x.png */; };
+		D4C0F57D150D490F00C7BE8B /* 35-shopping.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F54D150D490F00C7BE8B /* 35-shopping.png */; };
+		D4C0F57E150D490F00C7BE8B /* 35-shopping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F54E150D490F00C7BE8B /* 35-shopping@2x.png */; };
+		D4C0F57F150D490F00C7BE8B /* 48-fork-and-knife.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F54F150D490F00C7BE8B /* 48-fork-and-knife.png */; };
+		D4C0F580150D490F00C7BE8B /* 48-fork-and-knife@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F550150D490F00C7BE8B /* 48-fork-and-knife@2x.png */; };
+		D4C0F581150D490F00C7BE8B /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F551150D490F00C7BE8B /* 53-house.png */; };
+		D4C0F582150D490F00C7BE8B /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F552150D490F00C7BE8B /* 53-house@2x.png */; };
+		D4C0F587150D490F00C7BE8B /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F557150D490F00C7BE8B /* 71-compass.png */; };
+		D4C0F588150D490F00C7BE8B /* 71-compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F558150D490F00C7BE8B /* 71-compass@2x.png */; };
+		D4C0F589150D490F00C7BE8B /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F559150D490F00C7BE8B /* 74-location.png */; };
+		D4C0F58A150D490F00C7BE8B /* 74-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F55A150D490F00C7BE8B /* 74-location@2x.png */; };
+		D4C0F58B150D490F00C7BE8B /* 75-phone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F55B150D490F00C7BE8B /* 75-phone.png */; };
+		D4C0F58C150D490F00C7BE8B /* 75-phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F55C150D490F00C7BE8B /* 75-phone@2x.png */; };
+		D4C0F58D150D490F00C7BE8B /* 89-dumbell.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F55D150D490F00C7BE8B /* 89-dumbell.png */; };
+		D4C0F58E150D490F00C7BE8B /* 89-dumbell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F55E150D490F00C7BE8B /* 89-dumbell@2x.png */; };
+		D4C113DF1517926C00E56F81 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C113DE1517926C00E56F81 /* CartTableViewController.m */; };
+		D4C328981530B4B6008D64EF /* map-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C328971530B4B6008D64EF /* map-pin.png */; };
+		D4C4FB66153848440031BB97 /* 37-shopping-cart.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C4FB64153848440031BB97 /* 37-shopping-cart.png */; };
+		D4C4FB67153848440031BB97 /* 37-shopping-cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C4FB65153848440031BB97 /* 37-shopping-cart@2x.png */; };
+		D4C6B203151C737800E8430C /* PlaceAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6B202151C737800E8430C /* PlaceAnnotationView.m */; };
+		D4C8389415445A7E00A9D718 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C8389315445A7E00A9D718 /* Food.m */; };
+		D4C8389715445A7E00A9D718 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C8389615445A7E00A9D718 /* Cart.m */; };
+		D4C8389A15445A7E00A9D718 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C8389915445A7E00A9D718 /* Place.m */; };
+		D4CE349014FA65D800F636AD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CE348F14FA65D800F636AD /* MapViewController.m */; };
+		D4CE349314FA662E00F636AD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE349214FA662E00F636AD /* MapKit.framework */; };
+		D4CE349514FA663400F636AD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE349414FA663400F636AD /* CoreLocation.framework */; };
+		D4CE349714FA663900F636AD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE349614FA663900F636AD /* CoreData.framework */; };
+		D4DC1F83153438FC006A8193 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC1F82153438FC006A8193 /* GradientButton.m */; };
+		D4E7850914FA9F8D005AF528 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E7850814FA9F8D005AF528 /* LocationTableViewController.m */; };
+		D4E7850C14FA9F9A005AF528 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E7850B14FA9F9A005AF528 /* MoreTableViewController.m */; };
+		D4FFAF3615174CB5006476D0 /* Cart+Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF3515174CB5006476D0 /* Cart+Food.m */; };
+		D4FFAF3C15174F17006476D0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF3B15174F17006476D0 /* CoreDataTableViewController.m */; };
+		D4FFAF4315175466006476D0 /* FoodDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF4215175466006476D0 /* FoodDetailTableViewController.m */; };
+		D4FFAF47151754F1006476D0 /* FoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF46151754F1006476D0 /* FoodCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D40140B614FC0C1C00B42B86 /* AboutMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeViewController.h; sourceTree = "<group>"; };
+		D40140B714FC0C1C00B42B86 /* AboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeViewController.m; sourceTree = "<group>"; };
+		D4072B7915288BAC00EF3198 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		D4072B7A15288BAC00EF3198 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		D40C73EA14FA5CF3005FCD04 /* FoodPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40C73EE14FA5CF3005FCD04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D40C73F014FA5CF3005FCD04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D40C73F214FA5CF3005FCD04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D40C73F614FA5CF3005FCD04 /* FoodPlace-Info.plist */ = {isa = PBXFileReference; path = "FoodPlace-Info.plist"; sourceTree = "<group>"; };
+		D40C73F614FA5CF3005FCD04 /* FoodPlace-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodPlace-Info.plist"; sourceTree = "<group>"; };
 		D40C73F814FA5CF3005FCD04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D40C73FA14FA5CF3005FCD04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D40C73FC14FA5CF3005FCD04 /* FoodPlace-Prefix.pch */ = {isa = PBXFileReference; path = "FoodPlace-Prefix.pch"; sourceTree = "<group>"; };
-		D40C73FD14FA5CF3005FCD04 /* FoodPlaceAppDelegate.h */ = {isa = PBXFileReference; path = FoodPlaceAppDelegate.h; sourceTree = "<group>"; };
+		D40C73FC14FA5CF3005FCD04 /* FoodPlace-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodPlace-Prefix.pch"; sourceTree = "<group>"; };
+		D40C73FD14FA5CF3005FCD04 /* FoodPlaceAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodPlaceAppDelegate.h; sourceTree = "<group>"; };
 		D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodPlaceAppDelegate.m; sourceTree = "<group>"; };
 		D40C740114FA5CF3005FCD04 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D40C740314FA5CF3005FCD04 /* FoodPlaceFirstViewController.h */ = {isa = PBXFileReference; path = FoodPlaceFirstViewController.h; sourceTree = "<group>"; };
-		D40C740414FA5CF3005FCD04 /* FoodPlaceFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodPlaceFirstViewController.m; sourceTree = "<group>"; };
-		D40C740614FA5CF3005FCD04 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		D40C740814FA5CF3005FCD04 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		D40C740A14FA5CF3005FCD04 /* FoodPlaceSecondViewController.h */ = {isa = PBXFileReference; path = FoodPlaceSecondViewController.h; sourceTree = "<group>"; };
-		D40C740B14FA5CF3005FCD04 /* FoodPlaceSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodPlaceSecondViewController.m; sourceTree = "<group>"; };
-		D40C740D14FA5CF3005FCD04 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		D40C740F14FA5CF3005FCD04 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		D4103A96150E15E6004DDDAA /* FoodPlaceFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodPlaceFetcher.h; sourceTree = "<group>"; };
+		D4103A97150E15E6004DDDAA /* FoodPlaceFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodPlaceFetcher.m; sourceTree = "<group>"; };
+		D4103A9B150E169C004DDDAA /* FoodPlace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodPlace.xcdatamodel; sourceTree = "<group>"; };
+		D4103AB8150E1933004DDDAA /* Food+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Create.h"; sourceTree = "<group>"; };
+		D4103AB9150E1933004DDDAA /* Food+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Create.m"; sourceTree = "<group>"; };
+		D4103ABB150E1958004DDDAA /* Place+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Place+Create.h"; sourceTree = "<group>"; };
+		D4103ABC150E1958004DDDAA /* Place+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Place+Create.m"; sourceTree = "<group>"; };
+		D42B59D1151907E700B77D7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D42CD7FC151A885F000397BA /* LocationDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailTableViewController.h; sourceTree = "<group>"; };
+		D42CD7FD151A885F000397BA /* LocationDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailTableViewController.m; sourceTree = "<group>"; };
+		D45F56B4151FC45D00198F37 /* CartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartCell.h; sourceTree = "<group>"; };
+		D45F56B5151FC45D00198F37 /* CartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartCell.m; sourceTree = "<group>"; };
+		D471D34A1540810F00219083 /* LazyImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyImageDownloader.h; sourceTree = "<group>"; };
+		D471D34B1540810F00219083 /* LazyImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyImageDownloader.m; sourceTree = "<group>"; };
+		D472DCBF1507484100BF63F7 /* FoodTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTableViewController.h; sourceTree = "<group>"; };
+		D472DCC01507484100BF63F7 /* FoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTableViewController.m; sourceTree = "<group>"; };
+		D4838755154B42BF008178A6 /* JSONE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONE.h; sourceTree = "<group>"; };
+		D49A2D50154AAA6C00460699 /* NSData+JSONE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JSONE.h"; sourceTree = "<group>"; };
+		D49A2D51154AAA6C00460699 /* NSData+JSONE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSONE.m"; sourceTree = "<group>"; };
+		D49A2D58154AAC9F00460699 /* NSDictionary+JSONE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONE.h"; sourceTree = "<group>"; };
+		D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONE.m"; sourceTree = "<group>"; };
+		D4B04BA7152F438E00B81539 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
+		D4B04BA8152F438E00B81539 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
+		D4B066F314FB99E100DF647F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D4B066F514FB9E9500DF647F /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		D4B066F614FB9E9500DF647F /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
+		D4B077B714FB8CCD00D1C2CF /* WebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteViewController.h; sourceTree = "<group>"; };
+		D4B077B814FB8CCD00D1C2CF /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
+		D4C0F52F150D490F00C7BE8B /* 07-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker.png"; sourceTree = "<group>"; };
+		D4C0F530150D490F00C7BE8B /* 07-map-marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker@2x.png"; sourceTree = "<group>"; };
+		D4C0F531150D490F00C7BE8B /* 09-chat-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2.png"; sourceTree = "<group>"; };
+		D4C0F532150D490F00C7BE8B /* 09-chat-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2@2x.png"; sourceTree = "<group>"; };
+		D4C0F533150D490F00C7BE8B /* 12-eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-eye.png"; sourceTree = "<group>"; };
+		D4C0F534150D490F00C7BE8B /* 12-eye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-eye@2x.png"; sourceTree = "<group>"; };
+		D4C0F535150D490F00C7BE8B /* 125-food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "125-food.png"; sourceTree = "<group>"; };
+		D4C0F536150D490F00C7BE8B /* 125-food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "125-food@2x.png"; sourceTree = "<group>"; };
+		D4C0F537150D490F00C7BE8B /* 13-target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13-target.png"; sourceTree = "<group>"; };
+		D4C0F538150D490F00C7BE8B /* 13-target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13-target@2x.png"; sourceTree = "<group>"; };
+		D4C0F539150D490F00C7BE8B /* 133-ufo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "133-ufo.png"; sourceTree = "<group>"; };
+		D4C0F53A150D490F00C7BE8B /* 133-ufo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "133-ufo@2x.png"; sourceTree = "<group>"; };
+		D4C0F53B150D490F00C7BE8B /* 148-doghouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "148-doghouse.png"; sourceTree = "<group>"; };
+		D4C0F53C150D490F00C7BE8B /* 148-doghouse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "148-doghouse@2x.png"; sourceTree = "<group>"; };
+		D4C0F53D150D490F00C7BE8B /* 18-envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope.png"; sourceTree = "<group>"; };
+		D4C0F53E150D490F00C7BE8B /* 18-envelope@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope@2x.png"; sourceTree = "<group>"; };
+		D4C0F53F150D490F00C7BE8B /* 183-genie-lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "183-genie-lamp.png"; sourceTree = "<group>"; };
+		D4C0F540150D490F00C7BE8B /* 183-genie-lamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "183-genie-lamp@2x.png"; sourceTree = "<group>"; };
+		D4C0F541150D490F00C7BE8B /* 193-location-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow.png"; sourceTree = "<group>"; };
+		D4C0F542150D490F00C7BE8B /* 193-location-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "193-location-arrow@2x.png"; sourceTree = "<group>"; };
+		D4C0F543150D490F00C7BE8B /* 196-radiation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "196-radiation.png"; sourceTree = "<group>"; };
+		D4C0F544150D490F00C7BE8B /* 196-radiation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "196-radiation@2x.png"; sourceTree = "<group>"; };
+		D4C0F545150D490F00C7BE8B /* 22-skull-n-bones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "22-skull-n-bones.png"; sourceTree = "<group>"; };
+		D4C0F546150D490F00C7BE8B /* 22-skull-n-bones@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "22-skull-n-bones@2x.png"; sourceTree = "<group>"; };
+		D4C0F547150D490F00C7BE8B /* 23-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "23-bird.png"; sourceTree = "<group>"; };
+		D4C0F548150D490F00C7BE8B /* 23-bird@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "23-bird@2x.png"; sourceTree = "<group>"; };
+		D4C0F549150D490F00C7BE8B /* 28-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star.png"; sourceTree = "<group>"; };
+		D4C0F54A150D490F00C7BE8B /* 28-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star@2x.png"; sourceTree = "<group>"; };
+		D4C0F54B150D490F00C7BE8B /* 34-coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "34-coffee.png"; sourceTree = "<group>"; };
+		D4C0F54C150D490F00C7BE8B /* 34-coffee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "34-coffee@2x.png"; sourceTree = "<group>"; };
+		D4C0F54D150D490F00C7BE8B /* 35-shopping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "35-shopping.png"; sourceTree = "<group>"; };
+		D4C0F54E150D490F00C7BE8B /* 35-shopping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "35-shopping@2x.png"; sourceTree = "<group>"; };
+		D4C0F54F150D490F00C7BE8B /* 48-fork-and-knife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-fork-and-knife.png"; sourceTree = "<group>"; };
+		D4C0F550150D490F00C7BE8B /* 48-fork-and-knife@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-fork-and-knife@2x.png"; sourceTree = "<group>"; };
+		D4C0F551150D490F00C7BE8B /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
+		D4C0F552150D490F00C7BE8B /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
+		D4C0F557150D490F00C7BE8B /* 71-compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass.png"; sourceTree = "<group>"; };
+		D4C0F558150D490F00C7BE8B /* 71-compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass@2x.png"; sourceTree = "<group>"; };
+		D4C0F559150D490F00C7BE8B /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location.png"; sourceTree = "<group>"; };
+		D4C0F55A150D490F00C7BE8B /* 74-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location@2x.png"; sourceTree = "<group>"; };
+		D4C0F55B150D490F00C7BE8B /* 75-phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "75-phone.png"; sourceTree = "<group>"; };
+		D4C0F55C150D490F00C7BE8B /* 75-phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "75-phone@2x.png"; sourceTree = "<group>"; };
+		D4C0F55D150D490F00C7BE8B /* 89-dumbell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "89-dumbell.png"; sourceTree = "<group>"; };
+		D4C0F55E150D490F00C7BE8B /* 89-dumbell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "89-dumbell@2x.png"; sourceTree = "<group>"; };
+		D4C113DD1517926C00E56F81 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
+		D4C113DE1517926C00E56F81 /* CartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewController.m; sourceTree = "<group>"; };
+		D4C328971530B4B6008D64EF /* map-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin.png"; sourceTree = "<group>"; };
+		D4C4FB64153848440031BB97 /* 37-shopping-cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-shopping-cart.png"; sourceTree = "<group>"; };
+		D4C4FB65153848440031BB97 /* 37-shopping-cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37-shopping-cart@2x.png"; sourceTree = "<group>"; };
+		D4C6B201151C737800E8430C /* PlaceAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceAnnotationView.h; sourceTree = "<group>"; };
+		D4C6B202151C737800E8430C /* PlaceAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceAnnotationView.m; sourceTree = "<group>"; };
+		D4C8389215445A7E00A9D718 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		D4C8389315445A7E00A9D718 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		D4C8389515445A7E00A9D718 /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
+		D4C8389615445A7E00A9D718 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
+		D4C8389815445A7E00A9D718 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		D4C8389915445A7E00A9D718 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		D4CE348E14FA65D800F636AD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		D4CE348F14FA65D800F636AD /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		D4CE349214FA662E00F636AD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D4CE349414FA663400F636AD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D4CE349614FA663900F636AD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D4DC1F81153438FC006A8193 /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientButton.h; sourceTree = "<group>"; };
+		D4DC1F82153438FC006A8193 /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientButton.m; sourceTree = "<group>"; };
+		D4E7850714FA9F8D005AF528 /* LocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewController.h; sourceTree = "<group>"; };
+		D4E7850814FA9F8D005AF528 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
+		D4E7850A14FA9F9A005AF528 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
+		D4E7850B14FA9F9A005AF528 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
+		D4FFAF3415174CB5006476D0 /* Cart+Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cart+Food.h"; sourceTree = "<group>"; };
+		D4FFAF3515174CB5006476D0 /* Cart+Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Cart+Food.m"; sourceTree = "<group>"; };
+		D4FFAF3A15174F17006476D0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		D4FFAF3B15174F17006476D0 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		D4FFAF4115175466006476D0 /* FoodDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailTableViewController.h; sourceTree = "<group>"; };
+		D4FFAF4215175466006476D0 /* FoodDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailTableViewController.m; sourceTree = "<group>"; };
+		D4FFAF45151754F1006476D0 /* FoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodCell.h; sourceTree = "<group>"; };
+		D4FFAF46151754F1006476D0 /* FoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +223,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D42B59D2151907E700B77D7E /* QuartzCore.framework in Frameworks */,
+				D4B066F414FB99E100DF647F /* MessageUI.framework in Frameworks */,
+				D4CE349714FA663900F636AD /* CoreData.framework in Frameworks */,
+				D4CE349514FA663400F636AD /* CoreLocation.framework in Frameworks */,
+				D4CE349314FA662E00F636AD /* MapKit.framework in Frameworks */,
 				D40C73EF14FA5CF3005FCD04 /* UIKit.framework in Frameworks */,
 				D40C73F114FA5CF3005FCD04 /* Foundation.framework in Frameworks */,
 				D40C73F314FA5CF3005FCD04 /* CoreGraphics.framework in Frameworks */,
@@ -58,9 +237,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4072B7715288B7D00EF3198 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4DC1F81153438FC006A8193 /* GradientButton.h */,
+				D4DC1F82153438FC006A8193 /* GradientButton.m */,
+				D471D34A1540810F00219083 /* LazyImageDownloader.h */,
+				D471D34B1540810F00219083 /* LazyImageDownloader.m */,
+				D4072B7915288BAC00EF3198 /* Helpers.h */,
+				D4072B7A15288BAC00EF3198 /* Helpers.m */,
+				D4FFAF45151754F1006476D0 /* FoodCell.h */,
+				D4FFAF46151754F1006476D0 /* FoodCell.m */,
+				D4C6B201151C737800E8430C /* PlaceAnnotationView.h */,
+				D4C6B202151C737800E8430C /* PlaceAnnotationView.m */,
+				D45F56B4151FC45D00198F37 /* CartCell.h */,
+				D45F56B5151FC45D00198F37 /* CartCell.m */,
+				D4B04BA7152F438E00B81539 /* SpinnerView.h */,
+				D4B04BA8152F438E00B81539 /* SpinnerView.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		D40C73DF14FA5CF3005FCD04 = {
 			isa = PBXGroup;
 			children = (
+				D42B59D1151907E700B77D7E /* QuartzCore.framework */,
+				D4B066F314FB99E100DF647F /* MessageUI.framework */,
+				D4CE349614FA663900F636AD /* CoreData.framework */,
+				D4CE349414FA663400F636AD /* CoreLocation.framework */,
+				D4CE349214FA662E00F636AD /* MapKit.framework */,
 				D40C73F414FA5CF3005FCD04 /* FoodPlace */,
 				D40C73ED14FA5CF3005FCD04 /* Frameworks */,
 				D40C73EB14FA5CF3005FCD04 /* Products */,
@@ -88,17 +293,13 @@
 		D40C73F414FA5CF3005FCD04 /* FoodPlace */ = {
 			isa = PBXGroup;
 			children = (
-				D40C73FD14FA5CF3005FCD04 /* FoodPlaceAppDelegate.h */,
-				D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */,
 				D40C740014FA5CF3005FCD04 /* MainStoryboard.storyboard */,
-				D40C740314FA5CF3005FCD04 /* FoodPlaceFirstViewController.h */,
-				D40C740414FA5CF3005FCD04 /* FoodPlaceFirstViewController.m */,
-				D40C740614FA5CF3005FCD04 /* first.png */,
-				D40C740814FA5CF3005FCD04 /* first@2x.png */,
-				D40C740A14FA5CF3005FCD04 /* FoodPlaceSecondViewController.h */,
-				D40C740B14FA5CF3005FCD04 /* FoodPlaceSecondViewController.m */,
-				D40C740D14FA5CF3005FCD04 /* second.png */,
-				D40C740F14FA5CF3005FCD04 /* second@2x.png */,
+				D47EEB81154DCB4800A199F0 /* JSONE */,
+				D4072B7715288B7D00EF3198 /* Helpers */,
+				D4792117152583FC0089AEEB /* View Controllers */,
+				D4FFAF26151747D4006476D0 /* Web Services */,
+				D4103AB7150E1904004DDDAA /* Core Data */,
+				D4C0F52E150D490F00C7BE8B /* Images */,
 				D40C73F514FA5CF3005FCD04 /* Supporting Files */,
 			);
 			path = FoodPlace;
@@ -107,12 +308,138 @@
 		D40C73F514FA5CF3005FCD04 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D40C73FD14FA5CF3005FCD04 /* FoodPlaceAppDelegate.h */,
+				D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */,
 				D40C73F614FA5CF3005FCD04 /* FoodPlace-Info.plist */,
 				D40C73F714FA5CF3005FCD04 /* InfoPlist.strings */,
 				D40C73FA14FA5CF3005FCD04 /* main.m */,
 				D40C73FC14FA5CF3005FCD04 /* FoodPlace-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4103AB7150E1904004DDDAA /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D4FFAF3A15174F17006476D0 /* CoreDataTableViewController.h */,
+				D4FFAF3B15174F17006476D0 /* CoreDataTableViewController.m */,
+				D4103A9A150E169C004DDDAA /* FoodPlace.xcdatamodeld */,
+				D4C8389815445A7E00A9D718 /* Place.h */,
+				D4C8389915445A7E00A9D718 /* Place.m */,
+				D4C8389515445A7E00A9D718 /* Cart.h */,
+				D4C8389615445A7E00A9D718 /* Cart.m */,
+				D4C8389215445A7E00A9D718 /* Food.h */,
+				D4C8389315445A7E00A9D718 /* Food.m */,
+				D4FFAF3415174CB5006476D0 /* Cart+Food.h */,
+				D4FFAF3515174CB5006476D0 /* Cart+Food.m */,
+				D4103ABB150E1958004DDDAA /* Place+Create.h */,
+				D4103ABC150E1958004DDDAA /* Place+Create.m */,
+				D4103AB8150E1933004DDDAA /* Food+Create.h */,
+				D4103AB9150E1933004DDDAA /* Food+Create.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		D4792117152583FC0089AEEB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D472DCBF1507484100BF63F7 /* FoodTableViewController.h */,
+				D472DCC01507484100BF63F7 /* FoodTableViewController.m */,
+				D4FFAF4115175466006476D0 /* FoodDetailTableViewController.h */,
+				D4FFAF4215175466006476D0 /* FoodDetailTableViewController.m */,
+				D4E7850714FA9F8D005AF528 /* LocationTableViewController.h */,
+				D4E7850814FA9F8D005AF528 /* LocationTableViewController.m */,
+				D42CD7FC151A885F000397BA /* LocationDetailTableViewController.h */,
+				D42CD7FD151A885F000397BA /* LocationDetailTableViewController.m */,
+				D4CE348E14FA65D800F636AD /* MapViewController.h */,
+				D4CE348F14FA65D800F636AD /* MapViewController.m */,
+				D4C113DD1517926C00E56F81 /* CartTableViewController.h */,
+				D4C113DE1517926C00E56F81 /* CartTableViewController.m */,
+				D4E7850A14FA9F9A005AF528 /* MoreTableViewController.h */,
+				D4E7850B14FA9F9A005AF528 /* MoreTableViewController.m */,
+				D40140B614FC0C1C00B42B86 /* AboutMeViewController.h */,
+				D40140B714FC0C1C00B42B86 /* AboutMeViewController.m */,
+				D4B077B714FB8CCD00D1C2CF /* WebsiteViewController.h */,
+				D4B077B814FB8CCD00D1C2CF /* WebsiteViewController.m */,
+				D4B066F514FB9E9500DF647F /* EmailViewController.h */,
+				D4B066F614FB9E9500DF647F /* EmailViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D47EEB81154DCB4800A199F0 /* JSONE */ = {
+			isa = PBXGroup;
+			children = (
+				D49A2D50154AAA6C00460699 /* NSData+JSONE.h */,
+				D49A2D51154AAA6C00460699 /* NSData+JSONE.m */,
+				D49A2D58154AAC9F00460699 /* NSDictionary+JSONE.h */,
+				D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */,
+				D4838755154B42BF008178A6 /* JSONE.h */,
+			);
+			name = JSONE;
+			sourceTree = "<group>";
+		};
+		D4C0F52E150D490F00C7BE8B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D4C328971530B4B6008D64EF /* map-pin.png */,
+				D4C0F52F150D490F00C7BE8B /* 07-map-marker.png */,
+				D4C0F530150D490F00C7BE8B /* 07-map-marker@2x.png */,
+				D4C0F531150D490F00C7BE8B /* 09-chat-2.png */,
+				D4C0F532150D490F00C7BE8B /* 09-chat-2@2x.png */,
+				D4C0F533150D490F00C7BE8B /* 12-eye.png */,
+				D4C0F534150D490F00C7BE8B /* 12-eye@2x.png */,
+				D4C0F535150D490F00C7BE8B /* 125-food.png */,
+				D4C0F536150D490F00C7BE8B /* 125-food@2x.png */,
+				D4C0F537150D490F00C7BE8B /* 13-target.png */,
+				D4C0F538150D490F00C7BE8B /* 13-target@2x.png */,
+				D4C0F539150D490F00C7BE8B /* 133-ufo.png */,
+				D4C0F53A150D490F00C7BE8B /* 133-ufo@2x.png */,
+				D4C0F53B150D490F00C7BE8B /* 148-doghouse.png */,
+				D4C0F53C150D490F00C7BE8B /* 148-doghouse@2x.png */,
+				D4C0F53D150D490F00C7BE8B /* 18-envelope.png */,
+				D4C0F53E150D490F00C7BE8B /* 18-envelope@2x.png */,
+				D4C0F53F150D490F00C7BE8B /* 183-genie-lamp.png */,
+				D4C0F540150D490F00C7BE8B /* 183-genie-lamp@2x.png */,
+				D4C0F541150D490F00C7BE8B /* 193-location-arrow.png */,
+				D4C0F542150D490F00C7BE8B /* 193-location-arrow@2x.png */,
+				D4C0F543150D490F00C7BE8B /* 196-radiation.png */,
+				D4C0F544150D490F00C7BE8B /* 196-radiation@2x.png */,
+				D4C0F545150D490F00C7BE8B /* 22-skull-n-bones.png */,
+				D4C0F546150D490F00C7BE8B /* 22-skull-n-bones@2x.png */,
+				D4C0F547150D490F00C7BE8B /* 23-bird.png */,
+				D4C0F548150D490F00C7BE8B /* 23-bird@2x.png */,
+				D4C0F549150D490F00C7BE8B /* 28-star.png */,
+				D4C0F54A150D490F00C7BE8B /* 28-star@2x.png */,
+				D4C0F54B150D490F00C7BE8B /* 34-coffee.png */,
+				D4C0F54C150D490F00C7BE8B /* 34-coffee@2x.png */,
+				D4C0F54D150D490F00C7BE8B /* 35-shopping.png */,
+				D4C0F54E150D490F00C7BE8B /* 35-shopping@2x.png */,
+				D4C4FB64153848440031BB97 /* 37-shopping-cart.png */,
+				D4C4FB65153848440031BB97 /* 37-shopping-cart@2x.png */,
+				D4C0F54F150D490F00C7BE8B /* 48-fork-and-knife.png */,
+				D4C0F550150D490F00C7BE8B /* 48-fork-and-knife@2x.png */,
+				D4C0F551150D490F00C7BE8B /* 53-house.png */,
+				D4C0F552150D490F00C7BE8B /* 53-house@2x.png */,
+				D4C0F557150D490F00C7BE8B /* 71-compass.png */,
+				D4C0F558150D490F00C7BE8B /* 71-compass@2x.png */,
+				D4C0F559150D490F00C7BE8B /* 74-location.png */,
+				D4C0F55A150D490F00C7BE8B /* 74-location@2x.png */,
+				D4C0F55B150D490F00C7BE8B /* 75-phone.png */,
+				D4C0F55C150D490F00C7BE8B /* 75-phone@2x.png */,
+				D4C0F55D150D490F00C7BE8B /* 89-dumbell.png */,
+				D4C0F55E150D490F00C7BE8B /* 89-dumbell@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D4FFAF26151747D4006476D0 /* Web Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4103A96150E15E6004DDDAA /* FoodPlaceFetcher.h */,
+				D4103A97150E15E6004DDDAA /* FoodPlaceFetcher.m */,
+			);
+			name = "Web Services";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,10 +495,53 @@
 			files = (
 				D40C73F914FA5CF3005FCD04 /* InfoPlist.strings in Resources */,
 				D40C740214FA5CF3005FCD04 /* MainStoryboard.storyboard in Resources */,
-				D40C740714FA5CF3005FCD04 /* first.png in Resources */,
-				D40C740914FA5CF3005FCD04 /* first@2x.png in Resources */,
-				D40C740E14FA5CF3005FCD04 /* second.png in Resources */,
-				D40C741014FA5CF3005FCD04 /* second@2x.png in Resources */,
+				D4C0F55F150D490F00C7BE8B /* 07-map-marker.png in Resources */,
+				D4C0F560150D490F00C7BE8B /* 07-map-marker@2x.png in Resources */,
+				D4C0F561150D490F00C7BE8B /* 09-chat-2.png in Resources */,
+				D4C0F562150D490F00C7BE8B /* 09-chat-2@2x.png in Resources */,
+				D4C0F563150D490F00C7BE8B /* 12-eye.png in Resources */,
+				D4C0F564150D490F00C7BE8B /* 12-eye@2x.png in Resources */,
+				D4C0F565150D490F00C7BE8B /* 125-food.png in Resources */,
+				D4C0F566150D490F00C7BE8B /* 125-food@2x.png in Resources */,
+				D4C0F567150D490F00C7BE8B /* 13-target.png in Resources */,
+				D4C0F568150D490F00C7BE8B /* 13-target@2x.png in Resources */,
+				D4C0F569150D490F00C7BE8B /* 133-ufo.png in Resources */,
+				D4C0F56A150D490F00C7BE8B /* 133-ufo@2x.png in Resources */,
+				D4C0F56B150D490F00C7BE8B /* 148-doghouse.png in Resources */,
+				D4C0F56C150D490F00C7BE8B /* 148-doghouse@2x.png in Resources */,
+				D4C0F56D150D490F00C7BE8B /* 18-envelope.png in Resources */,
+				D4C0F56E150D490F00C7BE8B /* 18-envelope@2x.png in Resources */,
+				D4C0F56F150D490F00C7BE8B /* 183-genie-lamp.png in Resources */,
+				D4C0F570150D490F00C7BE8B /* 183-genie-lamp@2x.png in Resources */,
+				D4C0F571150D490F00C7BE8B /* 193-location-arrow.png in Resources */,
+				D4C0F572150D490F00C7BE8B /* 193-location-arrow@2x.png in Resources */,
+				D4C0F573150D490F00C7BE8B /* 196-radiation.png in Resources */,
+				D4C0F574150D490F00C7BE8B /* 196-radiation@2x.png in Resources */,
+				D4C0F575150D490F00C7BE8B /* 22-skull-n-bones.png in Resources */,
+				D4C0F576150D490F00C7BE8B /* 22-skull-n-bones@2x.png in Resources */,
+				D4C0F577150D490F00C7BE8B /* 23-bird.png in Resources */,
+				D4C0F578150D490F00C7BE8B /* 23-bird@2x.png in Resources */,
+				D4C0F579150D490F00C7BE8B /* 28-star.png in Resources */,
+				D4C0F57A150D490F00C7BE8B /* 28-star@2x.png in Resources */,
+				D4C0F57B150D490F00C7BE8B /* 34-coffee.png in Resources */,
+				D4C0F57C150D490F00C7BE8B /* 34-coffee@2x.png in Resources */,
+				D4C0F57D150D490F00C7BE8B /* 35-shopping.png in Resources */,
+				D4C0F57E150D490F00C7BE8B /* 35-shopping@2x.png in Resources */,
+				D4C0F57F150D490F00C7BE8B /* 48-fork-and-knife.png in Resources */,
+				D4C0F580150D490F00C7BE8B /* 48-fork-and-knife@2x.png in Resources */,
+				D4C0F581150D490F00C7BE8B /* 53-house.png in Resources */,
+				D4C0F582150D490F00C7BE8B /* 53-house@2x.png in Resources */,
+				D4C0F587150D490F00C7BE8B /* 71-compass.png in Resources */,
+				D4C0F588150D490F00C7BE8B /* 71-compass@2x.png in Resources */,
+				D4C0F589150D490F00C7BE8B /* 74-location.png in Resources */,
+				D4C0F58A150D490F00C7BE8B /* 74-location@2x.png in Resources */,
+				D4C0F58B150D490F00C7BE8B /* 75-phone.png in Resources */,
+				D4C0F58C150D490F00C7BE8B /* 75-phone@2x.png in Resources */,
+				D4C0F58D150D490F00C7BE8B /* 89-dumbell.png in Resources */,
+				D4C0F58E150D490F00C7BE8B /* 89-dumbell@2x.png in Resources */,
+				D4C328981530B4B6008D64EF /* map-pin.png in Resources */,
+				D4C4FB66153848440031BB97 /* 37-shopping-cart.png in Resources */,
+				D4C4FB67153848440031BB97 /* 37-shopping-cart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,8 +554,34 @@
 			files = (
 				D40C73FB14FA5CF3005FCD04 /* main.m in Sources */,
 				D40C73FF14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m in Sources */,
-				D40C740514FA5CF3005FCD04 /* FoodPlaceFirstViewController.m in Sources */,
-				D40C740C14FA5CF3005FCD04 /* FoodPlaceSecondViewController.m in Sources */,
+				D4CE349014FA65D800F636AD /* MapViewController.m in Sources */,
+				D4E7850914FA9F8D005AF528 /* LocationTableViewController.m in Sources */,
+				D4E7850C14FA9F9A005AF528 /* MoreTableViewController.m in Sources */,
+				D4B077B914FB8CCD00D1C2CF /* WebsiteViewController.m in Sources */,
+				D4B066F714FB9E9500DF647F /* EmailViewController.m in Sources */,
+				D40140B814FC0C1C00B42B86 /* AboutMeViewController.m in Sources */,
+				D472DCC11507484100BF63F7 /* FoodTableViewController.m in Sources */,
+				D4103A98150E15E6004DDDAA /* FoodPlaceFetcher.m in Sources */,
+				D4103A9C150E169C004DDDAA /* FoodPlace.xcdatamodeld in Sources */,
+				D4103ABA150E1933004DDDAA /* Food+Create.m in Sources */,
+				D4103ABD150E1959004DDDAA /* Place+Create.m in Sources */,
+				D4FFAF3615174CB5006476D0 /* Cart+Food.m in Sources */,
+				D4FFAF3C15174F17006476D0 /* CoreDataTableViewController.m in Sources */,
+				D4FFAF4315175466006476D0 /* FoodDetailTableViewController.m in Sources */,
+				D4FFAF47151754F1006476D0 /* FoodCell.m in Sources */,
+				D4C113DF1517926C00E56F81 /* CartTableViewController.m in Sources */,
+				D42CD7FE151A8860000397BA /* LocationDetailTableViewController.m in Sources */,
+				D4C6B203151C737800E8430C /* PlaceAnnotationView.m in Sources */,
+				D45F56B6151FC45D00198F37 /* CartCell.m in Sources */,
+				D4072B7B15288BAC00EF3198 /* Helpers.m in Sources */,
+				D4B04BA9152F438E00B81539 /* SpinnerView.m in Sources */,
+				D4DC1F83153438FC006A8193 /* GradientButton.m in Sources */,
+				D471D34C1540810F00219083 /* LazyImageDownloader.m in Sources */,
+				D4C8389415445A7E00A9D718 /* Food.m in Sources */,
+				D4C8389715445A7E00A9D718 /* Cart.m in Sources */,
+				D4C8389A15445A7E00A9D718 /* Place.m in Sources */,
+				D49A2D52154AAA6C00460699 /* NSData+JSONE.m in Sources */,
+				D49A2D5A154AAC9F00460699 /* NSDictionary+JSONE.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +612,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -240,7 +637,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -257,6 +655,7 @@
 		D40C741414FA5CF3005FCD04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodPlace/FoodPlace-Prefix.pch";
 				INFOPLIST_FILE = "FoodPlace/FoodPlace-Info.plist";
@@ -268,6 +667,7 @@
 		D40C741514FA5CF3005FCD04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodPlace/FoodPlace-Prefix.pch";
 				INFOPLIST_FILE = "FoodPlace/FoodPlace-Info.plist";
@@ -295,8 +695,22 @@
 				D40C741514FA5CF3005FCD04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D4103A9A150E169C004DDDAA /* FoodPlace.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D4103A9B150E169C004DDDAA /* FoodPlace.xcdatamodel */,
+			);
+			currentVersion = D4103A9B150E169C004DDDAA /* FoodPlace.xcdatamodel */;
+			path = FoodPlace.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D40C73E114FA5CF3005FCD04 /* Project object */;
 }

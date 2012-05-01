@@ -7,38 +7,99 @@
 //
 
 #import "FoodTableViewController.h"
+#import "FoodPlaceFetcher.h"
+#import "Food+Create.h"
+#import "FoodCell.h"
+#import "Place.h"
+#import "FoodPlaceAppDelegate.h"
+#import "SpinnerView.h"
+
+#define showSpinnerView() self.spinner = [SpinnerView loadSpinnerIntoView:self.tabBarController.view]
+#define hideSpinnerView() [self.spinner removeSpinner]
 
 @interface FoodTableViewController ()
+
+@property (nonatomic, strong) SpinnerView *spinner;
 
 @end
 
 @implementation FoodTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+@synthesize spinner =_spinner;
+@synthesize document = _document;
+@synthesize imageDownloadsInProgress = _imageDownloadsInProgress;
+
+#pragma mark - Initialize Data
+
+- (void)setupFetchedResultsController {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
+    // [request setFetchBatchSize:5];
+    // [request setFetchLimit:7];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:self.document.managedObjectContext
+                                                                          sectionNameKeyPath:nil 
+                                                                                  cacheName:nil];
+}
+
+- (void)fetchWebServiceIntoDatabase:(UIManagedDocument *)document {
+    
+    dispatch_queue_t fetchQ = dispatch_queue_create("Food Place Fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        NSArray *foods = [FoodPlaceFetcher getFoods];
+        [document.managedObjectContext performBlock:^{
+            [foods enumerateObjectsUsingBlock:^(NSDictionary *food, NSUInteger idx, BOOL *stop) {
+                [Food foodWithWebService:food inManagedObjectContext:document.managedObjectContext];
+            }];
+            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+        }];
+    });
+    dispatch_release(fetchQ);
+}
+
+- (void)useDocument {
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.document.fileURL path]]) {
+        [self.document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+            [self fetchWebServiceIntoDatabase:self.document];
+        }];
+    } else if (self.document.documentState == UIDocumentStateClosed) {
+        [self.document openWithCompletionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+        }];
+    } else if (self.document.documentState == UIDocumentStateNormal) {
+        [self setupFetchedResultsController];
     }
-    return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)setDocument:(UIManagedDocument *)document {
+    
+    if (_document != document) {
+        _document = document;
+        [self useDocument];
+    }
+}
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    showSpinnerView();
+    
+    self.document = [FoodPlaceAppDelegate sharedDocument];  
+    // self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    
+    [self setDocument:nil];
+    [self setImageDownloadsInProgress:nil];
+    [self setSpinner:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -48,81 +109,106 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (UITableViewCell *)tableView:(UITableView *)sender cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    hideSpinnerView();
     
-    // Configure the cell...
+    FoodCell *cell = (FoodCell *)[sender dequeueReusableCellWithIdentifier:@"Food Cell"];
+
+    Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    return cell;
+    cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", food.name];
+    cell.placeNameLabel.text = [NSString stringWithFormat:@"%@", food.place.name];
+    cell.priceNameLabel.text = [NSString stringWithFormat:@"%@%@", EURO, [food.price stringValue]];
+ 
+    if (!food.image) 
+    {   
+        if (self.tableView.dragging == NO && self.tableView.decelerating == NO) 
+        {
+            [self startImageDownload:food forIndexPath:indexPath];
+        }
+        
+        cell.foodImageView.image = nil;
+        
+    } else {
+    
+        cell.foodImageView.image = food.image;
+    }
+  
+    return cell; 
+    
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
+    Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([segue.destinationViewController respondsToSelector:@selector(setFood:)]) {
+        [segue.destinationViewController performSelector:@selector(setFood:) 
+                                              withObject:food];
+    }
+    if ([segue.destinationViewController respondsToSelector:@selector(setDocument:)]) {
+        [segue.destinationViewController performSelector:@selector(setDocument:) 
+                                              withObject:self.document];
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+#pragma mark - Lazy Image Downloader support
+
+- (void)startImageDownload:(Food *)food forIndexPath:(NSIndexPath *)indexPath {
+    
+    LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
+    
+    if (imageDownloader == nil){
+        imageDownloader = [[LazyImageDownloader alloc] init];
+        imageDownloader.food = food;
+        imageDownloader.indexPathInTableView = indexPath;
+        imageDownloader.delegate = self;
+        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
+        [imageDownloader startDownload];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)imageDidLoad:(NSIndexPath *)indexPath {
+    
+    LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
+    if (imageDownloader != nil) 
+    {
+        FoodCell *cell = (FoodCell *)[self.tableView cellForRowAtIndexPath:imageDownloader.indexPathInTableView];
+        cell.foodImageView.image = imageDownloader.food.image;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)loadImagesForOnScreenRows
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    int count = [[self.fetchedResultsController fetchedObjects] count];    
+    NSLog(@"%d", count);
+    if (count > 0)
+    {
+        NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+        [visiblePaths enumerateObjectsUsingBlock:^(NSIndexPath *indexPath, NSUInteger idx, BOOL *stop) {
+            Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            if (!food.image) 
+            {
+                [self startImageDownload:food forIndexPath:indexPath];
+            }
+        }];
+    }
 }
-*/
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    if (!decelerate)
+	{
+        [self loadImagesForOnScreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesForOnScreenRows];
 }
 
 @end

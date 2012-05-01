@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController : UIViewController
+#define LATITUDE 63.097458
+#define LONGITUDE 21.61903
+
+#define LATITUDE_DELTA 0.0175
+#define LONGITUDE_DELTA 0.0175
+
+#define MY_PIN @"MyPin"
+#define MY_PIN_IMAGE @"map-pin.png"
+
+@interface MapViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UISegmentedControl *buttonBarSegmentedControl;
+@property (nonatomic, strong) NSArray *annotations;
+@property (nonatomic, strong) NSArray *places;
+
+- (IBAction)showLocation:(id)sender;
 
 @end

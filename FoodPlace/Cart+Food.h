@@ -7,7 +7,11 @@
 //
 
 #import "Cart.h"
+#import "Food.h"
 
 @interface Cart (Food)
+
++ (Cart *)cartWithFood:(Food *)food inManagedObjectContext:(NSManagedObjectContext *)context;
++ (void)removeFromCart:(Cart *)cart inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface Place (Create)
 
++ (Place *)placeWithWebService:(NSDictionary *)webService inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

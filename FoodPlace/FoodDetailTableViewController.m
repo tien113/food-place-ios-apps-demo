@@ -7,6 +7,8 @@
 //
 
 #import "FoodDetailTableViewController.h"
+#import "FoodPlaceFetcher.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FoodDetailTableViewController ()
 
@@ -14,31 +16,60 @@
 
 @implementation FoodDetailTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+@synthesize foodImageView = _foodImageView;
+@synthesize foodNameLabel = _foodNameLabel;
+@synthesize placeNameLabel = _placeNameLabel;
+@synthesize priceLabel = _priceLabel;
+@synthesize foodIngredientTextView = _foodIngredientTextView;
+@synthesize addToCartButton = _addToCartButton;
+
+@synthesize food = _food;
+@synthesize document = _document;
+
+- (void)setFood:(Food *)food {
+    
+    if (_food != food) {
+        _food = food;
+  
+        self.title = food.name;
     }
-    return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)setDocument:(UIManagedDocument *)document {
+    
+    if (_document != document) {
+        _document = document;
+    }
+}
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.foodNameLabel.text = [NSString stringWithFormat:@"%@", self.food.name];
+    [self.foodNameLabel sizeToFit];
+    self.placeNameLabel.text = [NSString stringWithFormat:@"%@", self.food.place.name];
+    [self.placeNameLabel sizeToFit];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO, [self.food.price stringValue]];
+    self.foodIngredientTextView.text = [NSString stringWithFormat:@"%@", self.food.ingredient];
+    self.foodImageView.image = self.food.image;
+    
+    NSLog(@"%@, %@, %@, %@", self.food.name, self.food.place.name, self.food.price, self.food.ingredient);
+  
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    [self setDocument:nil];
+    [self setFood:nil];
+    [self setFoodImageView:nil];
+    [self setFoodNameLabel:nil];
+    [self setPlaceNameLabel:nil];
+    [self setPriceLabel:nil];
+    [self setFoodIngredientTextView:nil];
+    [self setAddToCartButton:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -46,82 +77,26 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
+#pragma mark - Cart Action
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+- (void)addToCart:(UIManagedDocument *)document {
     
-    // Configure the cell...
+    dispatch_queue_t addQ = dispatch_queue_create("Add to Cart", NULL);
+    dispatch_async(addQ, ^{
+        [document.managedObjectContext performBlock:^{
+            [Cart cartWithFood:self.food inManagedObjectContext:document.managedObjectContext];
+            [document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+        }];
+    });
+    dispatch_release(addQ);
+}
+
+#pragma mark - IBOutlet
+
+- (IBAction)AddToCart:(id)sender {
     
-    return cell;
+    [self addToCart:self.document];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 @end
