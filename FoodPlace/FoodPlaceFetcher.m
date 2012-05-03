@@ -33,12 +33,14 @@
     int responseCode = [(NSHTTPURLResponse *)response statusCode];
     NSLog(@"%d", responseCode);
     
-    if (responseCode == kHTTPRequestOK && [responseData length] > 0) {
-        id foods = [responseData fromJSON];
-        NSLog(@"Getting foods...");
-        return foods;
+    if (responseCode != kHTTPRequestOK || [responseData length] == 0) {
+        NSLog(@"Error!!!");
+        return nil;
     }
-    return nil;
+    
+    id foods = [responseData fromJSON];
+    NSLog(@"Getting foods...");
+    return foods;
 }
 
 + (NSArray *)getPlaces {
@@ -67,12 +69,14 @@
     int responseCode = [(NSHTTPURLResponse *)response statusCode];
     NSLog(@"%d", responseCode);
     
-    if (responseCode == kHTTPRequestOK && [responseData length] > 0) {
-        id places = [responseData fromJSON];
-        NSLog(@"Getting places...");
-        return places;
+    if (responseCode != kHTTPRequestOK || [responseData length] == 0) {
+        NSLog(@"Error!!!");
+        return nil;
     }
-    return nil;
+    
+    id places = [responseData fromJSON];
+    NSLog(@"Getting places...");
+    return places;
 }
 
 #pragma mark - MKAnnotation Image
