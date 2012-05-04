@@ -28,13 +28,15 @@
 
 #pragma mark - Calculate Total Order
 
+// calculate total order
 - (float)totalOrder {
     
     __block float total = 0.0f;
     
-    NSArray *carts = [self.fetchedResultsController fetchedObjects];
+    // fetch data from Core Data to NSArray
+    NSArray *carts = [self.fetchedResultsController fetchedObjects]; 
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        total += [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count];  
+        total += [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]; // calculate total  
     }];
     
     return total;
@@ -42,83 +44,112 @@
 
 #pragma mark - Check Total Order Label
 
+// set position total order label 
 - (void)setTotalOrderLabel:(UILabel *)totalOrderLabel {
     
     if (_totalOrderLabel != totalOrderLabel) {
         _totalOrderLabel = totalOrderLabel;
-        _totalOrderLabel.frame = CGRectMake(-20.0f, 0.0f, 0.0f, 30.0f);
+        _totalOrderLabel.frame = CGRectMake(-20.0f, 0.0f, 0.0f, 30.0f); // set frame's position
     }
 }
 
+#define _TOTAL_ @"Total = %@%0.2f"
+
+// check total order label when it removes
 - (void)showTotalOrderLabelWhenRemove {
     
-    if ([self totalOrder] != 0) {
-        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@%0.2f", EURO, [self totalOrder]];
-    } else {
-        self.totalOrderLabel.hidden = YES;
-    }
+    // check totalOrder is zero or not
+    if ([self totalOrder] != 0) 
+        self.totalOrderLabel.text = [NSString stringWithFormat:_TOTAL_, EURO, [self totalOrder]];
+    else 
+        self.totalOrderLabel.hidden = YES; // set hidden total order label 
+    
 }
 
+// show total order label when it adds
 - (void)showTotalOrderLabelWhenAdd {
     
+    // check totalOrder is zero or not
     if ([self totalOrder] != 0) {
-        self.totalOrderLabel.hidden = NO;
-        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@%0.2f", EURO, [self totalOrder]];
+        self.totalOrderLabel.hidden = NO; // set hidden total order label
+        self.totalOrderLabel.text = [NSString stringWithFormat:_TOTAL_, EURO, [self totalOrder]];
     }
 }
 
 #pragma mark - Check Bar Button Item
 
+// check checkout bar button item
 - (void)showCheckOutBarButtonItem {
     
-    if ([self totalOrder] == 0) {
-        self.checkOutBarButtonItem.enabled = FALSE;
-    } else {
-        self.checkOutBarButtonItem.enabled = TRUE;
-    }
+    // check totalOrder is zero or not
+    if ([self totalOrder] == 0) 
+        self.checkOutBarButtonItem.enabled = FALSE; // set disable
+    else 
+        self.checkOutBarButtonItem.enabled = TRUE; // set enable
+    
 }
 
+// show checkout bar button item when it adds
 - (void)showCheckOutBarButtonItemWhenAdd {
-    self.checkOutBarButtonItem.enabled = TRUE;
+    self.checkOutBarButtonItem.enabled = TRUE; // set enable
 }
 
 #pragma mark - Check Cart Label
 
-- (void)showCartLabel {
+- (void)setCartLabel:(UILabel *)cartLabel {
     
-    self.cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 30.0f)];
-    [self.cartLabel setText:@"Nothing in Cart. Please, Order !!!"];
-    [self.cartLabel setTextColor:[UIColor blackColor]];
-    [self.cartLabel setTextAlignment:UITextAlignmentCenter];
-    if ([self totalOrder] == 0) {
-        [self.tableView addSubview:self.cartLabel];
-    } else {
-        [self hiddenCartLabel];
+    if (_cartLabel != cartLabel) {
+        _cartLabel = cartLabel;
     }
 }
 
+// check Cart Label
+- (void)showCartLabel {
+    
+    // init cart label with frame
+    self.cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 30.0f)];
+    self.cartLabel.text = @"Nothing in Cart. Please, Order !!!";
+    self.cartLabel.textColor = [UIColor blackColor];
+    self.cartLabel.textAlignment = UITextAlignmentCenter;
+    
+    // check totalOrder is zero or not
+    if ([self totalOrder] == 0) 
+        [self.tableView addSubview:self.cartLabel]; // add cart label to tableView
+    else 
+        [self hiddenCartLabel];
+    
+}
+
 - (void)hiddenCartLabel {
-    [self.cartLabel removeFromSuperview];
+    
+    // remove cart label from tableView
+    [self.cartLabel removeFromSuperview]; 
 }
 
 #pragma mark - Initialize Data
 
+// setup fetched result controller
 - (void)setupFetchedResultsController {
     
+    // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created_at" ascending:YES]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created_at" 
+                                                                                     ascending:YES]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request 
                                                                         managedObjectContext:self.document.managedObjectContext 
                                                                           sectionNameKeyPath:nil 
                                                                                    cacheName:nil];
 }
 
+// use document
 - (void)useDocument {
     
+    // if document state is closed, open and using it
     if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
             [self setupFetchedResultsController];
         }];
+        // if document state is normal, use it
     } else if (self.document.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
     }
@@ -132,17 +163,26 @@
     }
 }
 
+- (void)loadData {
+    
+    self.title = @"Cart";
+    
+    // load document
+    self.document = [FoodPlaceAppDelegate sharedDocument];
+    
+    // outlet
+    [self showCartLabel];
+    [self showCheckOutBarButtonItem];
+}
+
 #pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.title = @"Cart";
-    
-    self.document = [FoodPlaceAppDelegate sharedDocument];
-    [self showCartLabel];
-    [self showCheckOutBarButtonItem];
+    // load data
+    [self loadData];    
 }
 
 - (void)viewDidUnload
@@ -182,14 +222,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // CartCell
     CartCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cart Cell"];
     
     Cart *cart = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", cart.food.name];
     cell.countLabel.text = [NSString stringWithFormat:@"x%@", [cart.count stringValue]];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@%0.2f", EURO, [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@%0.2f", EURO, [Helpers timeNSDecimalNumber:cart.food.price 
+                                                                                           andNumber:cart.count]];
     
-    // IBOutlet
+    // outlet
     [self hiddenCartLabel];
     [self showTotalOrderLabelWhenAdd];
     [self showCheckOutBarButtonItemWhenAdd];
@@ -197,17 +239,19 @@
     return cell;
 }
 
+// edit tableView
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // editing style
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-        [self removeFromCart:self.document atIndexPath:indexPath];
+        [self removeFromCart:self.document atIndexPath:indexPath]; // remove food from cart at indexPath
         NSLog(@"Delete row !!!");
     }
 }
 
 #pragma mark - Cart Action
 
+// remove from cart
 - (void)removeFromCart:(UIManagedDocument *)document atIndexPath:(NSIndexPath *)indexPath {
     
     dispatch_queue_t removeQ = dispatch_queue_create("Remove from Cart", NULL);
@@ -217,7 +261,7 @@
             [Cart removeFromCart:cart inManagedObjectContext:document.managedObjectContext];
             [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
             
-            // IBOutlet
+            // outlet
             [self showTotalOrderLabelWhenRemove];
             [self showCartLabel];
             [self showCheckOutBarButtonItem];
@@ -232,7 +276,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 
-                                                        message:@"Your Order is reserved" 
+                                                        message:@"Your Order is reserved." 
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

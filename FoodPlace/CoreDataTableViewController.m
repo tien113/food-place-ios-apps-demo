@@ -105,7 +105,6 @@
     }
 }
 
-
 - (void)controller:(NSFetchedResultsController *)controller
    didChangeObject:(id)anObject
 	   atIndexPath:(NSIndexPath *)indexPath

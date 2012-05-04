@@ -9,6 +9,8 @@
 #import "Cart.h"
 #import "Food.h"
 
+#define CART_COUNT @"count"
+
 @interface Cart (Food)
 
 + (Cart *)cartWithFood:(Food *)food inManagedObjectContext:(NSManagedObjectContext *)context;

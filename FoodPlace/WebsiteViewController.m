@@ -19,14 +19,30 @@
 
 @synthesize webView = _webView;
 
+- (void)loadData {
+    
+    self.title = @"Website";
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:kFoodPlaceWebSiteURL];
+    [self.webView loadRequest:request]; // web loading with url
+    
+    // NSTimer for network activity indicator
+    [NSTimer scheduledTimerWithTimeInterval:(1.0f/2.0f) 
+                                     target:self 
+                                   selector:@selector(tick)
+                                   userInfo:nil 
+                                    repeats:YES];
+}
+
 #pragma mark - Check WebView Loading
 
 - (void)tick {
     
+    // check web loading or not
     if (self.webView.loading) 
-        ShowNetworkActivityIndicator();
+        ShowNetworkActivityIndicator(); // show network activity indicator
     else 
-        HideNetworkActivityIndicator();
+        HideNetworkActivityIndicator(); // hide network activity indicator
 }
 
 #pragma mark - View Controller Life Cycle
@@ -35,16 +51,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Website";
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:kFoodPlaceWebSiteURL];
-    [self.webView loadRequest:request];
-    
-    [NSTimer scheduledTimerWithTimeInterval:(1.0f/2.0f) 
-                                     target:self 
-                                   selector:@selector(tick)
-                                   userInfo:nil 
-                                    repeats:YES];
+    [self loadData];
 }
 
 - (void)viewDidUnload
@@ -53,6 +60,7 @@
     [super viewDidUnload];
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

@@ -61,8 +61,8 @@
     // check response is NSHTTPURLResponse class
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
         // get status code
-        int code = [(NSHTTPURLResponse *)response statusCode];
-        NSLog(@"%d", code); // log code
+        int responseCode = [(NSHTTPURLResponse *)response statusCode];
+        NSLog(@"%d", responseCode); // log code
     }
 }
 

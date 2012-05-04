@@ -14,13 +14,19 @@
 
 @implementation AboutMeViewController
 
+- (void)loadData {
+    
+    self.title = @"About Me";
+}
+
 #pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.title = @"About Me";
+    // load data
+    [self loadData];
 }
 
 - (void)viewDidUnload {
@@ -28,6 +34,7 @@
     [super viewDidUnload];
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

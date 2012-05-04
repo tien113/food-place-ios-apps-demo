@@ -15,18 +15,20 @@
     
     Place *place = nil;
     
+    // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
     request.predicate = [NSPredicate predicateWithFormat:@"name = %@", [webService objectForKey:PLACE_NAME]];
+    // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
-    NSArray *places = [context executeFetchRequest:request error:&error];
+    NSArray *places = [context executeFetchRequest:request error:&error]; // fetch all places from Core Data
     
     if (!places || [places count] > 1) {
         // error
     } else if (![places count]) {
-        
+        // insert data to Core Data
         place = [NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:context];
         place.name = [webService objectForKey:PLACE_NAME];
         place.lat = [webService valueForKey:PLACE_LAT];
@@ -39,9 +41,7 @@
         place.phone_number = [webService valueForKey:PLACE_PHONE_NUMBER];
         place.email = [webService valueForKey:PLACE_EMAIL];
         place.image_url = [webService valueForKey:PLACE_IMAGE_URL];
-        
         NSLog(@"%@", place);
-        
     } else {
         place = [places lastObject];
     }

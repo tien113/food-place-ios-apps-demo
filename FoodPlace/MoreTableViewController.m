@@ -14,37 +14,46 @@
 
 @implementation MoreTableViewController
 
+// load data
+- (void)loadData {
+    
+    self.title = @"More";
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"About Me"]) {
-
     }
     if ([segue.identifier isEqualToString:@"Email"]) {
+        // check mail account setup or not
         if ([MFMailComposeViewController canSendMail]) {
             [self displayEmailView];
         }
     }
     if ([segue.identifier isEqualToString:@"Website"]) {
-        
     }
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
 
+// display email view
 - (void)displayEmailView
 {
+    // init MFMailComposeViewController
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     
-    [mailController setToRecipients:[NSArray arrayWithObject:@"tien113@gmail.com"]];
-    [mailController setSubject:@"Feedback"];
+    [mailController setToRecipients:[NSArray arrayWithObject:@"tien113@gmail.com"]]; // set recipient to tien113@gmail.com
+    [mailController setSubject:@"Feedback"]; // set subject to Feedback
     [mailController setMessageBody:@"" isHTML:NO];
     
+    // show mail view
     [self presentModalViewController:mailController animated:YES];
 }
 
+// log everything of mail
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     switch (result) {
@@ -65,7 +74,7 @@
             break;
     }
     
-    // Remove the mail view
+    // remove the mail view
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -75,7 +84,8 @@
 {
     [super viewDidLoad];
     
-    self.title = @"More";
+    // load data
+    [self loadData];
 }
 
 - (void)viewDidUnload

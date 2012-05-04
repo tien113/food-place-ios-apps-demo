@@ -13,6 +13,7 @@
 
 @implementation EmailViewController
 
+// show alert
 - (void)showAlert {
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -25,6 +26,7 @@
     });
 }
 
+// remove email view controller
 - (void)dismissEmailViewController {
     
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -56,6 +58,7 @@
     [super viewDidUnload];
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
