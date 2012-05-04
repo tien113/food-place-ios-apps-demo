@@ -22,16 +22,19 @@
 
 #pragma mark - MKAnnotation
 
+// title of MKAnnotation
 - (NSString *)title {
     
     return [self.place objectForKey:PLACE_NAME];
 }
 
+// subtitle of MKAnnotation
 - (NSString *)subtitle {
     
     return [self.place valueForKeyPath:PLACE_ADDRESS];
 }
 
+// coordinate of MKAnnotation
 - (CLLocationCoordinate2D)coordinate {
     
     CLLocationCoordinate2D coordinate;

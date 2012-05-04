@@ -10,6 +10,7 @@
 
 @implementation NSDictionary (JSONE)
 
+// convert Data to JSON
 - (NSData *)toJSON {
     
     NSError *error = nil;

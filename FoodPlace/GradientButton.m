@@ -35,12 +35,14 @@
     return self;
 }
 
+// init layers
 - (void)initLayers {
     [self initBorder];
     [self addShineLayer];
     [self addHighlightLayer];
 }
 
+// init border
 - (void)initBorder {
     CALayer *layer = self.layer;
     layer.cornerRadius = 8.0f;
@@ -49,6 +51,7 @@
     layer.borderColor = [UIColor colorWithWhite:0.5f alpha:0.2f].CGColor;   
 }
 
+// add shine layer
 - (void)addShineLayer {
     self.shineLayer = [CAGradientLayer layer];
     self.shineLayer.frame = self.layer.bounds;

@@ -11,6 +11,9 @@
 
 @implementation SpinnerView
 
+#pragma mark - SpinnerView
+
+// init SpinnerView 
 + (SpinnerView *)loadSpinnerIntoView:(UIView *)superView {
     
     SpinnerView *spinnerView = [[SpinnerView alloc] initWithFrame:superView.bounds];
@@ -21,13 +24,18 @@
     background.alpha = 0.7f;
     [spinnerView addSubview:background];
     
+    // init indicator
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+    
+    // set indicator in center
     indicator.center = superView.center;
     [spinnerView addSubview:indicator];
     [indicator startAnimating];
    
     [superView addSubview:spinnerView];
+    
+    // transition
     CATransition *animation = [CATransition animation];
     [animation setType:kCATransitionFade];
     [[superView layer] addAnimation:animation forKey:@"layerAnimation"];
@@ -35,8 +43,10 @@
     return spinnerView;
 }
 
+// remove spinner
 - (void)removeSpinner {
     
+    // transition
     CATransition *animation = [CATransition animation];
     [animation setType:kCATransitionFade];
     [[[self superview] layer] addAnimation:animation forKey:@"layerAnimation"];
@@ -44,6 +54,7 @@
     [super removeFromSuperview];
 }
 
+// add background to SpinnerView
 - (UIImage *)addBackground {
     
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 1);

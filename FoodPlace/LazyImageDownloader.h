@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Food.h"
-#import "Helpers.h"
 
 @protocol LazyImageDownloaderDelegate
 

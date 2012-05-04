@@ -12,9 +12,10 @@
 
 + (float)timeNSDecimalNumber:(NSDecimalNumber *)numberA andNumber:(NSNumber *)numberB {
     
-    float fNumberA = [numberA floatValue];
-    int fNumberB = [numberB intValue];
+    float fNumberA = [numberA floatValue]; // convert NSDecimalNumber to float
+    int fNumberB = [numberB intValue]; // convert NSNumber to int
         
+    // time int and fload number (block way)
     float (^add)(float, int) = ^(float numA, int numB) {
         return numA * numB;
     };

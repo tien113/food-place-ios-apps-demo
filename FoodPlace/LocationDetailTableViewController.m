@@ -25,6 +25,7 @@
 
 @synthesize place = _place;
 
+// set title = place name
 - (void)setPlace:(Place *)place {
     
     if (_place != place) {
@@ -34,12 +35,9 @@
     }
 }
 
-#pragma mark - View Controller Life Cycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
+// load data to outlet
+- (void)loadData {
+    
     self.placeNameLabel.text = [NSString stringWithFormat:@"%@", self.place.name];
     self.placeAddressLabel.text = [NSString stringWithFormat:@"%@", self.place.address];
     [self.placeAddressLabel sizeToFit];
@@ -51,6 +49,16 @@
     self.openingTime4Label.text = [NSString stringWithFormat:@"%@", self.place.opening_time_4];
     
     NSLog(@"%@, %@, %@, %@, %@", self.place.name, self.place.address, self.place.opening_time_1, self.place.phone_number, self.place.email);
+}
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    // load data
+    [self loadData];
 }
 
 - (void)viewDidUnload
@@ -68,6 +76,7 @@
 
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

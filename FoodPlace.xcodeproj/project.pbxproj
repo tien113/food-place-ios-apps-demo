@@ -22,6 +22,7 @@
 		D4103ABD150E1959004DDDAA /* Place+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = D4103ABC150E1958004DDDAA /* Place+Create.m */; };
 		D42B59D2151907E700B77D7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B59D1151907E700B77D7E /* QuartzCore.framework */; };
 		D42CD7FE151A8860000397BA /* LocationDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42CD7FD151A885F000397BA /* LocationDetailTableViewController.m */; };
+		D42E456A1552D793009BD4CA /* NSString+Cryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = D42E45691552D793009BD4CA /* NSString+Cryptography.m */; };
 		D45F56B6151FC45D00198F37 /* CartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D45F56B5151FC45D00198F37 /* CartCell.m */; };
 		D471D34C1540810F00219083 /* LazyImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D471D34B1540810F00219083 /* LazyImageDownloader.m */; };
 		D472DCC11507484100BF63F7 /* FoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472DCC01507484100BF63F7 /* FoodTableViewController.m */; };
@@ -122,6 +123,9 @@
 		D42B59D1151907E700B77D7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D42CD7FC151A885F000397BA /* LocationDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailTableViewController.h; sourceTree = "<group>"; };
 		D42CD7FD151A885F000397BA /* LocationDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailTableViewController.m; sourceTree = "<group>"; };
+		D42E45681552D793009BD4CA /* NSString+Cryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Cryptography.h"; sourceTree = "<group>"; };
+		D42E45691552D793009BD4CA /* NSString+Cryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Cryptography.m"; sourceTree = "<group>"; };
+		D42E457B1552D8AB009BD4CA /* Cryptography.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cryptography.h; sourceTree = "<group>"; };
 		D45F56B4151FC45D00198F37 /* CartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartCell.h; sourceTree = "<group>"; };
 		D45F56B5151FC45D00198F37 /* CartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartCell.m; sourceTree = "<group>"; };
 		D471D34A1540810F00219083 /* LazyImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyImageDownloader.h; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				D40C740014FA5CF3005FCD04 /* MainStoryboard.storyboard */,
+				D42E456C1552D79B009BD4CA /* Cryptography */,
 				D47EEB81154DCB4800A199F0 /* JSONE */,
 				D4072B7715288B7D00EF3198 /* Helpers */,
 				D4792117152583FC0089AEEB /* View Controllers */,
@@ -338,6 +343,16 @@
 				D4103AB9150E1933004DDDAA /* Food+Create.m */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		D42E456C1552D79B009BD4CA /* Cryptography */ = {
+			isa = PBXGroup;
+			children = (
+				D42E45681552D793009BD4CA /* NSString+Cryptography.h */,
+				D42E45691552D793009BD4CA /* NSString+Cryptography.m */,
+				D42E457B1552D8AB009BD4CA /* Cryptography.h */,
+			);
+			name = Cryptography;
 			sourceTree = "<group>";
 		};
 		D4792117152583FC0089AEEB /* View Controllers */ = {
@@ -582,6 +597,7 @@
 				D4C8389A15445A7E00A9D718 /* Place.m in Sources */,
 				D49A2D52154AAA6C00460699 /* NSData+JSONE.m in Sources */,
 				D49A2D5A154AAC9F00460699 /* NSDictionary+JSONE.m in Sources */,
+				D42E456A1552D793009BD4CA /* NSString+Cryptography.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

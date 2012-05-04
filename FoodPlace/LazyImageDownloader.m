@@ -7,6 +7,7 @@
 //
 
 #import "LazyImageDownloader.h"
+#import "Helpers.h"
 
 @implementation LazyImageDownloader
 
@@ -18,12 +19,14 @@
 
 - (void)startDownload {
     
+    // init food image url
     NSURL *url = [NSURL URLWithString:self.food.image_url];
     NSURLRequest *request = [NSURLRequest requestWithURL:url 
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:10.0f];
-    NSOperationQueue *queue = [NSOperationQueue currentQueue];
+    NSOperationQueue *queue = [NSOperationQueue currentQueue]; // init NSOperationQueue
     
+    // show network activity indicator
     ShowNetworkActivityIndicator();
     
     [NSURLConnection sendAsynchronousRequest:request 
@@ -34,7 +37,7 @@
          // reading http status code
          [self readHttpStatusCodeFromResponse:response];
          
-         // check data
+         // check data and error
          if ([data length] > 0 && error == nil) {
              [self imageWithData:data];
          } else if ([data length] == 0 && error == nil) {
@@ -46,31 +49,37 @@
          }
          
      }]; 
+    
+    // load image with indexPathInTableView
     [self.delegate imageDidLoad:self.indexPathInTableView];
 }
 
-#pragma mark -
+#pragma mark - Reading Code and Load Image
 
 - (void)readHttpStatusCodeFromResponse:(NSURLResponse *)response {
     
+    // check response is NSHTTPURLResponse class
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        // get status code
         int code = [(NSHTTPURLResponse *)response statusCode];
-        NSLog(@"%d", code);
+        NSLog(@"%d", code); // log code
     }
 }
 
 - (void)imageWithData:(NSData *)data {
     
+    // init image with data
     UIImage *image = [[UIImage alloc] initWithData:data];       
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        // hide network activity indicator
         HideNetworkActivityIndicator();
         
         self.food.image = image;            
     });
 }
 
-#pragma mark -
+#pragma mark - Error Log
 
 - (void)emptyReply {
     

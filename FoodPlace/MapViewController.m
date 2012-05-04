@@ -28,26 +28,29 @@
 
 #pragma mark - Add Annotaions to Places
 
+// return NSArray Annotation
 - (NSArray *)mapAnnotations {
     
     NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.places count]];
     [self.places enumerateObjectsUsingBlock:^(NSDictionary *place, NSUInteger idx, BOOL *stop) {
-        [annotations addObject:[PlaceAnnotationView annotationForPlace:place]];
+        [annotations addObject:[PlaceAnnotationView annotationForPlace:place]]; // add annotation to places
     }]; 
     return annotations;
 }
 
 #pragma mark - Fetch Places from Web Service
 
+// fetch Places from Web Service
 - (void)fetchPlaces {
     
     dispatch_queue_t downloadQ = dispatch_queue_create("Place downloader", NULL);
     dispatch_async(downloadQ, ^{
-        self.places = [FoodPlaceFetcher getPlaces];
+        self.places = [FoodPlaceFetcher getPlaces]; // get Places and return NSArray
     });
     dispatch_release(downloadQ);
 }
 
+// init data
 - (void)awakeFromNib {
     
     [super awakeFromNib];
@@ -65,7 +68,10 @@
 
 - (void)updateMapView
 {
+    // remove annotation if they exist
     if (self.mapView.annotations) [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    // add annotation if they dont exist
     if (self.annotations) [self.mapView addAnnotations:self.annotations];
 }
 
@@ -73,7 +79,7 @@
 {
     if (_mapView != mapView) {
         _mapView = mapView;
-        [self updateMapView];
+        [self updateMapView]; // update MapView
     }    
 }
 
@@ -81,29 +87,31 @@
 {
     if (_annotations != annotations) {
         _annotations = annotations;
-        [self updateMapView];
+        [self updateMapView]; // update MapView
     }
 }
 
 #pragma mark - MKMapViewDelegate
 
+// view for annotation
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation 
 {
+    // check annotation is MKUserLocation class
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        
-        return nil;
+       return nil; // return nil if its
     } 
     
-    if ([annotation isKindOfClass:[PlaceAnnotationView class]]) {
-        
-        MKAnnotationView *aView = [mapView dequeueReusableAnnotationViewWithIdentifier:MY_PIN];
+    // check annotation is PlaceAnnotation class
+    if ([annotation isKindOfClass:[PlaceAnnotationView class]]) 
+    {
+        MKAnnotationView *aView = [mapView dequeueReusableAnnotationViewWithIdentifier:MY_PIN]; // set name MKAnnotationView
         if (!aView) {
             aView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:MY_PIN];
-            aView.canShowCallout = YES;  
-            aView.calloutOffset = CGPointMake(0, 0);
-            aView.image = [UIImage imageNamed:MY_PIN_IMAGE];
-            aView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-            [aView setSelected:YES];
+            aView.canShowCallout = YES; // set call out  
+            aView.calloutOffset = CGPointMake(0, 0); // set position call out off set
+            aView.image = [UIImage imageNamed:MY_PIN_IMAGE]; // set place's image for pin
+            aView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)]; // set frame for pin's image
+            [aView setSelected:YES]; // set selected
         }
         
         aView.annotation = annotation;
@@ -115,17 +123,23 @@
     return nil;    
 }
 
+// image for annotation
 - (UIImage *)image:(id)sender imageForAnnotation:(id <MKAnnotation>)annotation {
 
     PlaceAnnotationView *pav = (PlaceAnnotationView *)annotation;
-    NSURL *url = [FoodPlaceFetcher urlForPlace:pav.place];
-    NSData *data = [NSData dataWithContentsOfURL:url];
+    // get image's url
+    NSURL *url = [FoodPlaceFetcher urlForPlace:pav.place]; 
+    // get data from url
+    NSData *data = [NSData dataWithContentsOfURL:url]; 
+    // return image
     return data ? [UIImage imageWithData:data] : nil;
 } 
 
+// load image when selecting
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView {
        
     UIImage *image = [self image:self imageForAnnotation:aView.annotation];
+    // load annotation's image
     [(UIImageView *)aView.leftCalloutAccessoryView setImage:image];
 }
 
@@ -136,17 +150,22 @@
 
 #pragma mark - CLLocationManagerDelegate
 
+// update location
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
+    // set span use latitude and longitude
     MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA);
+    // set region use coordinate and span
     MKCoordinateRegion region = MKCoordinateRegionMake(newLocation.coordinate, span);
+    // set region to mapView
     [self.mapView setRegion:region animated:YES];
     
     NSLog(@"Latitude: %f, Longitude: %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     
-    [manager stopUpdatingLocation];
+    [manager stopUpdatingLocation]; // stop updating location
 }
 
+// error and show alert
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error 
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -161,10 +180,14 @@
 
 #pragma mark - Segmented Control
 
+// setup Segmented Control
 - (void)setupSegmentedControl
 {
-    [self.buttonBarSegmentedControl addTarget:self action:@selector(toggleToolBarChange:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.buttonBarSegmentedControl];
+    // action for segmented control
+    [self.buttonBarSegmentedControl addTarget:self 
+                                       action:@selector(toggleToolBarChange:) 
+                             forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:self.buttonBarSegmentedControl]; // add segmented control to mapView
 }
 
 - (void)toggleToolBarChange:(id)sender
@@ -174,17 +197,17 @@
     switch (segControl.selectedSegmentIndex) {
         case 0:
         {
-            [self.mapView setMapType:MKMapTypeStandard];
+            [self.mapView setMapType:MKMapTypeStandard]; // set mapView to Standard
             break;
         }
         case 1:
         {
-            [self.mapView setMapType:MKMapTypeSatellite];
+            [self.mapView setMapType:MKMapTypeSatellite]; // set mapView to Satellite
             break;
         }
         case 2:
         {
-            [self.mapView setMapType:MKMapTypeHybrid];
+            [self.mapView setMapType:MKMapTypeHybrid]; // set mapView to Hybrid
             break;
         }
     }
@@ -194,15 +217,44 @@
 
 - (void)displayMap {
     
+    // load latitude and longitude
     CLLocationCoordinate2D coords;
     coords.latitude = LATITUDE;
     coords.longitude = LONGITUDE;
+    // set span use latitude and longitude
     MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA);
+    // set region use coordinate and span
     MKCoordinateRegion region = MKCoordinateRegionMake(coords, span);
-    [self.mapView setRegion:region animated:YES];
+    [self.mapView setRegion:region animated:YES]; // set region to mapView
     
-    [self.mapView addAnnotations:[self mapAnnotations]];
+    [self.mapView addAnnotations:[self mapAnnotations]]; // set annotations to mapView
     
+}
+
+// load data
+- (void)loadData {
+    
+    self.mapView.delegate = self; // set delegate to self
+    self.mapView.mapType = MKMapTypeStandard; // set map type to standard
+    
+    // run another thread to displayMap
+    [NSThread detachNewThreadSelector:@selector(displayMap) 
+                             toTarget:self 
+                           withObject:nil];
+    
+    // setup segmented control
+    [self setupSegmentedControl]; 
+}
+
+// show user location
+- (void)showUserLocation {
+    
+    // load location manager
+    CLLocationManager *locationManager = [FoodPlaceAppDelegate sharedLocationManager];
+    locationManager.delegate = self;
+    [locationManager startUpdatingLocation]; // start updating location
+    
+    self.mapView.showsUserLocation = TRUE; // set show userlocation to TRUE
 }
 
 #pragma mark - View Controller Life Cycle
@@ -211,12 +263,7 @@
 {
     [super viewDidLoad];
        
-    self.mapView.delegate = self;
-    self.mapView.mapType = MKMapTypeStandard;
-    
-    [NSThread detachNewThreadSelector:@selector(displayMap) toTarget:self withObject:nil];
-    
-    [self setupSegmentedControl]; 
+    [self loadData]; // load data
 }
 
 - (void)viewDidUnload
@@ -228,20 +275,18 @@
     [super viewDidUnload];
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);;
 }
 
-#pragma mark - IBOutlet
+#pragma mark - Action
 
 - (IBAction)showLocation:(id)sender {
     
-    CLLocationManager *locationManager = [FoodPlaceAppDelegate sharedLocationManager];
-    locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
-    
-    self.mapView.showsUserLocation = TRUE;
+    // show user location
+    [self showUserLocation];
 }
 
 @end

@@ -26,6 +26,7 @@
 @synthesize food = _food;
 @synthesize document = _document;
 
+// set title = food name
 - (void)setFood:(Food *)food {
     
     if (_food != food) {
@@ -42,11 +43,8 @@
     }
 }
 
-#pragma mark - View Controller Life Cycle
-
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
+// load data to outlet
+- (void)loadData {
     
     self.foodNameLabel.text = [NSString stringWithFormat:@"%@", self.food.name];
     [self.foodNameLabel sizeToFit];
@@ -57,7 +55,16 @@
     self.foodImageView.image = self.food.image;
     
     NSLog(@"%@, %@, %@, %@", self.food.name, self.food.place.name, self.food.price, self.food.ingredient);
-  
+}
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    // load data
+    [self loadData];
 }
 
 - (void)viewDidUnload {
@@ -72,6 +79,7 @@
     [super viewDidUnload];
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -79,19 +87,21 @@
 
 #pragma mark - Cart Action
 
+// add food to Cart
 - (void)addToCart:(UIManagedDocument *)document {
     
+    // create queue for Add to Cart
     dispatch_queue_t addQ = dispatch_queue_create("Add to Cart", NULL);
     dispatch_async(addQ, ^{
         [document.managedObjectContext performBlock:^{
-            [Cart cartWithFood:self.food inManagedObjectContext:document.managedObjectContext];
-            [document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+            [Cart cartWithFood:self.food inManagedObjectContext:document.managedObjectContext]; // add food to Cart
+            [document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL]; // save to document
         }];
     });
     dispatch_release(addQ);
 }
 
-#pragma mark - IBOutlet
+#pragma mark - Action
 
 - (IBAction)AddToCart:(id)sender {
     

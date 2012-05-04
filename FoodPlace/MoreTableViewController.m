@@ -83,6 +83,7 @@
     [super viewDidUnload];
 }
 
+// set rotation
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
