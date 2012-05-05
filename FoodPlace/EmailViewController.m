@@ -34,6 +34,7 @@
 
 #pragma mark - UIAlertViewDelegate
 
+// uialert with button action
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
