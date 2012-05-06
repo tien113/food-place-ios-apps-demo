@@ -182,7 +182,7 @@
     [super viewDidLoad];
     
     // load data
-    [self loadData];    
+    [self loadData];
 }
 
 - (void)viewDidUnload
