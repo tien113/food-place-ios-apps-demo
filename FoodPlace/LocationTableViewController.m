@@ -138,13 +138,13 @@
     Place *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // convert NSNumber to float
-    float place_distance = [place.distance floatValue]; 
+    float placeDistance = [place.distance floatValue]; 
     
     // check plade distance and place name exist
-    if (place_distance && place.name) {
+    if (placeDistance && place.name) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = [NSString stringWithFormat:@"%@", place.name];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f km", place_distance];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f km", placeDistance];
     } else {
         cell.textLabel.text = @"";
         cell.detailTextLabel.text = @"";
