@@ -35,7 +35,7 @@
 // check badge value nil
 - (void)checkBadgeValue:(int)count {
     
-    if (count == 0) 
+    if (count == 0)
         [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
     else 
         [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
@@ -50,12 +50,12 @@
     NSError *error = nil;
     NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
                                                                        error:&error];
-    __block int count = 0;
+    __block int cartCount = 0;
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        count += [cart.count intValue];
+        cartCount += [cart.count intValue];
     }];
-    [self checkBadgeValue:count];
-    NSLog(@"%d", count);
+    [self checkBadgeValue:cartCount];
+    NSLog(@"%d", cartCount);
 }
 
 #pragma mark - Initialize Data

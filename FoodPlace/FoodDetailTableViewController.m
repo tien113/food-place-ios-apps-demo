@@ -46,12 +46,12 @@
     NSError *error = nil;
     NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
                                                                        error:&error];
-    __block int count = 0;
+    __block int cartCount = 0;
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        count += [cart.count intValue];
+        cartCount += [cart.count intValue];
     }];
-    [self checkBadgeValue:count];
-    NSLog(@"%d", count);
+    [self checkBadgeValue:cartCount];
+    NSLog(@"%d", cartCount);
 }
 
 #pragma mark - Initialize Data
