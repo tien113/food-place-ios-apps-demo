@@ -16,6 +16,7 @@
 		D40C73FB14FA5CF3005FCD04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D40C73FA14FA5CF3005FCD04 /* main.m */; };
 		D40C73FF14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */; };
 		D40C740214FA5CF3005FCD04 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40C740014FA5CF3005FCD04 /* MainStoryboard.storyboard */; };
+		D40F1F751555551700ADEF07 /* NSDate+FormattedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F1F741555551700ADEF07 /* NSDate+FormattedStrings.m */; };
 		D4103A98150E15E6004DDDAA /* FoodPlaceFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D4103A97150E15E6004DDDAA /* FoodPlaceFetcher.m */; };
 		D4103A9C150E169C004DDDAA /* FoodPlace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4103A9A150E169C004DDDAA /* FoodPlace.xcdatamodeld */; };
 		D4103ABA150E1933004DDDAA /* Food+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = D4103AB9150E1933004DDDAA /* Food+Create.m */; };
@@ -113,6 +114,9 @@
 		D40C73FD14FA5CF3005FCD04 /* FoodPlaceAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodPlaceAppDelegate.h; sourceTree = "<group>"; };
 		D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodPlaceAppDelegate.m; sourceTree = "<group>"; };
 		D40C740114FA5CF3005FCD04 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		D40F1F731555551700ADEF07 /* NSDate+FormattedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedStrings.h"; sourceTree = "<group>"; };
+		D40F1F741555551700ADEF07 /* NSDate+FormattedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedStrings.m"; sourceTree = "<group>"; };
+		D40F1F781555554300ADEF07 /* NSDateE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDateE.h; sourceTree = "<group>"; };
 		D4103A96150E15E6004DDDAA /* FoodPlaceFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodPlaceFetcher.h; sourceTree = "<group>"; };
 		D4103A97150E15E6004DDDAA /* FoodPlaceFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodPlaceFetcher.m; sourceTree = "<group>"; };
 		D4103A9B150E169C004DDDAA /* FoodPlace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodPlace.xcdatamodel; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				D40C740014FA5CF3005FCD04 /* MainStoryboard.storyboard */,
+				D40F1F771555551B00ADEF07 /* NSDateE */,
 				D42E456C1552D79B009BD4CA /* Cryptography */,
 				D47EEB81154DCB4800A199F0 /* JSONE */,
 				D4072B7715288B7D00EF3198 /* Helpers */,
@@ -321,6 +326,16 @@
 				D40C73FC14FA5CF3005FCD04 /* FoodPlace-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D40F1F771555551B00ADEF07 /* NSDateE */ = {
+			isa = PBXGroup;
+			children = (
+				D40F1F731555551700ADEF07 /* NSDate+FormattedStrings.h */,
+				D40F1F741555551700ADEF07 /* NSDate+FormattedStrings.m */,
+				D40F1F781555554300ADEF07 /* NSDateE.h */,
+			);
+			name = NSDateE;
 			sourceTree = "<group>";
 		};
 		D4103AB7150E1904004DDDAA /* Core Data */ = {
@@ -598,6 +613,7 @@
 				D49A2D52154AAA6C00460699 /* NSData+JSONE.m in Sources */,
 				D49A2D5A154AAC9F00460699 /* NSDictionary+JSONE.m in Sources */,
 				D42E456A1552D793009BD4CA /* NSString+Cryptography.m in Sources */,
+				D40F1F751555551700ADEF07 /* NSDate+FormattedStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

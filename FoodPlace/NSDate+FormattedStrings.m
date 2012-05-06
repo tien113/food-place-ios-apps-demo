@@ -13,7 +13,7 @@
 // convert NSDate to NSString (yyyy-MM-dd'T'hh:mm:ss'Z')
 - (NSString *)toString {
     
-    NSString *dateFormat = @"yyyy-MM-dd'T'hh:mm:ss'Z'";
+    NSString *dateFormat = @"yyyy-MM-dd HH:mm:ss";
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];

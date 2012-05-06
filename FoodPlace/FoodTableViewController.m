@@ -11,6 +11,7 @@
 #import "Food+Create.h"
 #import "FoodCell.h"
 #import "Place.h"
+#import "Cart.h"
 #import "FoodPlaceAppDelegate.h"
 #import "SpinnerView.h"
 
@@ -28,6 +29,34 @@
 @synthesize spinner =_spinner;
 @synthesize document = _document;
 @synthesize imageDownloadsInProgress = _imageDownloadsInProgress;
+
+#pragma mark - Badge Value
+
+// check badge value nil
+- (void)checkBadgeValue:(int)count {
+    
+    if (count == 0) 
+        [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
+    else 
+        [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
+}
+
+// set badge value
+- (void)setBadgeValue {
+    
+    // fetch request with entity
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
+    
+    NSError *error = nil;
+    NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
+                                                                       error:&error];
+    __block int count = 0;
+    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
+        count += [cart.count intValue];
+    }];
+    [self checkBadgeValue:count];
+    NSLog(@"%d", count);
+}
 
 #pragma mark - Initialize Data
 
@@ -77,10 +106,12 @@
     } else if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
             [self setupFetchedResultsController];
+            [self setBadgeValue]; // set badge value
         }];
         // if document state is normal, use it
     } else if (self.document.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
+        [self setBadgeValue]; // set badge value
     }
 }
 

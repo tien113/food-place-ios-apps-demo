@@ -26,6 +26,36 @@
 @synthesize food = _food;
 @synthesize document = _document;
 
+#pragma mark - Badge Value
+
+// check badge value nil
+- (void)checkBadgeValue:(int)count {
+    
+    if (count == 0) 
+        [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
+    else 
+        [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
+}
+
+// set badge value
+- (void)setBadgeValue {
+    
+    // fetch request with entity
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
+    
+    NSError *error = nil;
+    NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
+                                                                       error:&error];
+    __block int count = 0;
+    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
+        count += [cart.count intValue];
+    }];
+    [self checkBadgeValue:count];
+    NSLog(@"%d", count);
+}
+
+#pragma mark - Initialize Data
+
 // set title = food name
 - (void)setFood:(Food *)food {
     
@@ -96,6 +126,9 @@
         [document.managedObjectContext performBlock:^{
             [Cart cartWithFood:self.food inManagedObjectContext:document.managedObjectContext]; // add food to Cart
             [document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL]; // save to document
+            
+            // badge value
+            [self setBadgeValue];
         }];
     });
     dispatch_release(addQ);
@@ -107,6 +140,5 @@
     
     [self addToCart:self.document];
 }
-
 
 @end
