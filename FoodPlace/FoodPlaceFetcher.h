@@ -29,6 +29,7 @@
 
 #define kHTTPRequestOK 200
 #define kHTTPRequestCreated 201
+#define kHTTPRequestUpdated 204
 
 @interface FoodPlaceFetcher : NSObject
 
