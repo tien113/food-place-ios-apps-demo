@@ -343,7 +343,7 @@
 - (void)sendOrder {
     
     NSString *orderUuid = [[MacAddress getMacAddress] toSHA1]; // get UUID 
-    NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
+    NSString *orderTotal = [NSString stringWithFormat:@"%@%.2f", EURO, [self totalOrder]];
     NSString *orderDate = [[NSDate date] toString];
     NSString *orderDone = @"0"; // set order to FALSE
     
