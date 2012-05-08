@@ -360,7 +360,7 @@
         
         NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil] 
                                                                        forKeys:[NSArray arrayWithObjects:FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE, nil]];
-                                          
+        
         [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
     }];
@@ -370,10 +370,10 @@
                                                                     forKeys:keyOrderDetailParents]; 
     
     NSDictionary *orderChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:orderUuid, orderTotal, orderDate, orderDone, orderDetailParent, nil] 
-                                                              forKeys:[NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil]];
+                                                             forKeys:[NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil]];
     
     NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
-
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
