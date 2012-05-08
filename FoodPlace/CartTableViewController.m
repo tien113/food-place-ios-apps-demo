@@ -9,9 +9,13 @@
 #import "CartTableViewController.h"
 #import "FoodPlaceAppDelegate.h"
 #import "Cart+Food.h"
+#import "Place.h"
 #import "CartCell.h"
 #import "FoodPlaceFetcher.h"
 #import "Helpers.h"
+#import "Cryptography.h"
+#import "NSDateE.h"
+#import "JSONE.h"
 
 @interface CartTableViewController ()
 
@@ -23,7 +27,7 @@
 
 @synthesize cartLabel = _cartLabel;
 @synthesize document = _document;
-@synthesize checkOutBarButtonItem = _checkOutBarButtonItem;
+@synthesize placeOrderBarButtonItem = _placeOrderBarButtonItem;
 @synthesize totalOrderLabel = _totalOrderLabel;
 
 #pragma mark - Badge Value
@@ -81,8 +85,6 @@
     }
 }
 
-#define _TOTAL_ @"Total = %@%0.2f"
-
 // check total order label when it removes
 - (void)showTotalOrderLabelWhenRemove {
     
@@ -104,22 +106,22 @@
     }
 }
 
-#pragma mark - Check Bar Button Item
+#pragma mark - Place Order Bar Button Item
 
-// check checkout bar button item
-- (void)showCheckOutBarButtonItem {
+// check Place Order bar button item
+- (void)showPlaceOrderBarButtonItem {
     
     // check totalOrder is zero or not
     if ([self totalOrder] == 0) 
-        self.checkOutBarButtonItem.enabled = FALSE; // set disable
+        self.placeOrderBarButtonItem.enabled = FALSE; // set disable
     else 
-        self.checkOutBarButtonItem.enabled = TRUE; // set enable
+        self.placeOrderBarButtonItem.enabled = TRUE; // set enable
     
 }
 
-// show checkout bar button item when it adds
-- (void)showCheckOutBarButtonItemWhenAdd {
-    self.checkOutBarButtonItem.enabled = TRUE; // set enable
+// show Place Order bar button item when it adds
+- (void)showPlaceOrderBarButtonItemWhenAdd {
+    self.placeOrderBarButtonItem.enabled = TRUE; // set enable
 }
 
 #pragma mark - Check Cart Label
@@ -200,7 +202,7 @@
     
     // outlet
     [self showCartLabel];
-    [self showCheckOutBarButtonItem];
+    [self showPlaceOrderBarButtonItem];
 }
 
 #pragma mark - View Controller Life Cycle
@@ -218,7 +220,7 @@
     [self setCartLabel:nil];
     [self setDocument:nil];
     [self setTotalOrderLabel:nil];
-    [self setCheckOutBarButtonItem:nil];
+    [self setPlaceOrderBarButtonItem:nil];
     [super viewDidUnload];
 }
 
@@ -262,7 +264,7 @@
     // outlet
     [self hiddenCartLabel];
     [self showTotalOrderLabelWhenAdd];
-    [self showCheckOutBarButtonItemWhenAdd];
+    [self showPlaceOrderBarButtonItemWhenAdd];
     
     return cell;
 }
@@ -292,7 +294,7 @@
             // outlet
             [self showTotalOrderLabelWhenRemove];
             [self showCartLabel];
-            [self showCheckOutBarButtonItem];
+            [self showPlaceOrderBarButtonItem];
             
             // badge value
             [self setBadgeValue];
@@ -301,8 +303,114 @@
     dispatch_release(removeQ);
 }
 
-#pragma mark - Cart Action
+#pragma mark - outlet
 
+- (IBAction)PlaceOrder:(id)sender {
+    
+    [self showConfirmation];
+}
+
+- (void)showConfirmation {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" 
+                                                        message:@"Do you really wanna do it?" 
+                                                       delegate:self
+                                              cancelButtonTitle:@"NO"
+                                              otherButtonTitles:@"YES", nil];
+        [alert show];
+        
+    });
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if ([title isEqualToString:@"YES"]) {
+        [self sendOrder];
+        NSLog(@"YES was selected.");
+    }
+    if ([title isEqualToString:@"NO"]) {
+        NSLog(@"NO was selected.");
+    }
+}
+
+#pragma mark - Place Order Action
+
+- (void)sendOrder {
+    
+    NSString *orderUuid = [[MacAddress getMacAddress] toSHA1]; // get UUID 
+    NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
+    NSString *orderDate = [[NSDate date] toString];
+    NSString *orderDone = @"0"; // set order to FALSE
+    
+    __block NSMutableArray *orderDetailParents = [NSMutableArray array]; // set array can add
+    __block NSMutableArray *keyOrderDetailParents = [NSMutableArray array];
+    
+    NSArray *carts = [self.fetchedResultsController fetchedObjects]; // fetch all carts
+    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
+        NSString *foodName = cart.food.name;
+        NSString *foodCount = [cart.count stringValue];
+        NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price 
+                                                                                      andNumber:cart.count]];
+        NSString *foodPlace = cart.food.place.name;
+        
+        NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjectsAndKeys: 
+                                          foodName, FOOD_NAME,
+                                          foodCount, FOOD_COUNT,
+                                          foodPrice, FOOD_PRICE,
+                                          foodPlace, FOOD_PLACE,
+                                          nil];
+        [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
+        [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
+    }];
+    
+    // alloc order detail parent
+    NSDictionary *orderDetailParent = [[NSDictionary alloc] initWithObjects:orderDetailParents 
+                                                                    forKeys:keyOrderDetailParents]; 
+    
+    NSDictionary *orderChild = [[NSDictionary alloc] initWithObjectsAndKeys: 
+                                orderUuid,          ORDER_UUID,
+                                orderTotal,         ORDER_TOTAL,
+                                orderDate,          ORDER_DATE,
+                                orderDone,          ORDER_DONE,
+                                orderDetailParent,  ORDER_DETAILS_ATTRIBUTES,
+                                nil];
+    NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 orderChild, ORDER, 
+                                 nil];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
+    [request setHTTPMethod:@"POST"]; // set method to POST
+    [request setHTTPBody:[orderParent toJSON]]; // set data to JSON
+    
+    // log JSON 
+    NSLog(@"%@", [[NSString alloc] initWithData:[orderParent toJSON] encoding:NSUTF8StringEncoding]);
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue currentQueue] 
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
+     {
+         int responseCode = [(NSHTTPURLResponse *)response statusCode];
+         NSLog(@"%d", responseCode);
+         
+         // check response code is OK (201)
+         if (responseCode == kHTTPRequestCreated) {
+             [self showAlert];
+         } else if (error != nil && error.code == NSURLErrorTimedOut) {
+             [self timeOut];
+         } else if (error != nil) {
+             [self uploadError:error];
+         }
+     }];
+}
+
+// show Alert
 - (void)showAlert {
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -315,11 +423,14 @@
     });
 }
 
-#pragma mark - IBOutlet
-
-- (IBAction)CheckOut:(id)sender {
+- (void)timeOut {
     
-    [self showAlert];
+    NSLog(@"Time Out!!!");
+}
+
+- (void)uploadError:(NSError *)error {
+    
+    NSLog(@"%@", error.localizedDescription);
 }
 
 @end

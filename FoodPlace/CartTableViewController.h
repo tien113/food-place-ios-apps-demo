@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 
-@interface CartTableViewController : CoreDataTableViewController
+@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIManagedDocument *document;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *checkOutBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *placeOrderBarButtonItem;
 @property (nonatomic, weak) IBOutlet UILabel *totalOrderLabel;
 
-- (IBAction)CheckOut:(id)sender;
+- (IBAction)PlaceOrder:(id)sender;
 
 @end

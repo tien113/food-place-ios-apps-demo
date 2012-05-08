@@ -58,7 +58,7 @@
     NSString *macAddressString = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X", 
                                   macAddress[0], macAddress[1], macAddress[2], 
                                   macAddress[3], macAddress[4], macAddress[5]];
-    NSLog(@"Mac Address: %@", macAddressString);
+    // NSLog(@"Mac Address: %@", macAddressString);
     
     free(msgBuffer);
     
