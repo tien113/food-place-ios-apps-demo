@@ -347,7 +347,7 @@
     NSString *orderDate = [[NSDate date] toString];
     NSString *orderDone = @"0"; // set order to FALSE
     
-    __block NSMutableArray *orderDetailParents = [NSMutableArray array]; // set array can add
+    __block NSMutableArray *orderDetailParents = [NSMutableArray array]; // init array
     __block NSMutableArray *keyOrderDetailParents = [NSMutableArray array];
     
     NSArray *carts = [self.fetchedResultsController fetchedObjects]; // fetch all carts
@@ -358,12 +358,9 @@
                                                                                       andNumber:cart.count]];
         NSString *foodPlace = cart.food.place.name;
         
-        NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjectsAndKeys: 
-                                          foodName, FOOD_NAME,
-                                          foodCount, FOOD_COUNT,
-                                          foodPrice, FOOD_PRICE,
-                                          foodPlace, FOOD_PLACE,
-                                          nil];
+        NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil] 
+                                                                       forKeys:[NSArray arrayWithObjects:FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE, nil]];
+                                          
         [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
     }];
@@ -372,16 +369,10 @@
     NSDictionary *orderDetailParent = [[NSDictionary alloc] initWithObjects:orderDetailParents 
                                                                     forKeys:keyOrderDetailParents]; 
     
-    NSDictionary *orderChild = [[NSDictionary alloc] initWithObjectsAndKeys: 
-                                orderUuid,          ORDER_UUID,
-                                orderTotal,         ORDER_TOTAL,
-                                orderDate,          ORDER_DATE,
-                                orderDone,          ORDER_DONE,
-                                orderDetailParent,  ORDER_DETAILS_ATTRIBUTES,
-                                nil];
-    NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 orderChild, ORDER, 
-                                 nil];
+    NSDictionary *orderChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:orderUuid, orderTotal, orderDate, orderDone, orderDetailParent, nil] 
+                                                              forKeys:[NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil]];
+    
+    NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
