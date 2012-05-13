@@ -31,8 +31,8 @@
         // insert data to Core Data
         place = [NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:context];
         place.name = [webService objectForKey:PLACE_NAME];
-        place.lat = [webService valueForKey:PLACE_LAT];
-        place.log = [webService valueForKey:PLACE_LOG];
+        place.lat = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:PLACE_LAT]]; // convert string to decimal number
+        place.log = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:PLACE_LOG]]; // convert string to decimal number
         place.address = [webService valueForKey:PLACE_ADDRESS];
         place.opening_time_1 = [webService valueForKey:PLACE_OPENING_TIME_1];
         place.opening_time_2 = [webService valueForKey:PLACE_OPENING_TIME_2];

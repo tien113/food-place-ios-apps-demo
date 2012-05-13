@@ -33,7 +33,7 @@
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.unique = [webService objectForKey:FOOD_ID];
         food.name = [webService valueForKey:FOOD_NAME];
-        food.price = [webService valueForKey:FOOD_PRICE];
+        food.price = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:FOOD_PRICE]]; // convert string to decimal number
         food.ingredient = [webService valueForKey:FOOD_INGREDIENT];
         food.image_url = [webService valueForKey:FOOD_IMAGE_URL];
         food.place = [Place placeWithWebService:[webService objectForKey:PLACE] inManagedObjectContext:context];
