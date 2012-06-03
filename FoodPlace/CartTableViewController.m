@@ -28,6 +28,7 @@
 @synthesize cartLabel = _cartLabel;
 @synthesize document = _document;
 @synthesize placeOrderBarButtonItem = _placeOrderBarButtonItem;
+@synthesize emptyCartBarButtonItem = _emptyCartBarButtonItem;
 @synthesize totalOrderLabel = _totalOrderLabel;
 
 #pragma mark - Badge Value
@@ -124,6 +125,22 @@
     self.placeOrderBarButtonItem.enabled = TRUE; // set enable
 }
 
+#pragma mark - Empty Cart Bar Button Item
+
+// check Empty Cart bar button item
+- (void)showEmptyCartBarButtonItem {
+    
+    if ([self totalOrder] == 0) 
+        self.emptyCartBarButtonItem.enabled = FALSE;
+    else 
+        self.emptyCartBarButtonItem.enabled = TRUE;
+}
+
+// show Empty Cart bar button item when it adds
+- (void)showEmptyCartBarButtonItemWhenAdd {
+    self.emptyCartBarButtonItem.enabled = TRUE;
+}
+
 #pragma mark - Check Cart Label
 
 - (void)setCartLabel:(UILabel *)cartLabel {
@@ -203,6 +220,7 @@
     // outlet
     [self showCartLabel];
     [self showPlaceOrderBarButtonItem];
+    [self showEmptyCartBarButtonItem];
 }
 
 #pragma mark - View Controller Life Cycle
@@ -221,6 +239,7 @@
     [self setDocument:nil];
     [self setTotalOrderLabel:nil];
     [self setPlaceOrderBarButtonItem:nil];
+    [self setEmptyCartBarButtonItem:nil];
     [super viewDidUnload];
 }
 
@@ -265,6 +284,7 @@
     [self hiddenCartLabel];
     [self showTotalOrderLabelWhenAdd];
     [self showPlaceOrderBarButtonItemWhenAdd];
+    [self showEmptyCartBarButtonItemWhenAdd];
     
     return cell;
 }
@@ -295,6 +315,7 @@
             [self showTotalOrderLabelWhenRemove];
             [self showCartLabel];
             [self showPlaceOrderBarButtonItem];
+            [self showEmptyCartBarButtonItem];
             
             // badge value
             [self setBadgeValue];
@@ -303,11 +324,42 @@
     dispatch_release(removeQ);
 }
 
+// empty cart
+- (void)emptyCart:(UIManagedDocument *)document {
+    
+    dispatch_queue_t emptyQ = dispatch_queue_create("Empty Cart", NULL);
+    dispatch_async(emptyQ, ^{
+        NSArray *carts = [self.fetchedResultsController fetchedObjects];
+        [document.managedObjectContext performBlock:^{
+            [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
+                [Cart removeFromCart:cart inManagedObjectContext:document.managedObjectContext];
+            }];
+            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+            
+            // outlet
+            [self showCartLabel];
+            [self showPlaceOrderBarButtonItem];
+            [self showEmptyCartBarButtonItem];
+            
+            // badge value
+            [self setBadgeValue];
+        }];
+    });
+    dispatch_release(emptyQ);
+}
+
 #pragma mark - outlet
 
+// Place Order action
 - (IBAction)PlaceOrder:(id)sender {
     
     [self showConfirmation];
+}
+
+// Empty Cart action
+- (IBAction)EmptyCart:(id)sender {
+    
+    [self emptyCart:self.document];
 }
 
 - (void)showConfirmation {
@@ -319,7 +371,6 @@
                                               cancelButtonTitle:@"NO"
                                               otherButtonTitles:@"YES", nil];
         [alert show];
-        
     });
 }
 
@@ -392,7 +443,7 @@
          
          // check response code is OK (201)
          if (responseCode == kHTTPRequestCreated) {
-             [self showAlert];
+             [self showAlertDone];
          } else if (error != nil && error.code == NSURLErrorTimedOut) {
              [self timeOut];
          } else if (error != nil) {
@@ -402,7 +453,7 @@
 }
 
 // show Alert
-- (void)showAlert {
+- (void)showAlertDone {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 

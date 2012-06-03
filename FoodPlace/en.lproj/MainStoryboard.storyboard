@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -812,6 +812,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="N7b-dF-4nV">
+                        <barButtonItem key="leftBarButtonItem" title="Empty Cart" id="Igu-xB-qbz">
+                            <connections>
+                                <action selector="EmptyCart:" destination="gaZ-qt-uM9" id="Dia-Fz-x13"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Place Order" id="8OC-TY-Py6">
                             <connections>
                                 <action selector="PlaceOrder:" destination="gaZ-qt-uM9" id="939-cE-eYG"/>
@@ -819,6 +824,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyCartBarButtonItem" destination="Igu-xB-qbz" id="vWW-Jp-K4h"/>
                         <outlet property="placeOrderBarButtonItem" destination="8OC-TY-Py6" id="zfN-zs-yw4"/>
                         <outlet property="totalOrderLabel" destination="epP-he-Gw8" id="EcU-4u-IlK"/>
                     </connections>

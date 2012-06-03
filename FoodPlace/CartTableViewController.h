@@ -13,8 +13,10 @@
 
 @property (nonatomic, strong) UIManagedDocument *document;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *placeOrderBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *emptyCartBarButtonItem;
 @property (nonatomic, weak) IBOutlet UILabel *totalOrderLabel;
 
 - (IBAction)PlaceOrder:(id)sender;
+- (IBAction)EmptyCart:(id)sender;
 
 @end
