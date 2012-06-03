@@ -45,6 +45,7 @@
     // get foods from JSON
     id foods = [responseData fromJSON];
     NSLog(@"Getting foods...");
+    NSLog(@"%d", [responseData length]);
     return foods;
 }
 
@@ -85,7 +86,8 @@
     
     // get places from JSON
     id places = [responseData fromJSON];
-    NSLog(@"Getting places...");
+    NSLog(@"Getting places...");    
+    NSLog(@"%d", [responseData length]);
     return places;
 }
 
