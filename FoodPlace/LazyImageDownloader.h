@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Food.h"
+#import "Food+Create.h"
 
 @protocol LazyImageDownloaderDelegate
 
