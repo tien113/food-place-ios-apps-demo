@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Place.h"
+#import "Place+Create.h"
 
 @interface LocationDetailTableViewController : UITableViewController
 

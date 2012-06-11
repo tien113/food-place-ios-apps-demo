@@ -7,7 +7,7 @@
 //
 
 #import "LocationTableViewController.h"
-#import "Place.h"
+#import "Place+Create.h"
 #import "FoodPlaceAppDelegate.h"
 
 @interface LocationTableViewController ()

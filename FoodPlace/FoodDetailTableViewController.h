@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Cart+Food.h"
-#import "Place.h"
 
 @interface FoodDetailTableViewController : UITableViewController
 

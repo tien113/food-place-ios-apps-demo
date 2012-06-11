@@ -8,6 +8,7 @@
 
 #import "FoodDetailTableViewController.h"
 #import "FoodPlaceFetcher.h"
+#import "Place+Create.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface FoodDetailTableViewController ()

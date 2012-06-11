@@ -10,8 +10,8 @@
 #import "FoodPlaceFetcher.h"
 #import "Food+Create.h"
 #import "FoodCell.h"
-#import "Place.h"
-#import "Cart.h"
+#import "Place+Create.h"
+#import "Cart+Food.h"
 #import "FoodPlaceAppDelegate.h"
 #import "SpinnerView.h"
 

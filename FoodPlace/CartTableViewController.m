@@ -9,7 +9,7 @@
 #import "CartTableViewController.h"
 #import "FoodPlaceAppDelegate.h"
 #import "Cart+Food.h"
-#import "Place.h"
+#import "Place+Create.h"
 #import "CartCell.h"
 #import "FoodPlaceFetcher.h"
 #import "Helpers.h"
