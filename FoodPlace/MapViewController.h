@@ -21,6 +21,7 @@
 
 @interface MapViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *buttonBarSegmentedControl;
 @property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic, strong) NSArray *places;

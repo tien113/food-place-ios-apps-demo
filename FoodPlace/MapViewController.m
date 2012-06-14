@@ -15,8 +15,6 @@
 
 @interface MapViewController () 
 
-@property (nonatomic, weak) IBOutlet MKMapView *mapView;
-
 @end
 
 @implementation MapViewController
