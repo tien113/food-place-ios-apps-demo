@@ -7,8 +7,6 @@
 //
 
 #import "MapViewController.h"
-#import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import "FoodPlaceAppDelegate.h"
 #import "FoodPlaceFetcher.h"
 #import "PlaceAnnotationView.h"
