@@ -20,7 +20,7 @@
     if (!spinnerView) {
         return nil;
     }
-    UIImageView *background = [[UIImageView alloc] initWithImage:[spinnerView addBackground]];
+    UIImageView *background = [[UIImageView alloc] initWithImage:spinnerView.addBackground];
     background.alpha = 0.7f;
     [spinnerView addSubview:background];
     

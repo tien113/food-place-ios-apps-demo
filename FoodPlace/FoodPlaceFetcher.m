@@ -37,15 +37,15 @@
     NSLog(@"%d", responseCode);
     
     // return nil if error happen
-    if (responseCode != kHTTPRequestOK || [responseData length] == 0) {
+    if (responseCode != kHTTPRequestOK || responseData.length == 0) {
         NSLog(@"Error!!!");
         return nil;
     }
     
     // get foods from JSON
-    id foods = [responseData fromJSON];
+    id foods = responseData.fromJSON;
     NSLog(@"Getting foods...");
-    NSLog(@"%d", [responseData length]);
+    NSLog(@"%d", responseData.length);
     return foods;
 }
 
@@ -79,15 +79,15 @@
     NSLog(@"%d", responseCode);
     
     // return nil if error happen
-    if (responseCode != kHTTPRequestOK || [responseData length] == 0) {
+    if (responseCode != kHTTPRequestOK || responseData.length == 0) {
         NSLog(@"Error!!!");
         return nil;
     }
     
     // get places from JSON
-    id places = [responseData fromJSON];
+    id places = responseData.fromJSON;
     NSLog(@"Getting places...");    
-    NSLog(@"%d", [responseData length]);
+    NSLog(@"%d", responseData.length);
     return places;
 }
 

@@ -47,7 +47,7 @@
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     
-    [mailController setToRecipients:[NSArray arrayWithObject:@"tien113@gmail.com"]]; // set recipient to tien113@gmail.com
+    [mailController setToRecipients:[NSArray arrayWithObjects:@"tien113@gmail.com", nil]]; // set recipient to tien113@gmail.com
     [mailController setSubject:@"Feedback"]; // set subject to Feedback
     [mailController setMessageBody:@"" isHTML:NO];
     

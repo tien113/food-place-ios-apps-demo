@@ -393,7 +393,7 @@
 
 - (void)sendOrder {
     
-    NSString *orderUuid = [[MacAddress getMacAddress] toSHA1]; // get UUID 
+    NSString *orderUuid = [MacAddress getMacAddress].toSHA1; // get UUID 
     NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
     NSString *orderDate = [[NSDate date] toString];
     NSString *orderDone = @"0"; // set order to FALSE
@@ -428,17 +428,21 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
-    [request setHTTPMethod:@"POST"]; // set method to POST
-    [request setHTTPBody:[orderParent toJSON]]; // set data to JSON
+    request.HTTPMethod = @"POST"; // set method to POST
+    request.HTTPBody = orderParent.toJSON; // set data to JSON
     
     // log JSON 
-    NSLog(@"%@", [[NSString alloc] initWithData:[orderParent toJSON] encoding:NSUTF8StringEncoding]);
+    NSLog(@"%@", [[NSString alloc] initWithData:orderParent.toJSON encoding:NSUTF8StringEncoding]);
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue currentQueue] 
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
      {
-         int responseCode = [(NSHTTPURLResponse *)response statusCode];
+         int responseCode = 0;
+         // check response is NSHTTPURLResponse class
+         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+             responseCode = [(NSHTTPURLResponse *)response statusCode];
+         }
          NSLog(@"%d", responseCode);
          
          // check response code is OK (201)

@@ -41,9 +41,10 @@
         place.phone_number = [webService valueForKey:PLACE_PHONE_NUMBER];
         place.email = [webService valueForKey:PLACE_EMAIL];
         place.image_url = [webService valueForKey:PLACE_IMAGE_URL];
+        
         NSLog(@"%@", place);
     } else {
-        place = [places lastObject];
+        place = places.lastObject;
     }
     return place;
 }

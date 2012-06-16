@@ -37,9 +37,10 @@
         food.ingredient = [webService valueForKey:FOOD_INGREDIENT];
         food.image_url = [webService valueForKey:FOOD_IMAGE_URL];
         food.place = [Place placeWithWebService:[webService objectForKey:PLACE] inManagedObjectContext:context];
+        
         NSLog(@"%@", food);
     } else {
-        food = [matches lastObject];
+        food = matches.lastObject;
     }
     return food;
 }

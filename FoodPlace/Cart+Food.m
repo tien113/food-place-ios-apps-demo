@@ -25,9 +25,9 @@
     NSError *error = nil;
     NSArray *carts = [context executeFetchRequest:request error:&error]; // fetch all carts from Core Data
     
-    if (!carts || [carts count] == 1) {
+    if (!carts || carts.count == 1) {
         // get cart from carts
-        cart = [carts lastObject];
+        cart = carts.lastObject;
         int cartCount = [[cart valueForKey:CART_COUNT] intValue];
         // check if cart count = 5, show alert
         if (cartCount == 5) {
@@ -55,10 +55,11 @@
         cart.food = food;
         cart.count = [NSNumber numberWithInt:1];
         cart.unique = food.unique;
-        cart.created_at = [NSDate date];
+        cart.created_at = NSDate.date;
+        
         NSLog(@"%@", cart);
     } else {
-        cart = [carts lastObject];
+        cart = carts.lastObject;
     }
     return cart;   
 }
