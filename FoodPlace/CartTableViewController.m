@@ -393,6 +393,16 @@
 
 - (void)sendOrder {
     
+    dispatch_queue_t sendQ = dispatch_queue_create("Send Order", NULL);
+    dispatch_async(sendQ, ^{       
+        NSArray *carts = [self.fetchedResultsController fetchedObjects]; // fetch all carts
+        [self performSelectorOnMainThread:@selector(prepareOrder:) withObject:carts waitUntilDone:YES];
+    });
+    dispatch_release(sendQ);
+}
+
+- (void)prepareOrder:(NSArray *)carts {
+    
     NSString *orderUuid = [MacAddress getMacAddress].toSHA1; // get UUID 
     NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
     NSString *orderDate = [[NSDate date] toString];
@@ -400,13 +410,11 @@
     
     __block NSMutableArray *orderDetailParents = [NSMutableArray array]; // init array
     __block NSMutableArray *keyOrderDetailParents = [NSMutableArray array];
-    
-    NSArray *carts = [self.fetchedResultsController fetchedObjects]; // fetch all carts
+
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
         NSString *foodName = cart.food.name;
         NSString *foodCount = [cart.count stringValue];
-        NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price 
-                                                                                      andNumber:cart.count]];
+        NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]];
         NSString *foodPlace = cart.food.place.name;
         
         NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil] 
@@ -425,14 +433,20 @@
     
     NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
     
+    [self processOrder:orderParent.toJSON];
+    
+}
+
+- (void)processOrder:(NSData *)orderData {
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
     request.HTTPMethod = @"POST"; // set method to POST
-    request.HTTPBody = orderParent.toJSON; // set data to JSON
+    request.HTTPBody = orderData; // set data to JSON
     
     // log JSON 
-    NSLog(@"%@", [[NSString alloc] initWithData:orderParent.toJSON encoding:NSUTF8StringEncoding]);
+    NSLog(@"%@", [[NSString alloc] initWithData:orderData encoding:NSUTF8StringEncoding]);
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue currentQueue] 
