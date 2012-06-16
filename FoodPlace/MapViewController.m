@@ -48,6 +48,7 @@
     dispatch_async(downloadQ, ^{
         [self performSelectorOnMainThread:@selector(fetchedData) withObject:NULL waitUntilDone:YES];
     });
+    dispatch_release(downloadQ);
 }
 
 // init data
