@@ -19,7 +19,7 @@
 
 @interface CartTableViewController ()
 
-@property (nonatomic, strong) UILabel *cartLabel;
+@property (strong, nonatomic) UILabel *cartLabel;
 
 @end
 
