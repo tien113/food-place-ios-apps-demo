@@ -452,11 +452,7 @@
                                        queue:[NSOperationQueue currentQueue] 
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
      {
-         int responseCode = 0;
-         // check response is NSHTTPURLResponse class
-         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-             responseCode = [(NSHTTPURLResponse *)response statusCode];
-         }
+         int responseCode = [self readHttpStatusCodeFromResponse:response];
          NSLog(@"%d", responseCode);
          
          // check response code is OK (201)
@@ -468,6 +464,17 @@
              [self uploadError:error];
          }
      }];
+}
+
+- (int)readHttpStatusCodeFromResponse:(NSURLResponse *)response {
+    
+    int responseCode = 0;
+    // check response is NSHTTPURLResponse class
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        // get status code
+        responseCode = [(NSHTTPURLResponse *)response statusCode];
+    }
+    return responseCode;
 }
 
 // show Alert

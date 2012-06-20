@@ -58,12 +58,13 @@
 
 - (void)readHttpStatusCodeFromResponse:(NSURLResponse *)response {
     
+    int responseCode = 0;
     // check response is NSHTTPURLResponse class
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
         // get status code
-        int responseCode = [(NSHTTPURLResponse *)response statusCode];
-        NSLog(@"%d", responseCode); // log code
+        responseCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    NSLog(@"%d", responseCode); // log code
 }
 
 - (void)imageWithData:(NSData *)data {
