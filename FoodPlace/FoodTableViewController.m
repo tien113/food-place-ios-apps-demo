@@ -36,9 +36,9 @@
 - (void)checkBadgeValue:(int)count {
     
     if (count == 0)
-        [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
+        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
     else 
-        [[[self tabBarController].tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
+        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
 }
 
 // set badge value
