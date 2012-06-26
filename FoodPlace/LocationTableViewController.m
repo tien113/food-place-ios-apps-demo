@@ -60,10 +60,10 @@
     self.title = @"Location";
     
     // load document
-    self.document = [FoodPlaceAppDelegate sharedDocument];
+    self.document = FoodPlaceAppDelegate.sharedDocument;
     
     // load location manager
-    CLLocationManager *locationManager = [FoodPlaceAppDelegate sharedLocationManager];
+    CLLocationManager *locationManager = FoodPlaceAppDelegate.sharedLocationManager;
     locationManager.delegate = self;
     [locationManager startUpdatingLocation]; // start updating location
 }

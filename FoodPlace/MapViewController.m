@@ -39,7 +39,7 @@
 // fetch Places from Web Service
 - (void)fetchedData {
     
-    self.places = [FoodPlaceFetcher getPlaces]; // get Places and return NSArray
+    self.places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
 }
 
 - (void)queryPlaces {
@@ -251,7 +251,7 @@
 - (void)showUserLocation {
     
     // load location manager
-    CLLocationManager *locationManager = [FoodPlaceAppDelegate sharedLocationManager];
+    CLLocationManager *locationManager = FoodPlaceAppDelegate.sharedLocationManager;
     locationManager.delegate = self;
     [locationManager startUpdatingLocation]; // start updating location
     

@@ -130,7 +130,7 @@
     showSpinnerView();
     
     // load document
-    self.document = [FoodPlaceAppDelegate sharedDocument];
+    self.document = FoodPlaceAppDelegate.sharedDocument;
 }
 
 #pragma mark - View Controller Life Cycle

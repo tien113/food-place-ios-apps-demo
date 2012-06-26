@@ -215,7 +215,7 @@
     self.title = @"Cart";
     
     // load document
-    self.document = [FoodPlaceAppDelegate sharedDocument];
+    self.document = FoodPlaceAppDelegate.sharedDocument;
     
     // outlet
     [self showCartLabel];
