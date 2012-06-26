@@ -24,7 +24,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url 
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:10.0f];
-    NSOperationQueue *queue = [NSOperationQueue currentQueue]; // init NSOperationQueue
+    NSOperationQueue *queue = NSOperationQueue.currentQueue; // init NSOperationQueue
     
     // show network activity indicator
     ShowNetworkActivityIndicator();

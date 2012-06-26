@@ -11,7 +11,7 @@
 @implementation Helpers
 
 + (float)timeNSDecimalNumber:(NSDecimalNumber *)numberA andNumber:(NSNumber *)numberB {
-    
+  
     float fNumberA = [numberA floatValue]; // convert NSDecimalNumber to float
     int fNumberB = [numberB intValue]; // convert NSNumber to int
         
