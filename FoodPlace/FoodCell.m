@@ -13,6 +13,6 @@
 @synthesize foodImageView = _foodImageView;
 @synthesize foodNameLabel = _foodNameLabel;
 @synthesize placeNameLabel = _placeNameLabel;
-@synthesize priceNameLabel = _priceNameLabel;
+@synthesize priceLabel = _priceLabel;
 
 @end

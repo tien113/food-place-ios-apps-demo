@@ -170,7 +170,7 @@
     
     cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", food.name];
     cell.placeNameLabel.text = [NSString stringWithFormat:@"%@", food.place.name];
-    cell.priceNameLabel.text = [NSString stringWithFormat:@"%@%@", EURO, [food.price stringValue]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO, [food.price stringValue]];
  
     // only load cached images; defer new downloads until scrolling ends
     if (!food.image) 
