@@ -39,6 +39,7 @@
 		D472DCC11507484100BF63F7 /* FoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D472DCC01507484100BF63F7 /* FoodTableViewController.m */; };
 		D49A2D52154AAA6C00460699 /* NSData+JSONE.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A2D51154AAA6C00460699 /* NSData+JSONE.m */; };
 		D49A2D5A154AAC9F00460699 /* NSDictionary+JSONE.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */; };
+		D4A9FDF615A2E3B400676CB5 /* OrderUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */; };
 		D4B04BA9152F438E00B81539 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B04BA8152F438E00B81539 /* SpinnerView.m */; };
 		D4B066F414FB99E100DF647F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B066F314FB99E100DF647F /* MessageUI.framework */; };
 		D4B066F714FB9E9500DF647F /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B066F614FB9E9500DF647F /* EmailViewController.m */; };
@@ -159,6 +160,8 @@
 		D49A2D51154AAA6C00460699 /* NSData+JSONE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JSONE.m"; sourceTree = "<group>"; };
 		D49A2D58154AAC9F00460699 /* NSDictionary+JSONE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONE.h"; sourceTree = "<group>"; };
 		D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONE.m"; sourceTree = "<group>"; };
+		D4A9FDF415A2E3B400676CB5 /* OrderUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderUploader.h; sourceTree = "<group>"; };
+		D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderUploader.m; sourceTree = "<group>"; };
 		D4B04BA7152F438E00B81539 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		D4B04BA8152F438E00B81539 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		D4B066F314FB99E100DF647F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -268,6 +271,8 @@
 				D4DC1F82153438FC006A8193 /* GradientButton.m */,
 				D471D34A1540810F00219083 /* LazyImageDownloader.h */,
 				D471D34B1540810F00219083 /* LazyImageDownloader.m */,
+				D4A9FDF415A2E3B400676CB5 /* OrderUploader.h */,
+				D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */,
 				D4072B7915288BAC00EF3198 /* Helpers.h */,
 				D4072B7A15288BAC00EF3198 /* Helpers.m */,
 				D4FFAF45151754F1006476D0 /* FoodCell.h */,
@@ -642,6 +647,7 @@
 				D40F1F751555551700ADEF07 /* NSDate+FormattedStrings.m in Sources */,
 				D464BF9C1557BB45008CB840 /* MacAddress.m in Sources */,
 				D464BFB31557BFEE008CB840 /* IdentificationViewController.m in Sources */,
+				D4A9FDF615A2E3B400676CB5 /* OrderUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
