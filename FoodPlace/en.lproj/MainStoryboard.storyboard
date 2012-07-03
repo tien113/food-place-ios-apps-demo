@@ -77,7 +77,7 @@
                                     <outlet property="foodImageView" destination="BZ1-E3-1c7" id="VeI-if-o2n"/>
                                     <outlet property="foodNameLabel" destination="kbk-iI-hZ2" id="2j5-WH-j4N"/>
                                     <outlet property="placeNameLabel" destination="lCY-IN-n77" id="xJd-JQ-1ux"/>
-                                    <outlet property="priceNameLabel" destination="0IW-rS-vwA" id="I8O-KU-3S8"/>
+                                    <outlet property="priceLabel" destination="0IW-rS-vwA" id="2aE-2g-qhz"/>
                                     <segue destination="D8w-qy-nxf" kind="push" identifier="Food Detail" id="ekq-Md-eYe"/>
                                 </connections>
                             </tableViewCell>
