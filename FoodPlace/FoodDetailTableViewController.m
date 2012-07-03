@@ -29,30 +29,13 @@
 
 #pragma mark - Badge Value
 
-// check badge value nil
-- (void)checkBadgeValue:(int)count {
+- (void)badgeValueUpdate {
     
-    if (count == 0) 
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
-    else 
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
-}
-
-// set badge value
-- (void)setBadgeValue {
-    
-    // fetch request with entity
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
-    
-    NSError *error = nil;
-    NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
-                                                                       error:&error];
-    __block int cartCount = 0;
-    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        cartCount += [cart.count intValue];
-    }];
-    [self checkBadgeValue:cartCount];
-    NSLog(@"%d", cartCount);
+    BadgeValue *badgeValue = [[BadgeValue alloc] init];
+    badgeValue.document = self.document;
+    badgeValue.tabBarController = self.tabBarController;
+    badgeValue.delegate = self;
+    [badgeValue setBadgeValue];
 }
 
 #pragma mark - Initialize Data
@@ -129,7 +112,7 @@
             [document saveToURL:self.document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL]; // save to document
             
             // badge value
-            [self setBadgeValue];
+            [self badgeValueUpdate];
         }];
     });
     dispatch_release(addQ);

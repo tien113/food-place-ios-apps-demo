@@ -40,6 +40,7 @@
 		D49A2D52154AAA6C00460699 /* NSData+JSONE.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A2D51154AAA6C00460699 /* NSData+JSONE.m */; };
 		D49A2D5A154AAC9F00460699 /* NSDictionary+JSONE.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */; };
 		D4A9FDF615A2E3B400676CB5 /* OrderUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */; };
+		D4A9FDFA15A2ECD900676CB5 /* BadgeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A9FDF915A2ECD900676CB5 /* BadgeValue.m */; };
 		D4B04BA9152F438E00B81539 /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B04BA8152F438E00B81539 /* SpinnerView.m */; };
 		D4B066F414FB99E100DF647F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B066F314FB99E100DF647F /* MessageUI.framework */; };
 		D4B066F714FB9E9500DF647F /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B066F614FB9E9500DF647F /* EmailViewController.m */; };
@@ -162,6 +163,8 @@
 		D49A2D59154AAC9F00460699 /* NSDictionary+JSONE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONE.m"; sourceTree = "<group>"; };
 		D4A9FDF415A2E3B400676CB5 /* OrderUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderUploader.h; sourceTree = "<group>"; };
 		D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderUploader.m; sourceTree = "<group>"; };
+		D4A9FDF815A2ECD900676CB5 /* BadgeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeValue.h; sourceTree = "<group>"; };
+		D4A9FDF915A2ECD900676CB5 /* BadgeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeValue.m; sourceTree = "<group>"; };
 		D4B04BA7152F438E00B81539 /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		D4B04BA8152F438E00B81539 /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		D4B066F314FB99E100DF647F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -283,6 +286,8 @@
 				D45F56B5151FC45D00198F37 /* CartCell.m */,
 				D4B04BA7152F438E00B81539 /* SpinnerView.h */,
 				D4B04BA8152F438E00B81539 /* SpinnerView.m */,
+				D4A9FDF815A2ECD900676CB5 /* BadgeValue.h */,
+				D4A9FDF915A2ECD900676CB5 /* BadgeValue.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -648,6 +653,7 @@
 				D464BF9C1557BB45008CB840 /* MacAddress.m in Sources */,
 				D464BFB31557BFEE008CB840 /* IdentificationViewController.m in Sources */,
 				D4A9FDF615A2E3B400676CB5 /* OrderUploader.m in Sources */,
+				D4A9FDFA15A2ECD900676CB5 /* BadgeValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

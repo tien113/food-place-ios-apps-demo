@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 #import "OrderUploader.h"
+#import "BadgeValue.h"
 
-@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate, OrderUploaderDelegate>
+@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate, OrderUploaderDelegate, BadgeValueDelegate>
 
 @property (nonatomic, strong) UIManagedDocument *document;
 

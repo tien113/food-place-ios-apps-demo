@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Cart+Food.h"
+#import "BadgeValue.h"
 
-@interface FoodDetailTableViewController : UITableViewController
+@interface FoodDetailTableViewController : UITableViewController <BadgeValueDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *foodNameLabel;

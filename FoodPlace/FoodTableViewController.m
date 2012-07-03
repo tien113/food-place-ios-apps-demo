@@ -32,30 +32,13 @@
 
 #pragma mark - Badge Value
 
-// check badge value nil
-- (void)checkBadgeValue:(int)count {
+- (void)badgeValueUpdate {
     
-    if (count == 0)
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
-    else 
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
-}
-
-// set badge value
-- (void)setBadgeValue {
-    
-    // fetch request with entity
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
-    
-    NSError *error = nil;
-    NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
-                                                                       error:&error];
-    __block int cartCount = 0;
-    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        cartCount += [cart.count intValue];
-    }];
-    [self checkBadgeValue:cartCount];
-    NSLog(@"%d", cartCount);
+    BadgeValue *badgeValue = [[BadgeValue alloc] init];
+    badgeValue.document = self.document;
+    badgeValue.tabBarController = self.tabBarController;
+    badgeValue.delegate = self;
+    [badgeValue setBadgeValue];
 }
 
 #pragma mark - Initialize Data
@@ -106,12 +89,12 @@
     } else if (self.document.documentState == UIDocumentStateClosed) {
         [self.document openWithCompletionHandler:^(BOOL success) {
             [self setupFetchedResultsController];
-            [self setBadgeValue]; // set badge value
+            [self badgeValueUpdate]; // set badge value
         }];
         // if document state is normal, use it
     } else if (self.document.documentState == UIDocumentStateNormal) {
         [self setupFetchedResultsController];
-        [self setBadgeValue]; // set badge value
+        [self badgeValueUpdate]; // set badge value
     }
 }
 
