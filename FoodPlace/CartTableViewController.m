@@ -16,7 +16,6 @@
 #import "Cryptography.h"
 #import "NSDateE.h"
 #import "JSONE.h"
-#import "OrderUploader.h"
 
 @interface CartTableViewController ()
 
@@ -434,9 +433,13 @@
     
     NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
     
-    [self startOrderUpload:kFoodPlaceOrdersURL withData:orderParent.toJSON];
+    NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
+    
+    [self startOrderUpload:kFoodPlaceOrdersURL withData:orderData];
     
 }
+
+// uploader delegate
 
 - (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
     
