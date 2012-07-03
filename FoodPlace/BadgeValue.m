@@ -26,7 +26,7 @@
 }
 
 // set badge value
-- (void)setBadgeValue {
+- (void)startSetBadgeValue {
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];

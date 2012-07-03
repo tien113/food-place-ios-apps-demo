@@ -18,6 +18,6 @@
 @property (nonatomic, strong) UIManagedDocument *document;
 @property (nonatomic, strong) id <BadgeValueDelegate> delegate;
 
-- (void)setBadgeValue;
+- (void)startSetBadgeValue;
 
 @end

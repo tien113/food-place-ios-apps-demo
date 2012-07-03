@@ -38,7 +38,7 @@
     badgeValue.document = self.document;
     badgeValue.tabBarController = self.tabBarController;
     badgeValue.delegate = self;
-    [badgeValue setBadgeValue];
+    [badgeValue startSetBadgeValue];
 }
 
 #pragma mark - Initialize Data
