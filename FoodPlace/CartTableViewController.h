@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
+#import "OrderUploader.h"
 
-@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate>
+@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate, OrderUploaderDelegate>
 
 @property (nonatomic, strong) UIManagedDocument *document;
 

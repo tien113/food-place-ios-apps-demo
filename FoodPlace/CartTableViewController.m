@@ -16,6 +16,7 @@
 #import "Cryptography.h"
 #import "NSDateE.h"
 #import "JSONE.h"
+#import "OrderUploader.h"
 
 @interface CartTableViewController ()
 
@@ -433,72 +434,17 @@
     
     NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
     
-    [self processOrder:orderParent.toJSON];
+    [self startOrderUpload:kFoodPlaceOrdersURL withData:orderParent.toJSON];
     
 }
 
-- (void)processOrder:(NSData *)orderData {
+- (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
-    request.HTTPMethod = @"POST"; // set method to POST
-    request.HTTPBody = orderData; // set data to JSON
-    
-    // log JSON 
-    NSLog(@"%@", [[NSString alloc] initWithData:orderData encoding:NSUTF8StringEncoding]);
-    NSOperationQueue *queue = NSOperationQueue.currentQueue;
-    
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:queue 
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
-     {
-         int responseCode = [self readHttpStatusCodeFromResponse:response];
-         NSLog(@"%d", responseCode);
-         
-         // check response code is OK (201)
-         if (responseCode == kHTTPRequestCreated) {
-             [self showAlertDone];
-         } else if (error != nil && error.code == NSURLErrorTimedOut) {
-             [self timeOut];
-         } else if (error != nil) {
-             [self uploadError:error];
-         }
-     }];
-}
-
-- (int)readHttpStatusCodeFromResponse:(NSURLResponse *)response {
-    
-    int responseCode = 0;
-    // check response is NSHTTPURLResponse class
-    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        // get status code
-        responseCode = [(NSHTTPURLResponse *)response statusCode];
-    }
-    return responseCode;
-}
-
-// show Alert
-- (void)showAlertDone {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 
-                                                        message:@"Your Order is reserved." 
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    });
-}
-
-- (void)timeOut {
-    
-    NSLog(@"Time Out!!!");
-}
-
-- (void)uploadError:(NSError *)error {
-    
-    NSLog(@"%@", error.localizedDescription);
+    OrderUploader *orderUploader = [[OrderUploader alloc] init];
+    orderUploader.url = url;
+    orderUploader.orderData = data;
+    orderUploader.delegate = self;
+    [orderUploader startUpload];
 }
 
 @end
