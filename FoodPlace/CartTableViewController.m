@@ -447,9 +447,10 @@
     
     // log JSON 
     NSLog(@"%@", [[NSString alloc] initWithData:orderData encoding:NSUTF8StringEncoding]);
+    NSOperationQueue *queue = NSOperationQueue.currentQueue;
     
     [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue currentQueue] 
+                                       queue:queue 
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
      {
          int responseCode = [self readHttpStatusCodeFromResponse:response];
