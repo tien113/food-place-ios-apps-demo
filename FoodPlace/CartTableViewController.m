@@ -363,11 +363,11 @@
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if ([title isEqualToString:@"YES"]) {
+    if ([@"YES" isEqualToString:title]) {
         [self sendOrder];
         NSLog(@"YES was selected.");
     }
-    if ([title isEqualToString:@"NO"]) {
+    if ([@"NO" isEqualToString:title]) {
         NSLog(@"NO was selected.");
     }
 }
@@ -418,16 +418,15 @@
     
     NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
     
-    [self startOrderUpload:kFoodPlaceOrdersURL withData:orderData];
+    [self startOrderUpload:orderData];
     
 }
 
 // uploader delegate
 
-- (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
+- (void)startOrderUpload:(NSData *)data {
     
     OrderUploader *orderUploader = [[OrderUploader alloc] init];
-    orderUploader.url = url;
     orderUploader.orderData = data;
     orderUploader.delegate = self;
     [orderUploader startUpload];

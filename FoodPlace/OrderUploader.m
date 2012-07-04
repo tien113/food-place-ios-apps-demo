@@ -11,14 +11,13 @@
 
 @implementation OrderUploader
 
-@synthesize url = _url;
 @synthesize orderData = _orderData;
 @synthesize delegate = _delegate;
 
 - (void)startUpload {
     
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url]; // fetch request with url
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
     request.HTTPMethod = @"POST"; // set method to POST
