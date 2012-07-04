@@ -10,8 +10,6 @@
 
 @protocol OrderUploaderDelegate
 
-- (void)showAlertDone;
-
 @end
 
 @interface OrderUploader : NSObject

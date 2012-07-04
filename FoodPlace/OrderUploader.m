@@ -36,7 +36,7 @@
          
          // check response code is OK (201)
          if (kHTTPRequestCreated == responseCode) {
-             [self.delegate showAlertDone];
+             [self showAlertDone]; // can use with delegate = self.delegate
          } else if (504 == responseCode) {
              [self error504];
          } else if (error != nil && error.code == NSURLErrorTimedOut) {
@@ -56,6 +56,19 @@
         responseCode = [(NSHTTPURLResponse *)response statusCode];
     }
     return responseCode;
+}
+
+// show Alert
+- (void)showAlertDone {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 
+                                                        message:@"Your Order is reserved." 
+                                                       delegate:self.delegate // set self to crash, must be self.delegate or nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    });
 }
 
 - (void)error504 {
