@@ -400,19 +400,22 @@
         NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]];
         NSString *foodPlace = cart.food.place.name;
         
-        NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil] 
-                                                                       forKeys:[NSArray arrayWithObjects:FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE, nil]];
+        NSArray *foodObjects = [NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil];
+        NSArray *foodKeys = [NSArray arrayWithObjects:FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE, nil];
+        
+        NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjects:foodObjects forKeys:foodKeys];
         
         [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
     }];
     
     // alloc order detail parent
-    NSDictionary *orderDetailParent = [[NSDictionary alloc] initWithObjects:orderDetailParents 
-                                                                    forKeys:keyOrderDetailParents]; 
+    NSDictionary *orderDetailParent = [[NSDictionary alloc] initWithObjects:orderDetailParents forKeys:keyOrderDetailParents]; 
     
-    NSDictionary *orderChild = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:orderUuid, orderTotal, orderDate, orderDone, orderDetailParent, nil] 
-                                                             forKeys:[NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil]];
+    NSArray *orderObjects = [NSArray arrayWithObjects:orderUuid, orderTotal, orderDate, orderDone, orderDetailParent, nil];
+    NSArray *orderKeys = [NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil];
+    
+    NSDictionary *orderChild = [[NSDictionary alloc] initWithObjects:orderObjects forKeys:orderKeys];
     
     NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
     
