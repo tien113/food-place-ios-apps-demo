@@ -98,7 +98,7 @@
     // define placeLocation (block way)
     __block CLLocation *placeLocation;
     // get places to NSMutableArray
-    NSMutableArray *places = [[self.fetchedResultsController fetchedObjects] mutableCopy];
+    NSArray *places = [self.fetchedResultsController fetchedObjects];
     [places enumerateObjectsUsingBlock:^(Place *place, NSUInteger idx, BOOL *stop) {
         // init place with latitude and longitude
         placeLocation = [[CLLocation alloc] initWithLatitude:[place.lat doubleValue] 
