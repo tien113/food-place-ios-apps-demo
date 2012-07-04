@@ -10,10 +10,13 @@
 
 @protocol OrderUploaderDelegate
 
+- (void)showAlertDone;
+
 @end
 
 @interface OrderUploader : NSObject
 
+@property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSData *orderData;
 @property (nonatomic, strong) id <OrderUploaderDelegate> delegate;
 

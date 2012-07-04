@@ -420,19 +420,32 @@
     NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
     
     NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
-    
-    [self startOrderUpload:orderData];
-    
+ 
+    [self startOrderUpload:kFoodPlaceOrdersURL withData:orderData];    
 }
 
 // uploader delegate
 
-- (void)startOrderUpload:(NSData *)data {
+- (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
     
     OrderUploader *orderUploader = [[OrderUploader alloc] init];
+    orderUploader.url = url;
     orderUploader.orderData = data;
     orderUploader.delegate = self;
     [orderUploader startUpload];
+}
+
+// show Alert
+- (void)showAlertDone {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 
+                                                        message:@"Your Order is reserved." 
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    });
 }
 
 @end

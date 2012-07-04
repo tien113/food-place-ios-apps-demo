@@ -11,13 +11,13 @@
 
 @implementation OrderUploader
 
+@synthesize url = _url;
 @synthesize orderData = _orderData;
 @synthesize delegate = _delegate;
 
 - (void)startUpload {
     
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:kFoodPlaceOrdersURL]; // fetch request with url
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url]; // fetch request with url
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"]; // set content-type
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
     request.HTTPMethod = @"POST"; // set method to POST
@@ -36,7 +36,9 @@
          
          // check response code is OK (201)
          if (kHTTPRequestCreated == responseCode) {
-             [self showAlertDone];
+             [self.delegate showAlertDone];
+         } else if (504 == responseCode) {
+             [self error504];
          } else if (error != nil && error.code == NSURLErrorTimedOut) {
              [self timeOut];
          } else if (error != nil) {
@@ -56,17 +58,9 @@
     return responseCode;
 }
 
-// show Alert
-- (void)showAlertDone {
+- (void)error504 {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 
-                                                        message:@"Your Order is reserved." 
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    });
+    NSLog(@"web service is dead!!!");
 }
 
 - (void)timeOut {
