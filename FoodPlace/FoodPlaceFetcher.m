@@ -43,10 +43,10 @@
     }
     
     // get foods from JSON
-    id foods = responseData.fromJSON;
+    // id foods = responseData.fromJSON;
     NSLog(@"Getting foods...");
     NSLog(@"%d", responseData.length);
-    return foods;
+    return responseData ? (id)responseData.fromJSON : nil;
 }
 
 + (NSArray *)getPlaces {
@@ -85,10 +85,10 @@
     }
     
     // get places from JSON
-    id places = responseData.fromJSON;
+    // id places = responseData.fromJSON;
     NSLog(@"Getting places...");    
     NSLog(@"%d", responseData.length);
-    return places;
+    return responseData ? (id)responseData.fromJSON : nil;
 }
 
 #pragma mark - MKAnnotation Image
@@ -102,8 +102,8 @@
     
     // get url string of place
     NSString *urlString = [self urlStringForPlace:place];
-    NSURL *url = [NSURL URLWithString:urlString];
-    return url;
+    // NSURL *url = [NSURL URLWithString:urlString];
+    return urlString ? [NSURL URLWithString:urlString] : nil;
 }
 
 @end
