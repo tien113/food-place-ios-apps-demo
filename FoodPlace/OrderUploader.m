@@ -35,7 +35,7 @@
          NSLog(@"%d", responseCode);
          
          // check response code is OK (201)
-         if (responseCode == kHTTPRequestCreated) {
+         if (kHTTPRequestCreated == responseCode) {
              [self showAlertDone];
          } else if (error != nil && error.code == NSURLErrorTimedOut) {
              [self timeOut];
