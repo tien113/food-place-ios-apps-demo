@@ -35,7 +35,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
                                                                 message:@"Max order is 5, Don't make monkey business, please !!!" 
-                                                               delegate:self
+                                                               delegate:nil
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 [alert show];

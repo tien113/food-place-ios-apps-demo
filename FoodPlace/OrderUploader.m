@@ -64,7 +64,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done" 
                                                         message:@"Your Order is reserved." 
-                                                       delegate:self.delegate // set self to crash, must be self.delegate or nil
+                                                       delegate:nil // set self to crash, must be self.delegate or nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
