@@ -367,9 +367,6 @@
         [self sendOrder];
         NSLog(@"YES was selected.");
     }
-    if ([@"NO" isEqualToString:title]) {
-        NSLog(@"NO was selected.");
-    }
 }
 
 #pragma mark - Place Order Action
