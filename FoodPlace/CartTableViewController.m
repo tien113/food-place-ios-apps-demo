@@ -400,21 +400,21 @@
         NSArray *foodObjects = [NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil];
         NSArray *foodKeys = [NSArray arrayWithObjects:FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE, nil];
         
-        NSDictionary *orderDetailChild = [[NSDictionary alloc] initWithObjects:foodObjects forKeys:foodKeys];
+        NSDictionary *orderDetailChild = [NSDictionary dictionaryWithObjects:foodObjects forKeys:foodKeys];
         
         [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
     }];
     
     // alloc order detail parent
-    NSDictionary *orderDetailParent = [[NSDictionary alloc] initWithObjects:orderDetailParents forKeys:keyOrderDetailParents]; 
+    NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents forKeys:keyOrderDetailParents]; 
     
     NSArray *orderObjects = [NSArray arrayWithObjects:orderUuid, orderTotal, orderDate, orderDone, orderDetailParent, nil];
     NSArray *orderKeys = [NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil];
     
-    NSDictionary *orderChild = [[NSDictionary alloc] initWithObjects:orderObjects forKeys:orderKeys];
+    NSDictionary *orderChild = [NSDictionary dictionaryWithObjects:orderObjects forKeys:orderKeys];
     
-    NSDictionary *orderParent = [[NSDictionary alloc] initWithObjectsAndKeys: orderChild, ORDER, nil];
+    NSDictionary *orderParent = [NSDictionary dictionaryWithObjectsAndKeys: orderChild, ORDER, nil];
     
     NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
  
