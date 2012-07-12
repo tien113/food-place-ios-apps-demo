@@ -14,10 +14,15 @@
 - (NSDictionary *)fromJSON {
     
     NSError *error = nil;
-    id result = [NSJSONSerialization JSONObjectWithData:self 
+    id result = [NSJSONSerialization JSONObjectWithData:self
                                                 options:NSJSONReadingMutableContainers
                                                   error:&error];
-    if (error != nil) return nil;
+    if (error != nil) {
+        NSLog(@"JSONE Error: %@", error.localizedDescription);
+        return nil;
+    }
+    
+    NSLog(@"JSONE fromJSON: %@", result);
     return result;
 }
 

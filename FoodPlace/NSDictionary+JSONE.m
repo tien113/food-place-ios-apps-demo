@@ -14,10 +14,15 @@
 - (NSData *)toJSON {
     
     NSError *error = nil;
-    id result = [NSJSONSerialization dataWithJSONObject:self 
-                                                options:kNilOptions 
+    id result = [NSJSONSerialization dataWithJSONObject:self
+                                                options:kNilOptions
                                                   error:&error];
-    if (error != nil) return nil;
+    if (error != nil) {
+        NSLog(@"JSONE Error: %@", error.localizedDescription);
+        return nil;
+    }
+    
+    NSLog(@"JSONE toJSON: %@", result);
     return result;
 }
 
