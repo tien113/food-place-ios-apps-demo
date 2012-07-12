@@ -50,7 +50,8 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
     // [request setFetchBatchSize:5];
     // [request setFetchLimit:7];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"place.name" // sort by name or place's name (place.name)
+    // sort by name or place's name (place.name)
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"place.name" 
                                                                                      ascending:YES 
                                                                                       selector:@selector(localizedCaseInsensitiveCompare:)]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
