@@ -53,7 +53,8 @@
         // insert data to Core Data
         cart = [NSEntityDescription insertNewObjectForEntityForName:@"Cart" inManagedObjectContext:context];
         cart.food = food;
-        cart.count = [NSNumber numberWithInt:1];
+        cart.count = @1;
+        // cart.count = [NSNumber numberWithInt:1];
         cart.unique = food.unique;
         cart.created_at = NSDate.date;
         

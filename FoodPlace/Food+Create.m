@@ -31,12 +31,21 @@
     } else if ([matches count] == 0) {
         // insert data to Core Data
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
+        food.unique = webService[FOOD_ID];
+        food.name = webService[FOOD_NAME];
+        food.price = [NSDecimalNumber decimalNumberWithString:webService[FOOD_PRICE]];
+        food.ingredient = webService[FOOD_INGREDIENT];
+        food.image_url = webService[FOOD_IMAGE_URL];
+        food.place = [Place placeWithWebService:webService[PLACE] inManagedObjectContext:context];
+        
+        /*
         food.unique = [webService objectForKey:FOOD_ID];
         food.name = [webService valueForKey:FOOD_NAME];
         food.price = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:FOOD_PRICE]]; // convert string to decimal number
         food.ingredient = [webService valueForKey:FOOD_INGREDIENT];
         food.image_url = [webService valueForKey:FOOD_IMAGE_URL];
         food.place = [Place placeWithWebService:[webService objectForKey:PLACE] inManagedObjectContext:context];
+        */
         
         NSLog(@"%@", food);
     } else {
