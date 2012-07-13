@@ -28,7 +28,7 @@
                                                   otherButtonTitles:nil];
             [alert show];
         });
-        NSLog(@"%@", error.localizedDescription);
+        NSLog(@"getFoods' Error: %@", error.localizedDescription);
         return nil;
     }
     
@@ -70,7 +70,7 @@
                                                   otherButtonTitles:nil];
             [alert show];
         });
-        NSLog(@"%@", error.localizedDescription);
+        NSLog(@"getPlaces' Error: %@", error.localizedDescription);
         return nil;
     }
     
