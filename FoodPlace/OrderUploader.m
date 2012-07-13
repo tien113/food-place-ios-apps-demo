@@ -83,7 +83,7 @@
 
 - (void)uploadError:(NSError *)error {
     
-    NSLog(@"%@", error.localizedDescription);
+    NSLog(@"startUpload Error: %@", error.localizedDescription);
 }
 
 @end
