@@ -23,7 +23,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
                                                             message:@"There was an error talking to Web Service. Please try again later." 
-                                                           delegate:self 
+                                                           delegate:nil
                                                   cancelButtonTitle:@"OK" 
                                                   otherButtonTitles:nil];
             [alert show];
@@ -65,7 +65,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
                                                             message:@"There was an error talking to Web Service. Please try again later." 
-                                                           delegate:self 
+                                                           delegate:nil
                                                   cancelButtonTitle:@"OK" 
                                                   otherButtonTitles:nil];
             [alert show];
