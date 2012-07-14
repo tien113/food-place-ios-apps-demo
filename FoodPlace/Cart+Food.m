@@ -32,14 +32,7 @@
         // check if cart count = 5, show alert
         if (cartCount == 5) {
             // show alert
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                                message:@"Max order is 5, Don't make monkey business, please !!!" 
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            });
+            [self showAlert];
         } else {
             // plus int and int number (block way)
             int (^plus)(int, int) = ^(int numA, int numB) {
@@ -68,6 +61,18 @@
 + (void)removeFromCart:(Cart *)cart inManagedObjectContext:(NSManagedObjectContext *)context {
     // delete object
     [context deleteObject:cart];
+}
+
++ (void)showAlert {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Max order is 5, Don't make monkey business, please !!!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    });
 }
 
 @end

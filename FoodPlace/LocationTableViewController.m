@@ -9,6 +9,7 @@
 #import "LocationTableViewController.h"
 #import "Place+Create.h"
 #import "FoodPlaceAppDelegate.h"
+#import "UIAlertViewE.h"
 
 @interface LocationTableViewController ()
 
@@ -120,12 +121,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error 
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Error obtaining location."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [UIAlertView showWithError:error];
     });
 }
 

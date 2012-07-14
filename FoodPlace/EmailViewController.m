@@ -39,7 +39,7 @@
     
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if ([title isEqualToString:@"OK"]) {
+    if ([@"OK" isEqualToString:title]) {
         [self dismissEmailViewController];
         NSLog(@"OK was selected.");
     }

@@ -2,6 +2,7 @@
 
 #import "FoodPlaceFetcher.h"
 #import "JSONE.h"
+#import "UIAlertViewE.h"
 
 @implementation FoodPlaceFetcher
 
@@ -21,12 +22,7 @@
     // if error, show alert
     if (error != nil) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                            message:@"There was an error talking to Web Service. Please try again later." 
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK" 
-                                                  otherButtonTitles:nil];
-            [alert show];
+            [UIAlertView showWithError:error];
         });
         NSLog(@"getFoods' Error: %@", error.localizedDescription);
         return nil;
@@ -63,12 +59,7 @@
     // if error, show alert
     if (error != nil) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                            message:@"There was an error talking to Web Service. Please try again later." 
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK" 
-                                                  otherButtonTitles:nil];
-            [alert show];
+            [UIAlertView showWithError:error];
         });
         NSLog(@"getPlaces' Error: %@", error.localizedDescription);
         return nil;
