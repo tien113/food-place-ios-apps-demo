@@ -17,29 +17,37 @@
 @synthesize tabBarController = _tabBarController;
 
 // check badge value nil
-- (void)checkBadgeValue:(int)count {
+- (void)checkSetBadgeValue:(unsigned int)cartCount {
     
-    if (count == 0)
+    if (cartCount == 0)
         [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
     else 
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", count]]; // number
+        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", cartCount]]; // number
 }
 
 // set badge value
 - (void)startSetBadgeValue {
     
+    unsigned cartCount = [self cartCount];
+    
+    [self checkSetBadgeValue:cartCount];
+    NSLog(@"%d", cartCount);
+}
+
+- (unsigned int)cartCount {
+    
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
     
     NSError *error = nil;
-    NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request 
+    NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request
                                                                        error:&error];
     __block int cartCount = 0;
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
         cartCount += [cart.count intValue];
     }];
-    [self checkBadgeValue:cartCount];
-    NSLog(@"%d", cartCount);
+    
+    return cartCount;
 }
 
 @end
