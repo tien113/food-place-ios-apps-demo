@@ -40,14 +40,9 @@
 // fetch Places from Web Service
 - (void)fetchedData {
     
-    self.places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
-}
-
-- (void)queryPlaces {
-    
     dispatch_queue_t downloadQ = dispatch_queue_create("Place downloader", NULL);
     dispatch_async(downloadQ, ^{
-        [self performSelectorOnMainThread:@selector(fetchedData) withObject:NULL waitUntilDone:YES];
+        self.places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
     });
     dispatch_release(downloadQ);
 }
@@ -56,7 +51,7 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    [self queryPlaces];
+    [self fetchedData];
 }
 
 - (void)setPlaces:(NSArray *)places {
