@@ -17,21 +17,21 @@
 @synthesize tabBarController = _tabBarController;
 
 // check badge value nil
-- (void)checkSetBadgeValue:(unsigned int)cartCount {
+- (void)checkSetBadgeValue:(unsigned int)count {
     
-    if (cartCount == 0)
+    NSString *countStr = [NSString stringWithFormat:@"%d", count];
+    
+    if (count == 0)
         [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
     else 
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:[NSString stringWithFormat:@"%d", cartCount]]; // number
+        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:countStr]; // number
 }
 
 // set badge value
 - (void)startSetBadgeValue {
     
-    unsigned cartCount = [self cartCount];
-    
-    [self checkSetBadgeValue:cartCount];
-    NSLog(@"%d", cartCount);
+    [self checkSetBadgeValue:[self cartCount]];
+    NSLog(@"%d", [self cartCount]);
 }
 
 - (unsigned int)cartCount {
