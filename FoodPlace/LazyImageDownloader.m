@@ -70,7 +70,7 @@
 - (void)imageWithData:(NSData *)data {
     
     // init image with data
-    UIImage *image = [[UIImage alloc] initWithData:data];       
+    UIImage *image = [UIImage imageWithData:data];
     dispatch_async(dispatch_get_main_queue(), ^{
         
         // hide network activity indicator
