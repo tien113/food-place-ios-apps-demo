@@ -19,12 +19,12 @@
 // check badge value nil
 - (void)checkSetBadgeValue:(unsigned int)count {
     
-    NSString *countStr = [NSString stringWithFormat:@"%d", count];
-    
     if (count == 0)
         [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
-    else 
+    else {
+        NSString *countStr = [NSString stringWithFormat:@"%d", count];
         [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:countStr]; // number
+    }
 }
 
 // set badge value
