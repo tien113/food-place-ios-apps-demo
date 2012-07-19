@@ -25,6 +25,8 @@
     
     // log JSON 
     NSLog(@"%@", [[NSString alloc] initWithData:self.orderData encoding:NSUTF8StringEncoding]);
+    NSLog(@"Order Data Length: %d", [self.orderData length]);
+    
     NSOperationQueue *queue = NSOperationQueue.currentQueue;
     
     [NSURLConnection sendAsynchronousRequest:request
