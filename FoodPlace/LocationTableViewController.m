@@ -102,7 +102,7 @@
     NSArray *places = [self.fetchedResultsController fetchedObjects];
     [places enumerateObjectsUsingBlock:^(Place *place, NSUInteger idx, BOOL *stop) {
         // init place with latitude and longitude
-        placeLocation = [[CLLocation alloc] initWithLatitude:[place.lat doubleValue] 
+        placeLocation = [[CLLocation alloc] initWithLatitude:[place.lat doubleValue]
                                                    longitude:[place.log doubleValue]];
         // calculate distance from places
         place.distance = [NSNumber numberWithDouble:[placeLocation distanceFromLocation:location] / 1000]; 

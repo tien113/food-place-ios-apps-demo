@@ -48,10 +48,6 @@
 		D4B077B914FB8CCD00D1C2CF /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B077B814FB8CCD00D1C2CF /* WebsiteViewController.m */; };
 		D4C0F55F150D490F00C7BE8B /* 07-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F52F150D490F00C7BE8B /* 07-map-marker.png */; };
 		D4C0F560150D490F00C7BE8B /* 07-map-marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F530150D490F00C7BE8B /* 07-map-marker@2x.png */; };
-		D4C0F561150D490F00C7BE8B /* 09-chat-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F531150D490F00C7BE8B /* 09-chat-2.png */; };
-		D4C0F562150D490F00C7BE8B /* 09-chat-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F532150D490F00C7BE8B /* 09-chat-2@2x.png */; };
-		D4C0F563150D490F00C7BE8B /* 12-eye.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F533150D490F00C7BE8B /* 12-eye.png */; };
-		D4C0F564150D490F00C7BE8B /* 12-eye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F534150D490F00C7BE8B /* 12-eye@2x.png */; };
 		D4C0F565150D490F00C7BE8B /* 125-food.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F535150D490F00C7BE8B /* 125-food.png */; };
 		D4C0F566150D490F00C7BE8B /* 125-food@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F536150D490F00C7BE8B /* 125-food@2x.png */; };
 		D4C0F567150D490F00C7BE8B /* 13-target.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C0F537150D490F00C7BE8B /* 13-target.png */; };
@@ -158,10 +154,6 @@
 		D4B077B814FB8CCD00D1C2CF /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
 		D4C0F52F150D490F00C7BE8B /* 07-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker.png"; sourceTree = "<group>"; };
 		D4C0F530150D490F00C7BE8B /* 07-map-marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-map-marker@2x.png"; sourceTree = "<group>"; };
-		D4C0F531150D490F00C7BE8B /* 09-chat-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2.png"; sourceTree = "<group>"; };
-		D4C0F532150D490F00C7BE8B /* 09-chat-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2@2x.png"; sourceTree = "<group>"; };
-		D4C0F533150D490F00C7BE8B /* 12-eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-eye.png"; sourceTree = "<group>"; };
-		D4C0F534150D490F00C7BE8B /* 12-eye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-eye@2x.png"; sourceTree = "<group>"; };
 		D4C0F535150D490F00C7BE8B /* 125-food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "125-food.png"; sourceTree = "<group>"; };
 		D4C0F536150D490F00C7BE8B /* 125-food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "125-food@2x.png"; sourceTree = "<group>"; };
 		D4C0F537150D490F00C7BE8B /* 13-target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13-target.png"; sourceTree = "<group>"; };
@@ -426,10 +418,6 @@
 				D4C328971530B4B6008D64EF /* map-pin.png */,
 				D4C0F52F150D490F00C7BE8B /* 07-map-marker.png */,
 				D4C0F530150D490F00C7BE8B /* 07-map-marker@2x.png */,
-				D4C0F531150D490F00C7BE8B /* 09-chat-2.png */,
-				D4C0F532150D490F00C7BE8B /* 09-chat-2@2x.png */,
-				D4C0F533150D490F00C7BE8B /* 12-eye.png */,
-				D4C0F534150D490F00C7BE8B /* 12-eye@2x.png */,
 				D4C0F535150D490F00C7BE8B /* 125-food.png */,
 				D4C0F536150D490F00C7BE8B /* 125-food@2x.png */,
 				D4C0F537150D490F00C7BE8B /* 13-target.png */,
@@ -514,10 +502,6 @@
 				D40C740214FA5CF3005FCD04 /* MainStoryboard.storyboard in Resources */,
 				D4C0F55F150D490F00C7BE8B /* 07-map-marker.png in Resources */,
 				D4C0F560150D490F00C7BE8B /* 07-map-marker@2x.png in Resources */,
-				D4C0F561150D490F00C7BE8B /* 09-chat-2.png in Resources */,
-				D4C0F562150D490F00C7BE8B /* 09-chat-2@2x.png in Resources */,
-				D4C0F563150D490F00C7BE8B /* 12-eye.png in Resources */,
-				D4C0F564150D490F00C7BE8B /* 12-eye@2x.png in Resources */,
 				D4C0F565150D490F00C7BE8B /* 125-food.png in Resources */,
 				D4C0F566150D490F00C7BE8B /* 125-food@2x.png in Resources */,
 				D4C0F567150D490F00C7BE8B /* 13-target.png in Resources */,

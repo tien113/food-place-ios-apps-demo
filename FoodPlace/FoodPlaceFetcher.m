@@ -11,7 +11,7 @@
 + (NSArray *)getFoods {
     
     // init request with url
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:kFoodPlaceFoodsURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:kFoodPlaceFoodsURL];
     
     // get data from request
     NSError *error = nil;
@@ -48,7 +48,7 @@
 + (NSArray *)getPlaces {
     
     // init request with url
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:kFoodPlacePlacesURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:kFoodPlacePlacesURL];
     
     // get data from request
     NSError *error = nil;
@@ -92,9 +92,9 @@
 + (NSURL *)urlForPlace:(NSDictionary *)place {
     
     // get url string of place
-    NSString *urlString = [self urlStringForPlace:place];
+    NSString *urlStr = [self urlStringForPlace:place];
     // NSURL *url = [NSURL URLWithString:urlString];
-    return urlString ? [NSURL URLWithString:urlString] : nil;
+    return urlStr ? [NSURL URLWithString:urlStr] : nil;
 }
 
 @end
