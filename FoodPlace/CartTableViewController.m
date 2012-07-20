@@ -50,7 +50,7 @@
     __block float total = 0.0f;
     
     // fetch data from Core Data to NSArray
-    NSArray *carts = [self.fetchedResultsController fetchedObjects]; 
+    NSArray *carts = [self fetchedCarts];
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
         total += [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]; // calculate total  
     }];
@@ -312,7 +312,7 @@
     
     dispatch_queue_t emptyQ = dispatch_queue_create("Empty Cart", NULL);
     dispatch_async(emptyQ, ^{
-        NSArray *carts = [self.fetchedResultsController fetchedObjects];
+        NSArray *carts = [self fetchedCarts];
         [document.managedObjectContext performBlock:^{
             [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
                 [Cart removeFromCart:cart inManagedObjectContext:document.managedObjectContext];
@@ -378,7 +378,7 @@
     
     dispatch_queue_t sendQ = dispatch_queue_create("Send Order", NULL);
     dispatch_async(sendQ, ^{       
-        NSArray *carts = [self.fetchedResultsController fetchedObjects]; // fetch all carts
+        NSArray *carts = [self fetchedCarts];
         [self performSelectorOnMainThread:@selector(prepareOrder:) withObject:carts waitUntilDone:YES];
     });
     dispatch_release(sendQ);
@@ -430,7 +430,6 @@
 }
 
 // uploader delegate
-
 - (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
     
     OrderUploader *orderUploader = [[OrderUploader alloc] init];
@@ -438,6 +437,12 @@
     orderUploader.orderData = data;
     orderUploader.delegate = self;
     [orderUploader startUpload];
+}
+
+// return nsarray carts
+- (NSArray *)fetchedCarts {
+    
+    return [self.fetchedResultsController fetchedObjects]; // fetch all carts
 }
 
 @end
