@@ -213,6 +213,7 @@
     CLLocationCoordinate2D coords;
     coords.latitude = LATITUDE;
     coords.longitude = LONGITUDE;
+    
     // set span use latitude and longitude
     MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA);
     // set region use coordinate and span
