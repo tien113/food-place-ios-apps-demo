@@ -648,6 +648,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fpt corporation (5DLP4M3R24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodPlace/FoodPlace-Prefix.pch";
 				INFOPLIST_FILE = "FoodPlace/FoodPlace-Info.plist";
@@ -661,6 +663,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FoodPlace/FoodPlace-Prefix.pch";
 				INFOPLIST_FILE = "FoodPlace/FoodPlace-Info.plist";
