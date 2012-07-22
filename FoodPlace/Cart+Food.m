@@ -28,18 +28,14 @@
     if (!carts || carts.count == 1) {
         // get cart from carts
         cart = carts.lastObject;
-        int cartCount = [[cart valueForKey:CART_COUNT] intValue];
+        cartInt cartCount = [[cart valueForKey:CART_COUNT] intValue];
         // check if cart count = 5, show alert
         if (cartCount == 5) {
             // show alert
             [self showAlert];
         } else {
-            // plus int and int number (block way)
-            int (^plus)(int, int) = ^(int numA, int numB) {
-                return numA + numB;
-            };
             // count + 1
-            cart.count = [NSNumber numberWithInt:plus(1, cartCount)];
+            cart.count = [self plus1:cartCount];
         }
         NSLog(@"%@", cart);
     } else if ([carts count] == 0) { 
@@ -55,7 +51,7 @@
     } else {
         cart = carts.lastObject;
     }
-    return cart;   
+    return cart;
 }
 
 + (void)removeFromCart:(Cart *)cart inManagedObjectContext:(NSManagedObjectContext *)context {
@@ -73,6 +69,16 @@
                                               otherButtonTitles:nil];
         [alert show];
     });
+}
+
++ (NSNumber *)plus1:(cartInt)number {
+    
+    // plus int and int number (block way)
+    cartInt (^plus)(cartInt, cartInt) = ^(cartInt numA, cartInt numB) {
+        return numA + numB;
+    };
+    
+    return [NSNumber numberWithInt:plus(1, number)];
 }
 
 @end

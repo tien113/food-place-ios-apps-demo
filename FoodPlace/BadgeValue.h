@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef unsigned int cartInt; // convert to short type name cartInt
-
 @protocol BadgeValueDelegate
 
 @end

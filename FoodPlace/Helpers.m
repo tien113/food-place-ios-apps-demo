@@ -16,7 +16,7 @@
     int _numberB = [numberB intValue]; // convert NSNumber to int
         
     // time int and fload number (block way)
-    float (^add)(float, int) = ^(float numA, int numB) {
+    float (^add)(float, unsigned int) = ^(float numA, unsigned int numB) {
         return numA * numB;
     };
 
