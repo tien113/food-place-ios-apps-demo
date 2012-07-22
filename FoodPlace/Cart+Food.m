@@ -20,7 +20,8 @@
     request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", food.unique];
     // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"unique" ascending:YES];
-    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    request.sortDescriptors = @[ sortDescriptor ];
+    // request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
     NSArray *carts = [context executeFetchRequest:request error:&error]; // fetch all carts from Core Data

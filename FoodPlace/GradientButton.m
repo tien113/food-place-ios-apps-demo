@@ -55,20 +55,20 @@
 - (void)addShineLayer {
     self.shineLayer = [CAGradientLayer layer];
     self.shineLayer.frame = self.layer.bounds;
-    self.shineLayer.colors = [NSArray arrayWithObjects:
+    self.shineLayer.colors = @[
                          (id)[UIColor colorWithWhite:1.0f alpha:0.4f].CGColor,
                          (id)[UIColor colorWithWhite:1.0f alpha:0.2f].CGColor,
                          (id)[UIColor colorWithWhite:0.75f alpha:0.2f].CGColor,
                          (id)[UIColor colorWithWhite:0.4f alpha:0.2f].CGColor,
-                         (id)[UIColor colorWithWhite:1.0f alpha:0.4f].CGColor,
-                         nil];
-    self.shineLayer.locations = [NSArray arrayWithObjects:
+                         (id)[UIColor colorWithWhite:1.0f alpha:0.4f].CGColor
+                         ];
+    self.shineLayer.locations = @[
                             [NSNumber numberWithFloat:0.0f],
                             [NSNumber numberWithFloat:0.5f],
                             [NSNumber numberWithFloat:0.5f],
                             [NSNumber numberWithFloat:0.8f],
-                            [NSNumber numberWithFloat:1.0f],
-                            nil];
+                            [NSNumber numberWithFloat:1.0f]
+                            ];
     [self.layer addSublayer:self.shineLayer];
 }
 

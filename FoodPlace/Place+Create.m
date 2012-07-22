@@ -20,7 +20,8 @@
     request.predicate = [NSPredicate predicateWithFormat:@"name = %@", [webService objectForKey:PLACE_NAME]];
     // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    request.sortDescriptors = @[ sortDescriptor ];
+    // request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
     NSArray *places = [context executeFetchRequest:request error:&error]; // fetch all places from Core Data

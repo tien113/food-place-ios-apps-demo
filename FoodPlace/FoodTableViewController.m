@@ -51,9 +51,9 @@
     // [request setFetchBatchSize:5];
     // [request setFetchLimit:7];
     // sort by name or place's name (place.name)
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"place.name" 
-                                                                                     ascending:YES 
-                                                                                      selector:@selector(localizedCaseInsensitiveCompare:)]];
+    request.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"place.name"
+                                                               ascending:YES
+                                                                selector:@selector(localizedCaseInsensitiveCompare:)] ];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.document.managedObjectContext
                                                                           sectionNameKeyPath:nil 

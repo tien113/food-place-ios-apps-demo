@@ -163,8 +163,8 @@
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"created_at" 
-                                                                                     ascending:YES]];
+    request.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"created_at"
+                                                               ascending:YES] ];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request 
                                                                         managedObjectContext:self.document.managedObjectContext 
                                                                           sectionNameKeyPath:nil 

@@ -26,8 +26,8 @@
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"distance" 
-                                                                                     ascending:YES]];
+    request.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"distance"
+                                                               ascending:YES] ];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request 
                                                                         managedObjectContext:self.document.managedObjectContext 
                                                                           sectionNameKeyPath:nil 

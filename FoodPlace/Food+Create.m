@@ -21,7 +21,8 @@
     request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", [webService objectForKey:FOOD_ID]];
     // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    request.sortDescriptors = @[ sortDescriptor ];
+    // request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error]; // fetch all foods from Core Data
