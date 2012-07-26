@@ -40,7 +40,8 @@
          // check data and error
          if ([data length] > 0 && nil == error) {
              [self imageWithData:data];
-         } else if (0 == [data length]&& nil == error) {
+             NSLog(@"image data length: %d", [data length]);
+         } else if (0 == [data length] && nil == error) {
              [self emptyReply];
          } else if (nil != error && NSURLErrorTimedOut == error.code) {
              [self timeOut];

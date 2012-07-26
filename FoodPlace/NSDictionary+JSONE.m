@@ -17,7 +17,7 @@
     id result = [NSJSONSerialization dataWithJSONObject:self
                                                 options:kNilOptions
                                                   error:&error];
-    if (error != nil) {
+    if (nil != error) {
         NSLog(@"JSONE Error: %@", error.localizedDescription);
         return nil;
     }

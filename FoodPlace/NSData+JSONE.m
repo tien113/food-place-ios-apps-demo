@@ -17,7 +17,7 @@
     id result = [NSJSONSerialization JSONObjectWithData:self
                                                 options:NSJSONReadingMutableContainers
                                                   error:&error];
-    if (error != nil) {
+    if (nil != error) {
         NSLog(@"JSONE Error: %@", error.localizedDescription);
         return nil;
     }

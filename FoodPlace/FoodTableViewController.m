@@ -159,7 +159,7 @@
     // only load cached images; defer new downloads until scrolling ends
     if (!food.image) 
     {   
-        if (self.tableView.dragging == NO && self.tableView.decelerating == NO) 
+        if (NO == self.tableView.dragging && NO == self.tableView.decelerating)
         {
             [self startImageDownload:food forIndexPath:indexPath];
         }
