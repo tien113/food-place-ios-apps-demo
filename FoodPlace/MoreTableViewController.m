@@ -24,17 +24,17 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"About Me"]) {
+    if ([@"About Me" isEqualToString:segue.identifier]) {
     }
-    if ([segue.identifier isEqualToString:@"Email"]) {
+    if ([@"Email" isEqualToString:segue.identifier]) {
         // check mail account setup or not
         if ([MFMailComposeViewController canSendMail]) {
             [self displayEmailView];
         }
     }
-    if ([segue.identifier isEqualToString:@"Website"]) {
+    if ([@"Website" isEqualToString:segue.identifier]) {
     }
-    if ([segue.identifier isEqualToString:@"Identification"]) {
+    if ([@"Identification" isEqualToString:segue.identifier]) {
     }
 }
 
@@ -47,7 +47,8 @@
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     
-    [mailController setToRecipients:[NSArray arrayWithObjects:@"tien113@gmail.com", nil]]; // set recipient to tien113@gmail.com
+    [mailController setToRecipients: @[ @"tien113@gmail.com" ]]; // set recipient to tien113@gmail.com
+    // [mailController setToRecipients:[NSArray arrayWithObjects:@"tien113@gmail.com", nil]]; 
     [mailController setSubject:@"Feedback"]; // set subject to Feedback
     [mailController setMessageBody:@"" isHTML:NO];
     

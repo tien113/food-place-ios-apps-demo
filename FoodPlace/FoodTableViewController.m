@@ -201,7 +201,7 @@
     
     LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
     
-    if (imageDownloader == nil){
+    if (nil == imageDownloader){
         imageDownloader = [[LazyImageDownloader alloc] init];
         imageDownloader.food = food;
         imageDownloader.indexPathInTableView = indexPath;
@@ -215,7 +215,7 @@
 - (void)imageDidLoad:(NSIndexPath *)indexPath {
     
     LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
-    if (imageDownloader != nil) 
+    if (nil != imageDownloader)
     {
         FoodCell *cell = (FoodCell *)[self.tableView cellForRowAtIndexPath:imageDownloader.indexPathInTableView];
         

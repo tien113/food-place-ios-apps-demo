@@ -19,7 +19,7 @@
 // check badge value nil
 - (void)checkSetBadgeValue:(cartInt)count {
     
-    if (count == 0)
+    if (0 == count)
         [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
     else {
         NSString *countStr = [NSString stringWithFormat:@"%d", count];

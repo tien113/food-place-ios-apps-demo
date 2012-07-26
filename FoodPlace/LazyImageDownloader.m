@@ -38,13 +38,13 @@
          [self readHttpStatusCodeFromResponse:response];
          
          // check data and error
-         if ([data length] > 0 && error == nil) {
+         if ([data length] > 0 && nil == error) {
              [self imageWithData:data];
-         } else if ([data length] == 0 && error == nil) {
+         } else if (0 == [data length]&& nil == error) {
              [self emptyReply];
-         } else if (error != nil && error.code == NSURLErrorTimedOut) {
+         } else if (nil != error && NSURLErrorTimedOut == error.code) {
              [self timeOut];
-         } else if (error != nil) {
+         } else if (nil != error) {
              [self downloadError:error];
          }
          

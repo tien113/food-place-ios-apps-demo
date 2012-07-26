@@ -73,7 +73,7 @@
 - (void)showTotalOrderLabelWhenRemove {
     
     // check totalOrder is zero or not
-    if ([self totalOrder] != 0) 
+    if (0 != [self totalOrder])
         self.totalOrderLabel.text = [NSString stringWithFormat:_TOTAL_, EURO, [self totalOrder]];
     else 
         self.totalOrderLabel.hidden = YES; // set hidden total order label 
@@ -84,7 +84,7 @@
 - (void)showTotalOrderLabelWhenAdd {
     
     // check totalOrder is zero or not
-    if ([self totalOrder] != 0) {
+    if (0 != [self totalOrder]) {
         self.totalOrderLabel.hidden = NO; // set hidden total order label
         self.totalOrderLabel.text = [NSString stringWithFormat:_TOTAL_, EURO, [self totalOrder]];
     }
@@ -96,7 +96,7 @@
 - (void)showPlaceOrderBarButtonItem {
     
     // check totalOrder is zero or not
-    if ([self totalOrder] == 0) 
+    if (0 == [self totalOrder])
         self.placeOrderBarButtonItem.enabled = FALSE; // set disable
     else 
         self.placeOrderBarButtonItem.enabled = TRUE; // set enable
@@ -113,7 +113,7 @@
 // check Empty Cart bar button item
 - (void)showEmptyCartBarButtonItem {
     
-    if ([self totalOrder] == 0) 
+    if (0 == [self totalOrder])
         self.emptyCartBarButtonItem.enabled = FALSE;
     else 
         self.emptyCartBarButtonItem.enabled = TRUE;
@@ -143,7 +143,7 @@
     self.cartLabel.textAlignment = UITextAlignmentCenter;
     
     // check totalOrder is zero or not
-    if ([self totalOrder] == 0) 
+    if (0 == [self totalOrder])
         [self.tableView addSubview:self.cartLabel]; // add cart label to tableView
     else 
         [self hiddenCartLabel];

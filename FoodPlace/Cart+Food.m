@@ -26,12 +26,12 @@
     NSError *error = nil;
     NSArray *carts = [context executeFetchRequest:request error:&error]; // fetch all carts from Core Data
     
-    if (!carts || carts.count == 1) {
+    if (!carts || 1 == carts.count) {
         // get cart from carts
         cart = carts.lastObject;
         cartInt cartCount = [[cart valueForKey:CART_COUNT] intValue];
         // check if cart count = 5, show alert
-        if (cartCount == 5) {
+        if (5 == cartCount) {
             // show alert
             [self showAlert];
         } else {
@@ -39,7 +39,7 @@
             cart.count = [self plus1:cartCount];
         }
         NSLog(@"%@", cart);
-    } else if ([carts count] == 0) { 
+    } else if (0 == [carts count]) {
         // insert data to Core Data
         cart = [NSEntityDescription insertNewObjectForEntityForName:@"Cart" inManagedObjectContext:context];
         cart.food = food;
