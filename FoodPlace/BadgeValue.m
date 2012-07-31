@@ -20,10 +20,10 @@
 - (void)checkSetBadgeValue:(cartInt)count {
     
     if (0 == count)
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil]; // nil
+        [(self.tabBarController.tabBar.items)[3] setBadgeValue:nil]; // nil
     else {
         NSString *countStr = [NSString stringWithFormat:@"%d", count];
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:countStr]; // number
+        [(self.tabBarController.tabBar.items)[3] setBadgeValue:countStr]; // number
     }
 }
 

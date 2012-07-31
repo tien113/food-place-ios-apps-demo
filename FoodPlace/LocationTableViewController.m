@@ -105,7 +105,7 @@
         placeLocation = [[CLLocation alloc] initWithLatitude:[place.lat doubleValue]
                                                    longitude:[place.log doubleValue]];
         // calculate distance from places
-        place.distance = [NSNumber numberWithDouble:[placeLocation distanceFromLocation:location] / 1000]; 
+        place.distance = @([placeLocation distanceFromLocation:location] / 1000);
     }];
 }
 

@@ -17,7 +17,7 @@
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
-    request.predicate = [NSPredicate predicateWithFormat:@"name = %@", [webService objectForKey:PLACE_NAME]];
+    request.predicate = [NSPredicate predicateWithFormat:@"name = %@", webService[PLACE_NAME]];
     // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[ sortDescriptor ];

@@ -422,7 +422,8 @@
     // NSArray *orderKeys = [NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil];
     
     NSDictionary *orderChild = [NSDictionary dictionaryWithObjects:orderObjects forKeys:orderKeys];
-    NSDictionary *orderParent = [NSDictionary dictionaryWithObjectsAndKeys: orderChild, ORDER, nil];
+    NSDictionary *orderParent = @{ ORDER: orderChild };
+    // NSDictionary *orderParent = [NSDictionary dictionaryWithObjectsAndKeys: orderChild, ORDER, nil];
     
     NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
  

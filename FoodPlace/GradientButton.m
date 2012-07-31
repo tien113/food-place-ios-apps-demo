@@ -62,13 +62,8 @@
                          (id)[UIColor colorWithWhite:0.4f alpha:0.2f].CGColor,
                          (id)[UIColor colorWithWhite:1.0f alpha:0.4f].CGColor
                          ];
-    self.shineLayer.locations = @[
-                            [NSNumber numberWithFloat:0.0f],
-                            [NSNumber numberWithFloat:0.5f],
-                            [NSNumber numberWithFloat:0.5f],
-                            [NSNumber numberWithFloat:0.8f],
-                            [NSNumber numberWithFloat:1.0f]
-                            ];
+    self.shineLayer.locations = @[ @0.0f, @0.5f, @0.5f, @0.8f, @1.0f ];
+    
     [self.layer addSublayer:self.shineLayer];
 }
 

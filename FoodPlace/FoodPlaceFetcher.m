@@ -86,7 +86,7 @@
 
 + (NSString *)urlStringForPlace:(NSDictionary *)place {
     
-    return [place objectForKey:PLACE_IMAGE_URL]; 
+    return place[PLACE_IMAGE_URL]; 
 }
 
 + (NSURL *)urlForPlace:(NSDictionary *)place {
