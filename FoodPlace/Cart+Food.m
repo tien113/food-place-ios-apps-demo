@@ -29,7 +29,7 @@
     if (!carts || 1 == carts.count) {
         // get cart from carts
         cart = carts.lastObject;
-        cartInt cartCount = [[cart valueForKey:CART_COUNT] intValue];
+        int cartCount = [[cart valueForKey:CART_COUNT] intValue];
         // check if cart count = 5, show alert
         if (5 == cartCount) {
             // show alert
@@ -72,14 +72,14 @@
     });
 }
 
-+ (NSNumber *)plus1:(cartInt)number {
++ (NSNumber *)plus1:(int)number {
     
     // plus int and int number (block way)
-    cartInt (^plus)(cartInt, cartInt) = ^(cartInt numA, cartInt numB) {
+    int (^plus)(int, int) = ^(int numA, int numB) {
         return numA + numB;
     };
     
-    return [NSNumber numberWithInt:plus(1, number)];
+    return @(plus(1,number));
 }
 
 @end

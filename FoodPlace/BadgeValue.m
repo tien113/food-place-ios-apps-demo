@@ -17,7 +17,7 @@
 @synthesize tabBarController = _tabBarController;
 
 // check badge value nil
-- (void)checkSetBadgeValue:(cartInt)count {
+- (void)checkSetBadgeValue:(int)count {
     
     if (0 == count)
         [(self.tabBarController.tabBar.items)[3] setBadgeValue:nil]; // nil
@@ -34,7 +34,7 @@
     NSLog(@"%d", [self cartCount]);
 }
 
-- (cartInt)cartCount {
+- (int)cartCount {
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
@@ -42,7 +42,7 @@
     NSError *error = nil;
     NSArray *carts = [self.document.managedObjectContext executeFetchRequest:request
                                                                        error:&error];
-    __block cartInt cartCount = 0;
+    __block int cartCount = 0;
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
         cartCount += [cart.count intValue];
     }];

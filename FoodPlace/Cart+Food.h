@@ -11,8 +11,6 @@
 
 #define CART_COUNT @"count"
 
-typedef unsigned int cartInt; // convert to short type name cartInt
-
 @interface Cart (Food)
 
 + (Cart *)cartWithFood:(Food *)food inManagedObjectContext:(NSManagedObjectContext *)context;
