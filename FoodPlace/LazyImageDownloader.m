@@ -19,7 +19,7 @@
 
 - (void)startDownload {
  
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kHostURL, self.food.image_url];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@", kHostURL, self.food.image_url];
     
     // init food image url
     NSURL *url = [NSURL URLWithString:urlStr];
