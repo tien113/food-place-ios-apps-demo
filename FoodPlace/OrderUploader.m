@@ -7,7 +7,7 @@
 //
 
 #import "OrderUploader.h"
-#import "FoodPlaceFetcher.h"
+#import "Define.h"
 
 @implementation OrderUploader
 

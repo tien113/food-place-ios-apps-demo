@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-// define network activity indicator
-#define ShowNetworkActivityIndicator() UIApplication.sharedApplication.networkActivityIndicatorVisible = YES
-#define HideNetworkActivityIndicator() UIApplication.sharedApplication.networkActivityIndicatorVisible = NO
-
 @interface Helpers : NSObject
 
 + (float)timeNSDecimalNumber:(NSDecimalNumber *)numberA andNumber:(NSNumber *)numberB;

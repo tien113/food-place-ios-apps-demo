@@ -11,6 +11,7 @@
 #import "FoodPlaceFetcher.h"
 #import "PlaceAnnotationView.h"
 #import "UIAlertViewE.h"
+#import "Define.h"
 
 @interface MapViewController ()
 

@@ -14,9 +14,8 @@
 #import "Cart+Food.h"
 #import "FoodPlaceAppDelegate.h"
 #import "SpinnerView.h"
-
-#define showSpinnerView() self.spinner = [SpinnerView loadSpinnerIntoView:self.tabBarController.view]
-#define hideSpinnerView() [self.spinner removeSpinner]
+#import "Helpers.h"
+#import "Define.h"
 
 @interface FoodTableViewController ()
 
@@ -154,7 +153,7 @@
     
     cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", food.name];
     cell.placeNameLabel.text = [NSString stringWithFormat:@"%@", food.place.name];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO, [food.price stringValue]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO_SYM, [food.price stringValue]];
  
     // only load cached images; defer new downloads until scrolling ends
     if (!food.image) 

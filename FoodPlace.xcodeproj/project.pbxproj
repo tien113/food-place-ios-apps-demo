@@ -109,6 +109,7 @@
 		D4103AB9150E1933004DDDAA /* Food+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Create.m"; sourceTree = "<group>"; };
 		D4103ABB150E1958004DDDAA /* Place+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Place+Create.h"; sourceTree = "<group>"; };
 		D4103ABC150E1958004DDDAA /* Place+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Place+Create.m"; sourceTree = "<group>"; };
+		D4281F7315CBB1C1005A5C38 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		D42B59D1151907E700B77D7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D42CD7FC151A885F000397BA /* LocationDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailTableViewController.h; sourceTree = "<group>"; };
 		D42CD7FD151A885F000397BA /* LocationDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailTableViewController.m; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 				D471D34B1540810F00219083 /* LazyImageDownloader.m */,
 				D4A9FDF415A2E3B400676CB5 /* OrderUploader.h */,
 				D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */,
+				D4281F7315CBB1C1005A5C38 /* Define.h */,
 				D4072B7915288BAC00EF3198 /* Helpers.h */,
 				D4072B7A15288BAC00EF3198 /* Helpers.m */,
 				D4FFAF45151754F1006476D0 /* FoodCell.h */,

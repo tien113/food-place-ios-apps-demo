@@ -11,11 +11,11 @@
 #import "Cart+Food.h"
 #import "Place+Create.h"
 #import "CartCell.h"
-#import "FoodPlaceFetcher.h"
 #import "Helpers.h"
 #import "Cryptography.h"
 #import "NSDateE.h"
 #import "JSONE.h"
+#import "Define.h"
 
 @interface CartTableViewController ()
 
@@ -74,7 +74,7 @@
     
     // check totalOrder is zero or not
     if (0 != [self totalOrder])
-        self.totalOrderLabel.text = [NSString stringWithFormat:_TOTAL_, EURO, [self totalOrder]];
+        self.totalOrderLabel.text = [NSString stringWithFormat:TOTAL_STR, EURO_SYM, [self totalOrder]];
     else 
         self.totalOrderLabel.hidden = YES; // set hidden total order label 
     
@@ -86,7 +86,7 @@
     // check totalOrder is zero or not
     if (0 != [self totalOrder]) {
         self.totalOrderLabel.hidden = NO; // set hidden total order label
-        self.totalOrderLabel.text = [NSString stringWithFormat:_TOTAL_, EURO, [self totalOrder]];
+        self.totalOrderLabel.text = [NSString stringWithFormat:TOTAL_STR, EURO_SYM, [self totalOrder]];
     }
 }
 
@@ -260,7 +260,7 @@
     Cart *cart = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", cart.food.name];
     cell.countLabel.text = [NSString stringWithFormat:@"x%@", [cart.count stringValue]];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@%0.2f", EURO, [Helpers timeNSDecimalNumber:cart.food.price 
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@%0.2f", EURO_SYM, [Helpers timeNSDecimalNumber:cart.food.price
                                                                                            andNumber:cart.count]];
     
     // outlet

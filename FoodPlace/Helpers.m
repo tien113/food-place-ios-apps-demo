@@ -19,7 +19,7 @@
     float (^add)(float, unsigned int) = ^(float numA, unsigned int numB) {
         return numA * numB;
     };
-
+    
     return add(_numberA, _numberB);
 }
 

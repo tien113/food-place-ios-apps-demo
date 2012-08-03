@@ -8,6 +8,7 @@
 
 #import "Place+Create.h"
 #import "FoodPlaceFetcher.h"
+#import "Define.h"
 
 @implementation Place (Create)
 

@@ -7,9 +7,10 @@
 //
 
 #import "FoodDetailTableViewController.h"
-#import "FoodPlaceFetcher.h"
 #import "Place+Create.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Helpers.h"
+#import "Define.h"
 
 @interface FoodDetailTableViewController ()
 
@@ -64,7 +65,7 @@
     [self.foodNameLabel sizeToFit];
     self.placeNameLabel.text = [NSString stringWithFormat:@"%@", self.food.place.name];
     [self.placeNameLabel sizeToFit];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO, [self.food.price stringValue]];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO_SYM, [self.food.price stringValue]];
     self.foodIngredientTextView.text = [NSString stringWithFormat:@"%@", self.food.ingredient];
     self.foodImageView.image = self.food.image;
     

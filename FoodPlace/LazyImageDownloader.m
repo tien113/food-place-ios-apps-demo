@@ -7,7 +7,7 @@
 //
 
 #import "LazyImageDownloader.h"
-#import "Helpers.h"
+#import "Define.h"
 
 @implementation LazyImageDownloader
 
@@ -18,9 +18,11 @@
 #pragma mark - NSURLConnection Asynchronous
 
 - (void)startDownload {
+ 
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kHostURL, self.food.image_url];
     
     // init food image url
-    NSURL *url = [NSURL URLWithString:self.food.image_url];
+    NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url 
                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:10.0f];

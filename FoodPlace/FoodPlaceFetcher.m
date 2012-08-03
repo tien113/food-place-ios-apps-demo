@@ -3,6 +3,7 @@
 #import "FoodPlaceFetcher.h"
 #import "JSONE.h"
 #import "UIAlertViewE.h"
+#import "Define.h"
 
 @implementation FoodPlaceFetcher
 
@@ -86,7 +87,9 @@
 
 + (NSString *)urlStringForPlace:(NSDictionary *)place {
     
-    return place[PLACE_IMAGE_URL]; 
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@", kHostURL, place[PLACE_IMAGE_URL]];
+    
+    return urlStr;
 }
 
 + (NSURL *)urlForPlace:(NSDictionary *)place {
