@@ -29,6 +29,9 @@
     
     NSOperationQueue *queue = NSOperationQueue.currentQueue;
     
+    // show network activity indicator
+    ShowNetworkActivityIndicator();
+    
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:queue 
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
@@ -46,6 +49,9 @@
          } else if (nil != error) {
              [self uploadError:error];
          }
+         
+         // hide network activity indicator
+         HideNetworkActivityIndicator();
      }];
 }
 
