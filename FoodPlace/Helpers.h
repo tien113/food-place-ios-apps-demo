@@ -11,5 +11,6 @@
 @interface Helpers : NSObject
 
 + (float)timeNSDecimalNumber:(NSDecimalNumber *)numberA andNumber:(NSNumber *)numberB;
++ (NSUInteger)readHttpStatusCodeFromResponse:(NSURLResponse *)response;
 
 @end

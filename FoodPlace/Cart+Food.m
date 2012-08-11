@@ -30,7 +30,7 @@
     if (!carts || 1 == carts.count) {
         // get cart from carts
         cart = carts.lastObject;
-        int cartCount = [[cart valueForKey:CART_COUNT] intValue];
+        NSUInteger cartCount = [[cart valueForKey:CART_COUNT] intValue];
         // check if cart count = 5, show alert
         if (5 == cartCount) {
             // show alert
@@ -73,7 +73,7 @@
     });
 }
 
-+ (NSNumber *)plus1:(int)number {
++ (NSNumber *)plus1:(NSUInteger)number {
     
     // plus int and int number (block way)
     int (^plus)(int, int) = ^(int numA, int numB) {

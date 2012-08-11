@@ -226,7 +226,7 @@
 // this method is used in case the user scrolled into a set of cells that dont have their image yet
 - (void)loadImagesForOnScreenRows
 {
-    int count = [[self.fetchedResultsController fetchedObjects] count];    
+    NSUInteger count = [[self.fetchedResultsController fetchedObjects] count];
     // NSLog(@"%d", count);
     if (count > 0)
     {

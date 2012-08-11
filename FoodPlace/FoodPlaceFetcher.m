@@ -4,6 +4,7 @@
 #import "JSONE.h"
 #import "UIAlertViewE.h"
 #import "Define.h"
+#import "Helpers.h"
 
 @implementation FoodPlaceFetcher
 
@@ -30,7 +31,7 @@
     }
     
     // reading http status code
-    int responseCode = [(NSHTTPURLResponse *)response statusCode];
+    NSUInteger responseCode = [Helpers readHttpStatusCodeFromResponse:response];
     NSLog(@"%d", responseCode);
     
     // return nil if error happen
@@ -67,8 +68,8 @@
     }
     
     // reading http status code
-    int responseCode = [(NSHTTPURLResponse *)response statusCode];
-    NSLog(@"%d", responseCode);
+    NSUInteger responseCode = [Helpers readHttpStatusCodeFromResponse:response];
+    NSLog(@"%d", [Helpers readHttpStatusCodeFromResponse:response]);
     
     // return nil if error happen
     if (responseCode != kHTTPRequestOK || responseData.length == 0) {

@@ -8,6 +8,7 @@
 
 #import "LazyImageDownloader.h"
 #import "Define.h"
+#import "Helpers.h"
 
 @implementation LazyImageDownloader
 
@@ -35,9 +36,9 @@
                                        queue:queue 
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
      {
-         
          // reading http status code
-         [self readHttpStatusCodeFromResponse:response];
+         NSUInteger responseCode = [Helpers readHttpStatusCodeFromResponse:response];
+         NSLog(@"%d", responseCode);
          
          // check data and error
          if ([data length] > 0 && nil == error) {
@@ -57,18 +58,7 @@
     [self.delegate imageDidLoad:self.indexPathInTableView];
 }
 
-#pragma mark - Reading Code and Load Image
-
-- (void)readHttpStatusCodeFromResponse:(NSURLResponse *)response {
-    
-    int responseCode = 0;
-    // check response is NSHTTPURLResponse class
-    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        // get status code
-        responseCode = [(NSHTTPURLResponse *)response statusCode];
-    }
-    NSLog(@"%d", responseCode); // log code
-}
+#pragma mark - Load Image
 
 - (void)imageWithData:(NSData *)data {
     

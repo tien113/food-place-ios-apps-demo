@@ -8,6 +8,7 @@
 
 #import "OrderUploader.h"
 #import "Define.h"
+#import "Helpers.h"
 
 @implementation OrderUploader
 
@@ -36,7 +37,7 @@
                                        queue:queue 
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) 
      {
-         int responseCode = [self readHttpStatusCodeFromResponse:response];
+         NSUInteger responseCode = [Helpers readHttpStatusCodeFromResponse:response];
          NSLog(@"%d", responseCode);
          
          // check response code is OK (201)
@@ -53,17 +54,6 @@
          // hide network activity indicator
          HideNetworkActivityIndicator();
      }];
-}
-
-- (int)readHttpStatusCodeFromResponse:(NSURLResponse *)response {
-    
-    int responseCode = 0;
-    // check response is NSHTTPURLResponse class
-    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        // get status code
-        responseCode = [(NSHTTPURLResponse *)response statusCode];
-    }
-    return responseCode;
 }
 
 // show Alert

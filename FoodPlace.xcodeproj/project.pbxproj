@@ -225,6 +225,7 @@
 		D4072B7715288B7D00EF3198 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D4281F7315CBB1C1005A5C38 /* Define.h */,
 				D464BF9A1557BB45008CB840 /* MacAddress.h */,
 				D464BF9B1557BB45008CB840 /* MacAddress.m */,
 				D4DC1F81153438FC006A8193 /* GradientButton.h */,
@@ -233,7 +234,6 @@
 				D471D34B1540810F00219083 /* LazyImageDownloader.m */,
 				D4A9FDF415A2E3B400676CB5 /* OrderUploader.h */,
 				D4A9FDF515A2E3B400676CB5 /* OrderUploader.m */,
-				D4281F7315CBB1C1005A5C38 /* Define.h */,
 				D4072B7915288BAC00EF3198 /* Helpers.h */,
 				D4072B7A15288BAC00EF3198 /* Helpers.m */,
 				D4FFAF45151754F1006476D0 /* FoodCell.h */,

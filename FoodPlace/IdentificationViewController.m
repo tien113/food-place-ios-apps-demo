@@ -33,8 +33,7 @@
     
     self.title = @"Identification";
     
-    NSString *macAddress = [MacAddress getMacAddress];
-    self.idLabel.text = [macAddress toSHA1];
+    self.idLabel.text = [MacAddress getMacAddress].toSHA1;
     [self.idLabel sizeToFit];
 }
 
