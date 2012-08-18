@@ -68,6 +68,7 @@
     self.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO_SYM, [self.food.price stringValue]];
     self.foodIngredientTextView.text = [NSString stringWithFormat:@"%@", self.food.ingredient];
     self.foodImageView.image = self.food.image;
+    [self.addToCartButton setTitle:@"Add to Cart" forState:UIControlStateNormal];
     
     NSLog(@"%@, %@, %@, %@", self.food.name, self.food.place.name, self.food.price, self.food.ingredient);
 }
