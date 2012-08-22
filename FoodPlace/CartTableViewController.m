@@ -400,13 +400,13 @@
         NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]];
         NSString *foodPlace = cart.food.place.name;
         
-        NSArray *foodObjects = @[ foodName, foodCount, foodPrice, foodPlace ];
-        NSArray *foodKeys = @[ FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE ];
-        
-        // NSArray *foodObjects = [NSArray arrayWithObjects:foodName, foodCount, foodPrice, foodPlace, nil];
-        // NSArray *foodKeys = [NSArray arrayWithObjects:FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE, nil];
-        
-        NSDictionary *orderDetailChild = [NSDictionary dictionaryWithObjects:foodObjects forKeys:foodKeys];
+        // NSArray *foodObjects = @[ foodName, foodCount, foodPrice, foodPlace ];
+        // NSArray *foodKeys = @[ FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE ];
+        // NSDictionary *orderDetailChild = [NSDictionary dictionaryWithObjects:foodObjects forKeys:foodKeys];
+        NSDictionary *orderDetailChild = @{ FOOD_NAME : foodName,
+                                            FOOD_COUNT : foodCount,
+                                            FOOD_PRICE : foodPrice,
+                                            FOOD_PLACE : foodPlace };
         
         [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
@@ -415,14 +415,17 @@
     // alloc order detail parent
     NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents forKeys:keyOrderDetailParents]; 
     
-    NSArray *orderObjects = @[ orderUuid, orderTotal, orderDate, orderDone, orderDetailParent ];
-    NSArray *orderKeys = @[ ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES ];
+    // NSArray *orderObjects = @[ orderUuid, orderTotal, orderDate, orderDone, orderDetailParent ];
+    // NSArray *orderKeys = @[ ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES ];
+    // NSDictionary *orderChild = [NSDictionary dictionaryWithObjects:orderObjects forKeys:orderKeys];
+
+    NSDictionary *orderChild = @{ ORDER_UUID : orderUuid,
+                                  ORDER_TOTAL : orderTotal,
+                                  ORDER_DATE : orderDate,
+                                  ORDER_DONE : orderDone,
+                                  ORDER_DETAILS_ATTRIBUTES : orderDetailParent};
     
-    // NSArray *orderObjects = [NSArray arrayWithObjects:orderUuid, orderTotal, orderDate, orderDone, orderDetailParent, nil];
-    // NSArray *orderKeys = [NSArray arrayWithObjects:ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES, nil];
-    
-    NSDictionary *orderChild = [NSDictionary dictionaryWithObjects:orderObjects forKeys:orderKeys];
-    NSDictionary *orderParent = @{ ORDER: orderChild };
+    NSDictionary *orderParent = @{ ORDER : orderChild };
     // NSDictionary *orderParent = [NSDictionary dictionaryWithObjectsAndKeys: orderChild, ORDER, nil];
     
     NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata

@@ -40,7 +40,7 @@
             cart.count = [self plus1:cartCount];
         }
         NSLog(@"%@", cart);
-    } else if (0 == [carts count]) {
+    } else if (0 == cart.count) {
         // insert data to Core Data
         cart = [NSEntityDescription insertNewObjectForEntityForName:@"Cart" inManagedObjectContext:context];
         cart.food = food;
