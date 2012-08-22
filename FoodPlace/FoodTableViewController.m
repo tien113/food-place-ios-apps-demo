@@ -198,14 +198,16 @@
 // start download image
 - (void)startImageDownload:(Food *)food forIndexPath:(NSIndexPath *)indexPath {
     
-    LazyImageDownloader *imageDownloader = self.imageDownloadsInProgress[indexPath];
+    // LazyImageDownloader *imageDownloader = self.imageDownloadsInProgress[indexPath];
+    LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
     
     if (nil == imageDownloader){
         imageDownloader = [[LazyImageDownloader alloc] init];
         imageDownloader.food = food;
         imageDownloader.indexPathInTableView = indexPath;
         imageDownloader.delegate = self;
-        self.imageDownloadsInProgress[indexPath] = imageDownloader;
+        // self.imageDownloadsInProgress[indexPath] = imageDownloader;
+        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
         [imageDownloader startDownload];
     }
 }
@@ -213,7 +215,8 @@
 // called by our LazyImageDownloader when an image is ready to be displayed
 - (void)imageDidLoad:(NSIndexPath *)indexPath {
     
-    LazyImageDownloader *imageDownloader = self.imageDownloadsInProgress[indexPath];
+    // LazyImageDownloader *imageDownloader = self.imageDownloadsInProgress[indexPath];
+    LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
     if (nil != imageDownloader)
     {
         FoodCell *cell = (FoodCell *)[self.tableView cellForRowAtIndexPath:imageDownloader.indexPathInTableView];
