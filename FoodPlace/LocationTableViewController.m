@@ -113,7 +113,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocatio
 {
     [self sortPlacesByDistanceFrom:newLocation]; // distance from places
-    [self.tableView reloadData]; // reload data tableView
+    // [self.tableView reloadData]; // reload data tableView
     [manager stopUpdatingLocation]; // stop updating location  
 }
 
