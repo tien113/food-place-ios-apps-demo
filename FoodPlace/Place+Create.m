@@ -28,9 +28,9 @@
     NSError *error = nil;
     NSArray *places = [context executeFetchRequest:request error:&error]; // fetch all places from Core Data
     
-    if (!places || [places count] > 1) {
+    if (!places || places.count > 1) {
         // error
-    } else if (![places count]) {
+    } else if (!places.count) {
         /*
         // insert data to Core Data
         place = [NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:context];

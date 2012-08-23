@@ -29,9 +29,9 @@
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error]; // fetch all foods from Core Data
     
-    if (!matches || [matches count] > 1) {
+    if (!matches || matches.count > 1) {
         // error  
-    } else if ([matches count] == 0) {
+    } else if (matches.count == 0) {
         /*
         // insert data to Core Data
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];

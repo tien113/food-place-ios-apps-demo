@@ -29,7 +29,7 @@
 // return NSArray Annotation
 - (NSArray *)mapAnnotations {
     
-    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[self.places count]];
+    NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:self.places.count];
     [self.places enumerateObjectsUsingBlock:^(NSDictionary *place, NSUInteger idx, BOOL *stop) {
         [annotations addObject:[PlaceAnnotationView annotationForPlace:place]]; // add annotation to places
     }]; 
