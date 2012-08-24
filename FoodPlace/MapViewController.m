@@ -109,7 +109,7 @@
             aView.calloutOffset = CGPointMake(0, 0); // set position call out off set
             aView.image = [UIImage imageNamed:MY_PIN_IMAGE]; // set place's image for pin
             aView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)]; // set frame for pin's image
-            [aView setSelected:YES]; // set selected
+            aView.selected = YES; // set selected
         }
         
         aView.annotation = annotation;
