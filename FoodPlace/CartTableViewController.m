@@ -133,14 +133,19 @@
     }
 }
 
-// check Cart Label
-- (void)showCartLabel {
+- (void)initCartLabel {
     
     // init cart label with frame
     self.cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 30.0f)];
     self.cartLabel.text = @"Nothing in Cart. Please, Order !!!";
     self.cartLabel.textColor = [UIColor blackColor];
     self.cartLabel.textAlignment = UITextAlignmentCenter;
+}
+
+// check Cart Label
+- (void)showCartLabel {
+    
+    [self initCartLabel];
     
     // check totalOrder is zero or not
     if (0 == [self totalOrder])
