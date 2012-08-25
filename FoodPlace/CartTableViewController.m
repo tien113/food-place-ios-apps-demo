@@ -428,7 +428,7 @@
                                   ORDER_TOTAL : orderTotal,
                                   ORDER_DATE : orderDate,
                                   ORDER_DONE : orderDone,
-                                  ORDER_DETAILS_ATTRIBUTES : orderDetailParent};
+                                  ORDER_DETAILS_ATTRIBUTES : orderDetailParent };
     
     NSDictionary *orderParent = @{ ORDER : orderChild };
     // NSDictionary *orderParent = [NSDictionary dictionaryWithObjectsAndKeys: orderChild, ORDER, nil];
