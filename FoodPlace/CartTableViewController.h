@@ -11,7 +11,7 @@
 #import "OrderUploader.h"
 #import "BadgeValue.h"
 
-@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate, OrderUploaderDelegate, BadgeValueDelegate>
+@interface CartTableViewController : CoreDataTableViewController <UIAlertViewDelegate, UIActionSheetDelegate, OrderUploaderDelegate, BadgeValueDelegate>
 
 @property (nonatomic, strong) UIManagedDocument *document;
 

@@ -341,16 +341,28 @@
 // Place Order action
 - (IBAction)PlaceOrder:(id)sender {
     
-    [self showConfirmation];
+    [self showAlertConfirmation];
 }
 
 // Empty Cart action
 - (IBAction)EmptyCart:(id)sender {
-    
-    [self emptyCart:self.document];
+
+    [self showActionSheetConfirmation];
 }
 
-- (void)showConfirmation {
+- (void)showActionSheetConfirmation {
+        
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Confirmation"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Do it!", nil];
+        [actionSheet showInView:self.view];
+    });
+}
+
+- (void)showAlertConfirmation {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirmation" 
@@ -360,6 +372,21 @@
                                               otherButtonTitles:@"YES", nil];
         [alert show];
     });
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if ([@"Do it!" isEqualToString:title]) {
+        [self emptyCart:self.document];
+        NSLog(@"Do it! was selected.");
+    }
+    if ([@"Cancel" isEqualToString:title]) {
+        NSLog(@"Cancel was selected.");
+    }
 }
 
 #pragma mark - UIAlertViewDelegate
