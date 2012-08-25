@@ -84,6 +84,8 @@
 // Cart+Food.h
 #define CART_COUNT @"count"
 
+// prepareOrder
+#define FALSE_VALUE @"0"
 
 
 

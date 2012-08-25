@@ -394,7 +394,7 @@
     NSString *orderUuid = [MacAddress getMacAddress].toSHA1; // get UUID 
     NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
     NSString *orderDate = [[NSDate date] toString];
-    NSString *orderDone = @"0"; // set order to FALSE
+    NSString *orderDone = FALSE_VALUE; // set order to FALSE
     
     __block NSMutableArray *orderDetailParents = [NSMutableArray array]; // init array
     __block NSMutableArray *keyOrderDetailParents = [NSMutableArray array];
