@@ -16,6 +16,16 @@
 @synthesize orderData = _orderData;
 @synthesize delegate = _delegate;
 
+- (id)initWithURL:(NSURL *)url delegate:(id)delegate orderData:(NSData *)data {
+    
+    if (self = [super init]) {
+        self.url = url;
+        self.delegate = delegate;
+        self.orderData = data;
+    }
+    return self;
+}
+
 - (void)startUpload {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url]; // fetch request with url

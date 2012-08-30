@@ -16,6 +16,17 @@
 @synthesize delegate = _delegate;
 @synthesize tabBarController = _tabBarController;
 
+// replace init with the fast way
+- (id)initWithDocument:(UIManagedDocument *)document delegate:(id)delegate tabBarController:(UITabBarController *)controller {
+    
+    if (self = [super init]) {
+        self.document = document;
+        self.delegate = delegate;
+        self.tabBarController = controller;
+    }
+    return self;
+}
+
 // check badge value nil
 - (void)checkSetBadgeValue:(NSUInteger)count {
     

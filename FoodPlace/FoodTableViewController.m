@@ -33,10 +33,9 @@
 
 - (void)badgeValueUpdate {
     
-    BadgeValue *badgeValue = [[BadgeValue alloc] init];
-    badgeValue.document = self.document;
-    badgeValue.tabBarController = self.tabBarController;
-    badgeValue.delegate = self;
+    BadgeValue *badgeValue = [[BadgeValue alloc] initWithDocument:self.document
+                                                         delegate:self
+                                                 tabBarController:self.tabBarController];
     [badgeValue startSetBadgeValue];
 }
 
@@ -202,10 +201,9 @@
     LazyImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
     
     if (nil == imageDownloader){
-        imageDownloader = [[LazyImageDownloader alloc] init];
-        imageDownloader.food = food;
-        imageDownloader.indexPathInTableView = indexPath;
-        imageDownloader.delegate = self;
+        imageDownloader = [[LazyImageDownloader alloc] initWithObject:food
+                                                             delegate:self
+                                               atIndexPathInTableView:indexPath];
         // self.imageDownloadsInProgress[indexPath] = imageDownloader;
         [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
         [imageDownloader startDownload];

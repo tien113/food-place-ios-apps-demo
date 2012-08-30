@@ -32,10 +32,9 @@
 
 - (void)badgeValueUpdate {
     
-    BadgeValue *badgeValue = [[BadgeValue alloc] init];
-    badgeValue.document = self.document;
-    badgeValue.tabBarController = self.tabBarController;
-    badgeValue.delegate = self;
+    BadgeValue *badgeValue = [[BadgeValue alloc] initWithDocument:self.document
+                                                         delegate:self
+                                                 tabBarController:self.tabBarController];
     [badgeValue startSetBadgeValue];
 }
 

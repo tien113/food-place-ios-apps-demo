@@ -35,10 +35,9 @@
 
 - (void)badgeValueUpdate {
     
-    BadgeValue *badgeValue = [[BadgeValue alloc] init];
-    badgeValue.document = self.document;
-    badgeValue.tabBarController = self.tabBarController;
-    badgeValue.delegate = self;
+    BadgeValue *badgeValue = [[BadgeValue alloc] initWithDocument:self.document
+                                                         delegate:self
+                                                 tabBarController:self.tabBarController];
     [badgeValue startSetBadgeValue];
 }
 
@@ -411,7 +410,9 @@
     dispatch_queue_t sendQ = dispatch_queue_create("Send Order", NULL);
     dispatch_async(sendQ, ^{       
         NSArray *carts = [self fetchedCarts];
-        [self performSelectorOnMainThread:@selector(prepareOrder:) withObject:carts waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(prepareOrder:)
+                               withObject:carts
+                            waitUntilDone:YES];
     });
     dispatch_release(sendQ);
 }
@@ -469,10 +470,9 @@
 - (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
     
     if (nil != data) {
-        OrderUploader *orderUploader = [[OrderUploader alloc] init];
-        orderUploader.url = url;
-        orderUploader.orderData = data;
-        orderUploader.delegate = self;
+        OrderUploader *orderUploader = [[OrderUploader alloc] initWithURL:url
+                                                                 delegate:self
+                                                                orderData:data];
         [orderUploader startUpload];
     }
 }

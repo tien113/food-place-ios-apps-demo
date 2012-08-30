@@ -22,5 +22,6 @@
 @property (nonatomic, strong) id <LazyImageDownloaderDelegate> delegate;
 
 - (void)startDownload;
+- (id)initWithObject:(Food *)food delegate:(id)delegate atIndexPathInTableView:(NSIndexPath *)indexPath;
 
 @end

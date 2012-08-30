@@ -16,6 +16,16 @@
 @synthesize indexPathInTableView = _indexPathInTableView;
 @synthesize delegate = _delegate;
 
+- (id)initWithObject:(Food *)food delegate:(id)delegate atIndexPathInTableView:(NSIndexPath *)indexPath {
+    
+    if (self = [super init]) {
+        self.food = food;
+        self.delegate = delegate;
+        self.indexPathInTableView = indexPath;
+    }
+    return self;
+}
+
 #pragma mark - NSURLConnection Asynchronous
 
 - (void)startDownload {
