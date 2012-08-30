@@ -445,7 +445,7 @@
     }];
     
     // alloc order detail parent
-    NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents forKeys:keyOrderDetailParents]; 
+    NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents forKeys:keyOrderDetailParents];
     
     // NSArray *orderObjects = @[ orderUuid, orderTotal, orderDate, orderDone, orderDetailParent ];
     // NSArray *orderKeys = @[ ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES ];
@@ -468,16 +468,18 @@
 // uploader delegate
 - (void)startOrderUpload:(NSURL *)url withData:(NSData *)data {
     
-    OrderUploader *orderUploader = [[OrderUploader alloc] init];
-    orderUploader.url = url;
-    orderUploader.orderData = data;
-    orderUploader.delegate = self;
-    [orderUploader startUpload];
+    if (nil != data) {
+        OrderUploader *orderUploader = [[OrderUploader alloc] init];
+        orderUploader.url = url;
+        orderUploader.orderData = data;
+        orderUploader.delegate = self;
+        [orderUploader startUpload];
+    }
 }
 
 // return nsarray carts
 - (NSArray *)fetchedCarts {
-    
+  
     return [self.fetchedResultsController fetchedObjects]; // fetch all carts
 }
 
