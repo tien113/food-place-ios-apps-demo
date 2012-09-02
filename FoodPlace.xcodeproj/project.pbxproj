@@ -70,7 +70,6 @@
 		D4C8389415445A7E00A9D718 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C8389315445A7E00A9D718 /* Food.m */; };
 		D4C8389715445A7E00A9D718 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C8389615445A7E00A9D718 /* Cart.m */; };
 		D4C8389A15445A7E00A9D718 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C8389915445A7E00A9D718 /* Place.m */; };
-		D4CBB9ED15F35CF000AD4F76 /* PrepareOrderData.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CBB9EC15F35CF000AD4F76 /* PrepareOrderData.m */; };
 		D4CE349014FA65D800F636AD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CE348F14FA65D800F636AD /* MapViewController.m */; };
 		D4CE349314FA662E00F636AD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE349214FA662E00F636AD /* MapKit.framework */; };
 		D4CE349514FA663400F636AD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CE349414FA663400F636AD /* CoreLocation.framework */; };
@@ -183,8 +182,6 @@
 		D4C8389615445A7E00A9D718 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
 		D4C8389815445A7E00A9D718 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		D4C8389915445A7E00A9D718 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
-		D4CBB9EB15F35CF000AD4F76 /* PrepareOrderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareOrderData.h; sourceTree = "<group>"; };
-		D4CBB9EC15F35CF000AD4F76 /* PrepareOrderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareOrderData.m; sourceTree = "<group>"; };
 		D4CE348E14FA65D800F636AD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		D4CE348F14FA65D800F636AD /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		D4CE349214FA662E00F636AD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -249,8 +246,6 @@
 				D4B04BA8152F438E00B81539 /* SpinnerView.m */,
 				D4A9FDF815A2ECD900676CB5 /* BadgeValue.h */,
 				D4A9FDF915A2ECD900676CB5 /* BadgeValue.m */,
-				D4CBB9EB15F35CF000AD4F76 /* PrepareOrderData.h */,
-				D4CBB9EC15F35CF000AD4F76 /* PrepareOrderData.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -581,7 +576,6 @@
 				D4A9FDF615A2E3B400676CB5 /* OrderUploader.m in Sources */,
 				D4A9FDFA15A2ECD900676CB5 /* BadgeValue.m in Sources */,
 				D42F8FE115B19692009C0A65 /* UIAlertView+NSError.m in Sources */,
-				D4CBB9ED15F35CF000AD4F76 /* PrepareOrderData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

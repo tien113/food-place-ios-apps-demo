@@ -26,7 +26,10 @@
     
     // init indicator
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+    indicator.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |
+                                 UIViewAutoresizingFlexibleRightMargin |
+                                 UIViewAutoresizingFlexibleBottomMargin |
+                                 UIViewAutoresizingFlexibleLeftMargin;
     
     // set indicator in center
     indicator.center = superView.center;

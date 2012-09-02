@@ -16,7 +16,8 @@
 
 // Food Place Web Service
 #define kFoodPlacePlacesURL [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", kHostURL, kPlacesJSON]]
-#define kFoodPlaceFoodsURL [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", kHostURL, kFoodsJSON]]
+#define kFoodPlaceFoodsURL  [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", kHostURL, kFoodsJSON]]
+#define kFoodPlaceOrdersURL [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", kHostURL, kOrdersJSON]]
 
 // Core Data
 #define PLACE_ID                @"id"
@@ -40,17 +41,15 @@
 #define PLACE               @"place"
 
 // EURO Symbol and Total order format
-#define EURO_SYM @"€"
-#define TOTAL_STR @"Total = %@%0.2f"
+#define EURO_SYM        @"€"
+#define TOTAL_STR       @"Total = %@%0.2f"
 
 // http status code
-#define kHTTPRequestOK 200
-#define kHTTPRequestCreated 201
-#define kHTTPRequestUpdated 204
+#define kHTTPRequestOK          200
+#define kHTTPRequestCreated     201
+#define kHTTPRequestUpdated     204
 
 // Order Web Service
-#define kFoodPlaceOrdersURL [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", kHostURL, kOrdersJSON]]
-
 #define ORDER                      @"order"
 #define ORDER_UUID                 @"order_uuid"
 #define ORDER_TOTAL                @"order_total"
@@ -72,20 +71,20 @@
 #define hideSpinnerView() [self.spinner removeSpinner]
 
 // map view controller
-#define LATITUDE 63.097458
-#define LONGITUDE 21.61903
+#define LATITUDE            63.097458
+#define LONGITUDE           21.61903
 
-#define LATITUDE_DELTA 0.0175
-#define LONGITUDE_DELTA 0.0175
+#define LATITUDE_DELTA      0.0175
+#define LONGITUDE_DELTA     0.0175
 
-#define MY_PIN @"MyPin"
-#define MY_PIN_IMAGE @"map-pin.png"
+#define MY_PIN              @"MyPin"
+#define MY_PIN_IMAGE        @"map-pin.png"
 
 // Cart+Food.h
-#define CART_COUNT @"count"
+#define CART_COUNT          @"count"
 
 // prepareOrder
-#define FALSE_VALUE @"0"
+#define FALSE_VALUE         @"0"
 
 
 

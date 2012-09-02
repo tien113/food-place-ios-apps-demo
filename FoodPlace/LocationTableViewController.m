@@ -158,12 +158,14 @@
     
     // copy place object to next ViewController
     if ([segue.destinationViewController respondsToSelector:@selector(setPlace:)]) {
-        [segue.destinationViewController performSelector:@selector(setPlace:) withObject:place];
+        [segue.destinationViewController performSelector:@selector(setPlace:)
+                                              withObject:place];
     }
   
     // copy document object to next ViewController
     if ([segue.destinationViewController respondsToSelector:@selector(setDocument:)]) {
-        [segue.destinationViewController performSelector:@selector(setDocument:) withObject:self.document];
+        [segue.destinationViewController performSelector:@selector(setDocument:)
+                                              withObject:self.document];
     }
 }
 

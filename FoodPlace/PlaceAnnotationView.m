@@ -42,7 +42,7 @@
     CLLocationCoordinate2D coordinate;
     // coordinate.latitude = [self.place[PLACE_LAT] doubleValue];
     // coordinate.longitude = [self.place[PLACE_LOG] doubleValue];
-    coordinate.latitude = [[self.place objectForKey:PLACE_LAT] doubleValue];
+    coordinate.latitude  = [[self.place objectForKey:PLACE_LAT] doubleValue];
     coordinate.longitude = [[self.place objectForKey:PLACE_LOG] doubleValue];
     return coordinate;
 }
