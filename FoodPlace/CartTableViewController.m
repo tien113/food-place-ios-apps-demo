@@ -425,9 +425,6 @@
 
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
 
-        // NSArray *foodObjects = @[ foodName, foodCount, foodPrice, foodPlace ];
-        // NSArray *foodKeys = @[ FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE ];
-        // NSDictionary *orderDetailChild = [NSDictionary dictionaryWithObjects:foodObjects forKeys:foodKeys];
         NSDictionary *orderDetailChild = @{ FOOD_NAME : [prepareOrderData foodName:cart],
                                             FOOD_COUNT : [prepareOrderData foodCount:cart],
                                             FOOD_PRICE : [prepareOrderData foodPrice:cart],
@@ -439,10 +436,6 @@
     
     // alloc order detail parent
     NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents forKeys:keyOrderDetailParents];
-    
-    // NSArray *orderObjects = @[ orderUuid, orderTotal, orderDate, orderDone, orderDetailParent ];
-    // NSArray *orderKeys = @[ ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES ];
-    // NSDictionary *orderChild = [NSDictionary dictionaryWithObjects:orderObjects forKeys:orderKeys];
 
     NSDictionary *orderChild = @{ ORDER_UUID : prepareOrderData.orderUuid,
                                   ORDER_TOTAL : [prepareOrderData orderTotal:[self totalOrder]],
