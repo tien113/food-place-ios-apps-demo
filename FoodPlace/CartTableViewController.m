@@ -12,10 +12,9 @@
 #import "Place+Create.h"
 #import "CartCell.h"
 #import "Helpers.h"
-#import "Cryptography.h"
-#import "NSDateE.h"
 #import "JSONE.h"
 #import "Define.h"
+#import "PrepareOrderData.h"
 
 @interface CartTableViewController ()
 
@@ -418,28 +417,21 @@
 }
 
 - (void)prepareOrder:(NSArray *)carts {
-    
-    NSString *orderUuid = [MacAddress getMacAddress].toSHA1; // get UUID 
-    NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
-    NSString *orderDate = [[NSDate date] toString];
-    NSString *orderDone = FALSE_VALUE; // set order to FALSE
+
+    PrepareOrderData *prepareOrderData = [[PrepareOrderData alloc] init];
     
     __block NSMutableArray *orderDetailParents = [NSMutableArray array]; // init array
     __block NSMutableArray *keyOrderDetailParents = [NSMutableArray array];
 
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        NSString *foodName = cart.food.name;
-        NSString *foodCount = [cart.count stringValue];
-        NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price andNumber:cart.count]];
-        NSString *foodPlace = cart.food.place.name;
-        
+
         // NSArray *foodObjects = @[ foodName, foodCount, foodPrice, foodPlace ];
         // NSArray *foodKeys = @[ FOOD_NAME, FOOD_COUNT, FOOD_PRICE, FOOD_PLACE ];
         // NSDictionary *orderDetailChild = [NSDictionary dictionaryWithObjects:foodObjects forKeys:foodKeys];
-        NSDictionary *orderDetailChild = @{ FOOD_NAME : foodName,
-                                            FOOD_COUNT : foodCount,
-                                            FOOD_PRICE : foodPrice,
-                                            FOOD_PLACE : foodPlace };
+        NSDictionary *orderDetailChild = @{ FOOD_NAME : [prepareOrderData foodName:cart],
+                                            FOOD_COUNT : [prepareOrderData foodCount:cart],
+                                            FOOD_PRICE : [prepareOrderData foodPrice:cart],
+                                            FOOD_PLACE : [prepareOrderData foodPlace:cart] };
         
         [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
@@ -452,10 +444,10 @@
     // NSArray *orderKeys = @[ ORDER_UUID, ORDER_TOTAL, ORDER_DATE, ORDER_DONE, ORDER_DETAILS_ATTRIBUTES ];
     // NSDictionary *orderChild = [NSDictionary dictionaryWithObjects:orderObjects forKeys:orderKeys];
 
-    NSDictionary *orderChild = @{ ORDER_UUID : orderUuid,
-                                  ORDER_TOTAL : orderTotal,
-                                  ORDER_DATE : orderDate,
-                                  ORDER_DONE : orderDone,
+    NSDictionary *orderChild = @{ ORDER_UUID : prepareOrderData.orderUuid,
+                                  ORDER_TOTAL : [prepareOrderData orderTotal:[self totalOrder]],
+                                  ORDER_DATE :prepareOrderData.orderDate,
+                                  ORDER_DONE : prepareOrderData.orderDone,
                                   ORDER_DETAILS_ATTRIBUTES : orderDetailParent };
     
     NSDictionary *orderParent = @{ ORDER : orderChild };
