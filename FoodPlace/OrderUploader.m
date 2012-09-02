@@ -55,7 +55,7 @@
              [self showAlertDone]; // can use with delegate = self.delegate
          } else if (504 == responseCode) {
              [self error504];
-         } else if (nil != error && NSURLErrorTimedOut == error.code) {
+         } else if (nil != error && error.code == NSURLErrorTimedOut) {
              [self timeOut];
          } else if (nil != error) {
              [self uploadError:error];

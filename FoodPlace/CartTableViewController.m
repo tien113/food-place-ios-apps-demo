@@ -425,7 +425,7 @@
 
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
 
-        NSDictionary *orderDetailChild = @{ FOOD_NAME : [prepareOrderData foodName:cart],
+        NSDictionary *orderDetailChild = @{ FOOD_NAME  : [prepareOrderData foodName:cart],
                                             FOOD_COUNT : [prepareOrderData foodCount:cart],
                                             FOOD_PRICE : [prepareOrderData foodPrice:cart],
                                             FOOD_PLACE : [prepareOrderData foodPlace:cart] };
@@ -435,12 +435,13 @@
     }];
     
     // alloc order detail parent
-    NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents forKeys:keyOrderDetailParents];
+    NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents
+                                                                  forKeys:keyOrderDetailParents];
 
-    NSDictionary *orderChild = @{ ORDER_UUID : prepareOrderData.orderUuid,
-                                  ORDER_TOTAL : [prepareOrderData orderTotal:[self totalOrder]],
-                                  ORDER_DATE :prepareOrderData.orderDate,
-                                  ORDER_DONE : prepareOrderData.orderDone,
+    NSDictionary *orderChild = @{ ORDER_UUID               : prepareOrderData.orderUuid,
+                                  ORDER_TOTAL              : [prepareOrderData orderTotal:[self totalOrder]],
+                                  ORDER_DATE               : prepareOrderData.orderDate,
+                                  ORDER_DONE               : prepareOrderData.orderDone,
                                   ORDER_DETAILS_ATTRIBUTES : orderDetailParent };
     
     NSDictionary *orderParent = @{ ORDER : orderChild };
@@ -448,7 +449,8 @@
     
     NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
  
-    [self startOrderUpload:kFoodPlaceOrdersURL withData:orderData];    
+    [self startOrderUpload:kFoodPlaceOrdersURL
+                  withData:orderData];
 }
 
 // uploader delegate
