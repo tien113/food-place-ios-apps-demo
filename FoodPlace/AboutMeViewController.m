@@ -14,9 +14,12 @@
 
 @implementation AboutMeViewController
 
+@synthesize aboutMeTextView=_aboutMeTextView;
+
 - (void)loadData {
     
     self.title = @"About Me";
+    self.aboutMeTextView.text = @"This is my application.";
 }
 
 #pragma mark - View Controller Life Cycle
@@ -31,6 +34,7 @@
 
 - (void)viewDidUnload {
 
+    [self setAboutMeTextView:nil];
     [super viewDidUnload];
 }
 
