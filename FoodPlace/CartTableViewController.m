@@ -377,15 +377,14 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-    
-    if ([@"Do it!" isEqualToString:title]) {
-        [self emptyCart:self.document];
-        NSLog(@"Do it! was selected.");
-    }
-    if ([@"Cancel" isEqualToString:title]) {
-        NSLog(@"Cancel was selected.");
+   
+    switch (buttonIndex) {
+        case 0:
+            [self emptyCart:self.document];
+            NSLog(@"Do it! was selected.");
+            break;
+        default:
+            break;
     }
 }
 
