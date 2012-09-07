@@ -138,7 +138,7 @@
     // init cart label with frame
     self.cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 30.0f)];
     self.cartLabel.text = @"Your Shopping Cart is empty ...";
-    self.cartLabel.textColor = [UIColor blackColor];
+    self.cartLabel.textColor = [UIColor grayColor];
     self.cartLabel.textAlignment = UITextAlignmentCenter;
 }
 
