@@ -788,7 +788,7 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="priceLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Td7-Y2-GIL">
                                             <rect key="frame" x="254" y="17" width="46" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -860,6 +860,105 @@
         <image name="social-inside-blogblogs.png" width="24" height="24"/>
         <image name="whosamungus.png" width="24" height="24"/>
     </resources>
+    <classes>
+        <class className="AboutMeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutMeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="aboutMeTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="CartCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="countLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CartTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="EmptyCart:"/>
+                <relationship kind="action" name="PlaceOrder:"/>
+                <relationship kind="outlet" name="emptyCartBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="placeOrderBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="totalOrderLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
+        <class className="EmailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EmailViewController.h"/>
+        </class>
+        <class className="FoodCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="placeNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FoodDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodDetailTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="AddToCart:"/>
+                <relationship kind="outlet" name="addToCartButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="foodIngredientTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="placeNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FoodTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodTableViewController.h"/>
+        </class>
+        <class className="GradientButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientButton.h"/>
+        </class>
+        <class className="IdentificationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IdentificationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="help:"/>
+                <relationship kind="outlet" name="idLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LocationDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationDetailTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="openingTime1Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="openingTime2Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="openingTime3Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="openingTime4Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="phoneNumberTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="placeAddressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="placeNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LocationTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationTableViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showLocation:"/>
+                <relationship kind="outlet" name="buttonBarSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="MoreTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreTableViewController.h"/>
+        </class>
+        <class className="WebsiteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebsiteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
