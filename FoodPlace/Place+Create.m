@@ -48,7 +48,7 @@
         */
         
         place = [NSEntityDescription insertNewObjectForEntityForName:@"Place" inManagedObjectContext:context];
-        place.name = [webService objectForKey:PLACE_NAME];
+        place.name = [webService valueForKey:PLACE_NAME];
         place.lat = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:PLACE_LAT]]; // convert string to decimal number
         place.log = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:PLACE_LOG]]; // convert string to decimal number
         place.address = [webService valueForKey:PLACE_ADDRESS];
