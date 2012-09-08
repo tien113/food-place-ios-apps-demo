@@ -12,5 +12,6 @@
 
 + (float)timeNSDecimalNumber:(NSDecimalNumber *)numberA andNumber:(NSNumber *)numberB;
 + (NSUInteger)readHttpStatusCodeFromResponse:(NSURLResponse *)response;
++ (void)changeBackBarButton:(UINavigationItem *)navigationItem;
 
 @end

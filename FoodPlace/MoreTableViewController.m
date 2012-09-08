@@ -7,6 +7,7 @@
 //
 
 #import "MoreTableViewController.h"
+#import "Helpers.h"
 
 @interface MoreTableViewController () 
 
@@ -18,6 +19,7 @@
 - (void)loadData {
     
     self.title = @"More";
+    [Helpers changeBackBarButton:self.navigationItem];
 }
 
 #pragma mark - Segue

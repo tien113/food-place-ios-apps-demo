@@ -10,6 +10,7 @@
 #import "Place+Create.h"
 #import "FoodPlaceAppDelegate.h"
 #import "UIAlertViewE.h"
+#import "Helpers.h"
 
 @interface LocationTableViewController ()
 
@@ -62,6 +63,7 @@
     
     // load document
     self.document = FoodPlaceAppDelegate.sharedDocument;
+    [Helpers changeBackBarButton:self.navigationItem];
     
     // load location manager
     CLLocationManager *locationManager = FoodPlaceAppDelegate.sharedLocationManager;

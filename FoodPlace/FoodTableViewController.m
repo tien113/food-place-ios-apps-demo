@@ -114,6 +114,7 @@
     
     // load document
     self.document = FoodPlaceAppDelegate.sharedDocument;
+    [Helpers changeBackBarButton:self.navigationItem];
 }
 
 #pragma mark - View Controller Life Cycle

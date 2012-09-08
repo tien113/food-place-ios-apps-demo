@@ -34,4 +34,13 @@
     return responseCode;
 }
 
++ (void)changeBackBarButton:(UINavigationItem *)navigationItem {
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:nil
+                                                                  action:nil];
+    navigationItem.backBarButtonItem = backButton;
+}
+
 @end
