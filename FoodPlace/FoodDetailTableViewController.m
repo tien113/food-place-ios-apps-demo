@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Helpers.h"
 #import "Define.h"
+#import "NSNumberE.h"
 
 @interface FoodDetailTableViewController ()
 
@@ -64,7 +65,7 @@
     [self.foodNameLabel sizeToFit];
     self.placeNameLabel.text = [NSString stringWithFormat:@"%@", self.food.place.name];
     [self.placeNameLabel sizeToFit];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO_SYM, [self.food.price stringValue]];
+    self.priceLabel.text = [NSString stringWithFormat:@"%@", self.food.price.currencyFormatter];
     self.foodIngredientTextView.text = [NSString stringWithFormat:@"%@", self.food.ingredient];
     self.foodImageView.image = self.food.image;
     [self.addToCartButton setTitle:@"Add to Cart" forState:UIControlStateNormal];

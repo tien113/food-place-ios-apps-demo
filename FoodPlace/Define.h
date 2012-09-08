@@ -40,10 +40,6 @@
 #define FOOD_ID             @"id"
 #define PLACE               @"place"
 
-// EURO Symbol and Total order format
-#define EURO_SYM        @"€"
-#define TOTAL_STR       @"Total = %@%0.2f"
-
 // http status code
 #define kHTTPRequestOK          200
 #define kHTTPRequestCreated     201

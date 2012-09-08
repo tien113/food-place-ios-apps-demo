@@ -16,6 +16,7 @@
 #import "Define.h"
 #import "Cryptography.h"
 #import "NSDateE.h"
+#import "NSNumberE.h"
 
 @interface CartTableViewController ()
 
@@ -65,7 +66,7 @@
     
     if (_totalOrderLabel != totalOrderLabel) {
         _totalOrderLabel = totalOrderLabel;
-        _totalOrderLabel.frame = CGRectMake(-20.0f, 0.0f, 0.0f, 30.0f); // set frame's position
+        _totalOrderLabel.frame = CGRectMake(-16.0f, 0.0f, 0.0f, 30.0f); // set frame's position
     }
 }
 
@@ -73,9 +74,10 @@
 - (void)showTotalOrderLabelWhenRemove {
     
     // check totalOrder is zero or not
-    if (0 != [self totalOrder])
-        self.totalOrderLabel.text = [NSString stringWithFormat:TOTAL_STR, EURO_SYM, [self totalOrder]];
-    else 
+    if (0 != [self totalOrder]) {
+        NSNumber *totalOrder = [NSNumber numberWithFloat:[self totalOrder]];
+        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@", totalOrder.currencyFormatter];
+    } else
         self.totalOrderLabel.hidden = YES; // set hidden total order label 
     
 }
@@ -86,7 +88,8 @@
     // check totalOrder is zero or not
     if (0 != [self totalOrder]) {
         self.totalOrderLabel.hidden = NO; // set hidden total order label
-        self.totalOrderLabel.text = [NSString stringWithFormat:TOTAL_STR, EURO_SYM, [self totalOrder]];
+        NSNumber *totalOrder = [NSNumber numberWithFloat:[self totalOrder]];
+        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@", totalOrder.currencyFormatter];
     }
 }
 
@@ -265,8 +268,9 @@
     Cart *cart = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", cart.food.name];
     cell.countLabel.text = [NSString stringWithFormat:@"x%@", [cart.count stringValue]];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@%0.2f", EURO_SYM, [Helpers timeNSDecimalNumber:cart.food.price
-                                                                                               andNumber:cart.count]];
+    NSNumber *price = [NSNumber numberWithFloat:[Helpers timeNSDecimalNumber:cart.food.price
+                                                                   andNumber:cart.count]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@", price.currencyFormatter];
     
     // outlet
     [self hiddenCartLabel];

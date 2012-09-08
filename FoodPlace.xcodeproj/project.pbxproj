@@ -77,6 +77,7 @@
 		D4DC1F83153438FC006A8193 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DC1F82153438FC006A8193 /* GradientButton.m */; };
 		D4E7850914FA9F8D005AF528 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E7850814FA9F8D005AF528 /* LocationTableViewController.m */; };
 		D4E7850C14FA9F9A005AF528 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E7850B14FA9F9A005AF528 /* MoreTableViewController.m */; };
+		D4F0122E15FB740600B8EF64 /* NSNumber+CurrencyFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F0122D15FB740600B8EF64 /* NSNumber+CurrencyFormatter.m */; };
 		D4FFAF3615174CB5006476D0 /* Cart+Food.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF3515174CB5006476D0 /* Cart+Food.m */; };
 		D4FFAF3C15174F17006476D0 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF3B15174F17006476D0 /* CoreDataTableViewController.m */; };
 		D4FFAF4315175466006476D0 /* FoodDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FFAF4215175466006476D0 /* FoodDetailTableViewController.m */; };
@@ -193,6 +194,9 @@
 		D4E7850814FA9F8D005AF528 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
 		D4E7850A14FA9F9A005AF528 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		D4E7850B14FA9F9A005AF528 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
+		D4F0122C15FB740600B8EF64 /* NSNumber+CurrencyFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CurrencyFormatter.h"; sourceTree = "<group>"; };
+		D4F0122D15FB740600B8EF64 /* NSNumber+CurrencyFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CurrencyFormatter.m"; sourceTree = "<group>"; };
+		D4F0122F15FB74A500B8EF64 /* NSNumberE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSNumberE.h; sourceTree = "<group>"; };
 		D4FFAF3415174CB5006476D0 /* Cart+Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cart+Food.h"; sourceTree = "<group>"; };
 		D4FFAF3515174CB5006476D0 /* Cart+Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Cart+Food.m"; sourceTree = "<group>"; };
 		D4FFAF3A15174F17006476D0 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				D40C740014FA5CF3005FCD04 /* MainStoryboard.storyboard */,
+				D4F0122215FB716200B8EF64 /* NSNumberE */,
 				D42F8FDD15B19600009C0A65 /* UIAlertViewE */,
 				D40F1F771555551B00ADEF07 /* NSDateE */,
 				D42E456C1552D79B009BD4CA /* Cryptography */,
@@ -440,6 +445,16 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		D4F0122215FB716200B8EF64 /* NSNumberE */ = {
+			isa = PBXGroup;
+			children = (
+				D4F0122C15FB740600B8EF64 /* NSNumber+CurrencyFormatter.h */,
+				D4F0122D15FB740600B8EF64 /* NSNumber+CurrencyFormatter.m */,
+				D4F0122F15FB74A500B8EF64 /* NSNumberE.h */,
+			);
+			name = NSNumberE;
+			sourceTree = "<group>";
+		};
 		D4FFAF26151747D4006476D0 /* Web Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +591,7 @@
 				D4A9FDF615A2E3B400676CB5 /* OrderUploader.m in Sources */,
 				D4A9FDFA15A2ECD900676CB5 /* BadgeValue.m in Sources */,
 				D42F8FE115B19692009C0A65 /* UIAlertView+NSError.m in Sources */,
+				D4F0122E15FB740600B8EF64 /* NSNumber+CurrencyFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

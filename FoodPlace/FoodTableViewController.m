@@ -16,6 +16,7 @@
 #import "SpinnerView.h"
 #import "Helpers.h"
 #import "Define.h"
+#import "NSNumberE.h"
 
 @interface FoodTableViewController ()
 
@@ -152,7 +153,7 @@
     
     cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", food.name];
     cell.placeNameLabel.text = [NSString stringWithFormat:@"%@", food.place.name];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@%@", EURO_SYM, [food.price stringValue]];
+    cell.priceLabel.text = [NSString stringWithFormat:@"%@", food.price.currencyFormatter];
  
     // only load cached images; defer new downloads until scrolling ends
     if (!food.image) 
