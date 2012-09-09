@@ -435,8 +435,13 @@
         
         NSString *foodName  = cart.food.name;
         NSString *foodCount = [cart.count stringValue];
+        NSString *foodPrice = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithFloat:[Helpers timeNSDecimalNumber:cart.food.price
+                                                                                                                        andNumber:cart.count]]
+                                                               numberStyle:NSNumberFormatterNoStyle];
+        /*
         NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price
                                                                                       andNumber:cart.count]];
+        */
         NSString *foodPlace = cart.food.place.name;
 
         NSDictionary *orderDetailChild = @{ FOOD_NAME  : foodName,
