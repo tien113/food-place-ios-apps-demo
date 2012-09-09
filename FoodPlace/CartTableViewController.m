@@ -424,7 +424,8 @@
 - (void)prepareOrder:(NSArray *)carts {
 
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
-    NSString *orderTotal = [NSString stringWithFormat:@"%.2f", [self totalOrder]];
+    NSString *orderTotal = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithFloat:[self totalOrder]]
+                                                            numberStyle:NSNumberFormatterNoStyle];
     NSString *orderDate  = [[NSDate date] toString];
     NSString *orderDone  = FALSE_VALUE; // set order to FALSE
     
@@ -449,8 +450,9 @@
                                             FOOD_PRICE : foodPrice,
                                             FOOD_PLACE : foodPlace };
         
-        [orderDetailParents addObject:orderDetailChild]; // add order detail child to orderdetailparents
-        [keyOrderDetailParents addObject:[NSString stringWithFormat:@"%d", idx]]; // add key orderdetailparent
+        [orderDetailParents    addObject:orderDetailChild]; // add order detail child to orderdetailparents
+        [keyOrderDetailParents addObject:[NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:idx]
+                                                                          numberStyle:NSNumberFormatterNoStyle]]; // add key orderdetailparent
     }];
     
     // alloc order detail parent
