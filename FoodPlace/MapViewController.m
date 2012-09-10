@@ -39,24 +39,20 @@
 #pragma mark - Fetch Places from Web Service
 
 // fetch Places from Web Service
-- (NSArray *)places {
+- (void)fetchedData {
     
-    if (!_places) {
-        dispatch_queue_t downloadQ = dispatch_queue_create("Place downloader", NULL);
-        dispatch_async(downloadQ, ^{
-            _places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
-        });
-        dispatch_release(downloadQ);
-    }
-    
-    return _places;
+    dispatch_queue_t downloadQ = dispatch_queue_create("Place downloader", NULL);
+    dispatch_async(downloadQ, ^{
+        self.places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
+    });
+    dispatch_release(downloadQ);
 }
 
 // init data
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    [self places];
+    [self fetchedData];
 }
 
 - (void)setPlaces:(NSArray *)places {
@@ -129,25 +125,16 @@
 - (UIImage *)image:(id)sender imageForAnnotation:(id <MKAnnotation>)annotation {
 
     PlaceAnnotationView *pav = (PlaceAnnotationView *)annotation;
-    // get image's url
-    NSURL *url = [FoodPlaceFetcher urlForPlace:pav.place]; 
-    // get data from url
-    NSData *data = [NSData dataWithContentsOfURL:url]; 
-    // return image
-    return data ? [UIImage imageWithData:data] : nil;
+    NSURL *url = [FoodPlaceFetcher urlForPlace:pav.place]; // get image's url
+    NSData *data = [NSData dataWithContentsOfURL:url]; // get data from url
+    return data ? [UIImage imageWithData:data] : nil; // return image
 } 
 
 // load image when selecting
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView {
        
     UIImage *image = [self image:self imageForAnnotation:aView.annotation];
-    // load annotation's image
-    [(UIImageView *)aView.leftCalloutAccessoryView setImage:image];
-}
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    
-    NSLog(@"callout accessory tapped for annotation %@", [view.annotation title]);
+    [(UIImageView *)aView.leftCalloutAccessoryView setImage:image]; // load annotation's image
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -155,12 +142,9 @@
 // update location
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    // set span use latitude and longitude
-    MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA);
-    // set region use coordinate and span
-    MKCoordinateRegion region = MKCoordinateRegionMake(newLocation.coordinate, span);
-    // set region to mapView
-    [self.mapView setRegion:region animated:YES];
+    MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA); // set span use latitude and longitude
+    MKCoordinateRegion region = MKCoordinateRegionMake(newLocation.coordinate, span); // set region use coordinate and span
+    [self.mapView setRegion:region animated:YES]; // set region to mapView
     
     NSLog(@"Latitude: %f, Longitude: %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     
@@ -177,14 +161,19 @@
 
 #pragma mark - Segmented Control
 
-// setup Segmented Control
-- (void)setupSegmentedControl
-{
-    // action for segmented control
-    [self.buttonBarSegmentedControl addTarget:self 
-                                       action:@selector(toggleToolBarChange:) 
-                             forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.buttonBarSegmentedControl]; // add segmented control to mapView
+- (void)useButtonBarSegmentedControl{
+    
+    [self.buttonBarSegmentedControl addTarget:self
+                                   action:@selector(toggleToolBarChange:)
+                         forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)setButtonBarSegmentedControl:(UISegmentedControl *)buttonBarSegmentedControl {
+    
+    if (_buttonBarSegmentedControl != buttonBarSegmentedControl) {
+        _buttonBarSegmentedControl = buttonBarSegmentedControl;
+        [self useButtonBarSegmentedControl];
+    }
 }
 
 - (void)toggleToolBarChange:(id)sender
@@ -193,20 +182,14 @@
     
     switch (segControl.selectedSegmentIndex) {
         case 0:
-        {
-            [self.mapView setMapType:MKMapTypeStandard]; // set mapView to Standard
+            self.mapView.mapType = MKMapTypeStandard; // set mapView to Standard
             break;
-        }
         case 1:
-        {
-            [self.mapView setMapType:MKMapTypeSatellite]; // set mapView to Satellite
+            self.mapView.mapType = MKMapTypeSatellite; // set mapView to Satellite
             break;
-        }
         case 2:
-        {
-            [self.mapView setMapType:MKMapTypeHybrid]; // set mapView to Hybrid
+            self.mapView.mapType = MKMapTypeHybrid; // set mapView to Hybrid
             break;
-        }
     }
 }
 
@@ -214,19 +197,14 @@
 
 - (void)displayMap {
     
-    // load latitude and longitude
-    CLLocationCoordinate2D coords;
-    coords.latitude = LATITUDE;
-    coords.longitude = LONGITUDE;
+    // load latitude and longitude to coords
+    CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(LATITUDE, LONGITUDE);
     
-    // set span use latitude and longitude
-    MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA);
-    // set region use coordinate and span
-    MKCoordinateRegion region = MKCoordinateRegionMake(coords, span);
+    MKCoordinateSpan span = MKCoordinateSpanMake(LATITUDE_DELTA, LONGITUDE_DELTA); // set span use latitude and longitude
+    MKCoordinateRegion region = MKCoordinateRegionMake(coords, span); // set region use coordinate and span
+
     [self.mapView setRegion:region animated:YES]; // set region to mapView
-    
     [self.mapView addAnnotations:[self mapAnnotations]]; // set annotations to mapView
-    
 }
 
 // load data
@@ -239,9 +217,6 @@
     [NSThread detachNewThreadSelector:@selector(displayMap) 
                              toTarget:self 
                            withObject:nil];
-    
-    // setup segmented control
-    [self setupSegmentedControl]; 
 }
 
 // show user location

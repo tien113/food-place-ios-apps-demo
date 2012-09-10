@@ -11,6 +11,8 @@
 
 @interface IdentificationViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *idLabel;
+
 @end
 
 @implementation IdentificationViewController

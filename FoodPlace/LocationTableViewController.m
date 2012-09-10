@@ -12,6 +12,7 @@
 #import "UIAlertViewE.h"
 #import "Helpers.h"
 #import "NSNumberE.h"
+#import "LocationDetailTableViewController.h"
 
 @interface LocationTableViewController ()
 
@@ -68,7 +69,7 @@
     
     // load location manager
     CLLocationManager *locationManager = FoodPlaceAppDelegate.sharedLocationManager;
-    locationManager.delegate = self;
+    [locationManager setDelegate:self];
     [locationManager startUpdatingLocation]; // start updating location
 }
 
@@ -84,7 +85,7 @@
 
 - (void)viewDidUnload {
     
-    [self setDocument:nil];
+    self.document = nil;
     [super viewDidUnload];
 }
 
@@ -108,7 +109,7 @@
         placeLocation = [[CLLocation alloc] initWithLatitude:[place.lat doubleValue]
                                                    longitude:[place.log doubleValue]];
         // calculate distance from places
-        place.distance = @([placeLocation distanceFromLocation:location] / 1000);
+        place.distance = @( [placeLocation distanceFromLocation:location] / 1000 );
     }];
 }
 
@@ -159,17 +160,16 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     Place *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
+    /*
     // copy place object to next ViewController
     if ([segue.destinationViewController respondsToSelector:@selector(setPlace:)]) {
         [segue.destinationViewController performSelector:@selector(setPlace:)
                                               withObject:place];
     }
-  
-    // copy document object to next ViewController
-    if ([segue.destinationViewController respondsToSelector:@selector(setDocument:)]) {
-        [segue.destinationViewController performSelector:@selector(setDocument:)
-                                              withObject:self.document];
-    }
+    */
+    
+    LocationDetailTableViewController *locationController = segue.destinationViewController;
+    locationController.place = place;
 }
 
 @end

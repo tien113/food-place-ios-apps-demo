@@ -22,6 +22,5 @@
 @property (nonatomic, strong) UIManagedDocument *document;
 @property (nonatomic, strong) Food *food;
 
-- (IBAction)AddToCart:(id)sender;
 
 @end

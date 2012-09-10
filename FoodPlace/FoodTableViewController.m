@@ -17,6 +17,7 @@
 #import "Helpers.h"
 #import "Define.h"
 #import "NSNumberE.h"
+#import "FoodDetailTableViewController.h"
 
 @interface FoodTableViewController ()
 
@@ -181,6 +182,7 @@
     NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
     Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
+    /*
     // copy food object to next ViewController
     if ([segue.destinationViewController respondsToSelector:@selector(setFood:)]) {
         [segue.destinationViewController performSelector:@selector(setFood:) 
@@ -192,6 +194,11 @@
         [segue.destinationViewController performSelector:@selector(setDocument:) 
                                               withObject:self.document];
     }
+    */
+    
+    FoodDetailTableViewController *foodConntroller = segue.destinationViewController;
+    foodConntroller.food = food;
+    foodConntroller.document = self.document;
 }
 
 #pragma mark - Lazy Image Downloader support
@@ -207,7 +214,8 @@
                                                              delegate:self
                                                atIndexPathInTableView:indexPath];
         // self.imageDownloadsInProgress[indexPath] = imageDownloader;
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
+        [self.imageDownloadsInProgress setObject:imageDownloader
+                                          forKey:indexPath];
         [imageDownloader startDownload];
     }
 }
@@ -230,7 +238,6 @@
 - (void)loadImagesForOnScreenRows
 {
     NSUInteger count = [self.fetchedResultsController fetchedObjects].count;
-    // NSLog(@"%d", count);
     if (count > 0)
     {
         NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];

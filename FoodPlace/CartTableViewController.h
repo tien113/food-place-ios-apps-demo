@@ -19,7 +19,4 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *emptyCartBarButtonItem;
 @property (weak, nonatomic) IBOutlet UILabel *totalOrderLabel;
 
-- (IBAction)PlaceOrder:(id)sender;
-- (IBAction)EmptyCart:(id)sender;
-
 @end

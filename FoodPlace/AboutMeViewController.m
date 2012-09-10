@@ -10,6 +10,8 @@
 
 @interface AboutMeViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *aboutMeTextView;
+
 @end
 
 @implementation AboutMeViewController

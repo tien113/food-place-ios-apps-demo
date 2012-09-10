@@ -10,8 +10,4 @@
 
 @interface IdentificationViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *idLabel;
-
-- (IBAction)help:(id)sender;
-
 @end

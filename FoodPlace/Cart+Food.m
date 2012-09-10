@@ -20,33 +20,30 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Cart"];
     request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", food.unique];
     // sort with name
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"unique" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"unique"
+                                                                     ascending:YES];
     request.sortDescriptors = @[ sortDescriptor ];
-    // request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
-    NSArray *carts = [context executeFetchRequest:request error:&error]; // fetch all carts from Core Data
+    NSArray *carts = [context executeFetchRequest:request
+                                            error:&error]; // fetch all carts from Core Data
     
     if (!carts || 1 == carts.count) {
-        // get cart from carts
-        cart = carts.lastObject;
+        cart = carts.lastObject; // get cart from carts
         NSUInteger cartCount = [[cart valueForKey:CART_COUNT] intValue];
         // check if cart count = 5, show alert
-        if (5 == cartCount) {
-            // show alert
-            [self showAlert];
-        } else {
-            // count + 1
-            cart.count = [self plus1:cartCount];
-        }
+        if (5 == cartCount)
+            [self showAlert]; // show alert
+        else
+            cart.count = [self plus1:cartCount]; // count + 1
+        
         NSLog(@"%@", cart);
     } else if (0 == cart.count) {
         // insert data to Core Data
-        cart = [NSEntityDescription insertNewObjectForEntityForName:@"Cart" inManagedObjectContext:context];
-        cart.food = food;
-        cart.count = @1;
-        // cart.count = [NSNumber numberWithInt:1];
-        cart.unique = food.unique;
+        cart            = [NSEntityDescription insertNewObjectForEntityForName:@"Cart" inManagedObjectContext:context];
+        cart.food       = food;
+        cart.count      = @1;
+        cart.unique     = food.unique;
         cart.created_at = NSDate.date;
         
         NSLog(@"%@", cart);
@@ -57,8 +54,8 @@
 }
 
 + (void)removeFromCart:(Cart *)cart inManagedObjectContext:(NSManagedObjectContext *)context {
-    // delete object
-    [context deleteObject:cart];
+    
+    [context deleteObject:cart]; // delete object
 }
 
 + (void)showAlert {

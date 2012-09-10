@@ -17,6 +17,4 @@
 @property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic, strong) NSArray *places;
 
-- (IBAction)showLocation:(id)sender;
-
 @end

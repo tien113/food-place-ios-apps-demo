@@ -38,15 +38,15 @@
 // load data to outlet
 - (void)loadData {
     
-    self.placeNameLabel.text = [NSString stringWithFormat:@"%@", self.place.name];
-    self.placeAddressLabel.text = [NSString stringWithFormat:@"%@", self.place.address];
+    self.placeNameLabel.text = self.place.name;
+    self.placeAddressLabel.text = self.place.address;
     [self.placeAddressLabel sizeToFit];
-    self.phoneNumberTextView.text = [NSString stringWithFormat:@"%@", self.place.phone_number];
-    self.emailLabel.text = [NSString stringWithFormat:@"%@", self.place.email];
-    self.openingTime1Label.text = [NSString stringWithFormat:@"%@", self.place.opening_time_1];    
-    self.openingTime2Label.text = [NSString stringWithFormat:@"%@", self.place.opening_time_2];    
-    self.openingTime3Label.text = [NSString stringWithFormat:@"%@", self.place.opening_time_3];
-    self.openingTime4Label.text = [NSString stringWithFormat:@"%@", self.place.opening_time_4];
+    self.phoneNumberTextView.text = self.place.phone_number;
+    self.emailLabel.text = self.place.email;
+    self.openingTime1Label.text = self.place.opening_time_1;    
+    self.openingTime2Label.text = self.place.opening_time_2;    
+    self.openingTime3Label.text = self.place.opening_time_3;
+    self.openingTime4Label.text = self.place.opening_time_4;
     
     NSLog(@"%@, %@, %@, %@, %@", self.place.name, self.place.address, self.place.opening_time_1, self.place.phone_number, self.place.email);
 }
