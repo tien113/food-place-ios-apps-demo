@@ -393,9 +393,8 @@
 }
 
 - (void)prepareOrder:(NSArray *)carts {
-    
-    __block NSMutableArray *arrayOfNumbers = [NSMutableArray array];
-    __block NSMutableArray *arrayOfFoods   = [NSMutableArray array];
+
+    __block NSMutableDictionary *orderDetailsAttributes = [NSMutableDictionary dictionary];
     
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
         
@@ -404,21 +403,18 @@
         NSString *foodPrice = @( [Helpers timeNSDecimalNumber:cart.food.price
                                                     andNumber:cart.count] ).noFormatter;
         NSString *foodPlace = cart.food.place.name;
-        
-        [arrayOfNumbers addObject:@( idx ).noFormatter];
-        [arrayOfFoods   addObject:@{ FOOD_NAME  : foodName,
-                                     FOOD_COUNT : foodCount,
-                                     FOOD_PRICE : foodPrice,
-                                     FOOD_PLACE : foodPlace }];
+
+        [orderDetailsAttributes setObject:@{ FOOD_NAME  : foodName,
+                                             FOOD_COUNT : foodCount,
+                                             FOOD_PRICE : foodPrice,
+                                             FOOD_PLACE : foodPlace }
+                                   forKey:@( idx ).noFormatter];
     }];
     
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
     NSString *orderTotal = @( [self totalOrder] ).noFormatter;
     NSString *orderDate  = [[NSDate date] toString];
     NSString *orderDone  = FALSE_VALUE; // set order to FALSE
-    
-    NSDictionary *orderDetailsAttributes = [NSDictionary dictionaryWithObjects:arrayOfFoods
-                                                                       forKeys:arrayOfNumbers];
   
     NSDictionary *orderDict = @{ ORDER_UUID               : orderUuid,
                                  ORDER_TOTAL              : orderTotal,
