@@ -82,6 +82,7 @@
 // prepareOrder
 #define FALSE_VALUE         @"0"
 
-
+// NSNumber+CustomFormatter.h
+#define LOCALE @"fi_FI"
 
 

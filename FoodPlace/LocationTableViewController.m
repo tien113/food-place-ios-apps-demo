@@ -11,6 +11,7 @@
 #import "FoodPlaceAppDelegate.h"
 #import "UIAlertViewE.h"
 #import "Helpers.h"
+#import "NSNumberE.h"
 
 @interface LocationTableViewController ()
 
@@ -135,14 +136,14 @@
     
     Place *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    // convert NSNumber to float
-    float placeDistance = [place.distance floatValue]; 
+    // format decimalnumber with fraction digit 1
+    NSString *placeDistance = place.distance.decimalFormatter;
     
     // check plade distance and place name exist
     if (placeDistance && place.name) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", place.name];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.1f km", placeDistance];
+        cell.textLabel.text = place.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ km", placeDistance];
     } else {
         cell.textLabel.text = @"";
         cell.detailTextLabel.text = @"";

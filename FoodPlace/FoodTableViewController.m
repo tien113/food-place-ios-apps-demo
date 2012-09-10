@@ -152,9 +152,9 @@
 
     Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", food.name];
-    cell.placeNameLabel.text = [NSString stringWithFormat:@"%@", food.place.name];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@", food.price.currencyFormatter];
+    cell.foodNameLabel.text = food.name;
+    cell.placeNameLabel.text = food.place.name;
+    cell.priceLabel.text = food.price.currencyFormatter;
  
     // only load cached images; defer new downloads until scrolling ends
     if (!food.image) 

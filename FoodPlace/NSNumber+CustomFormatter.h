@@ -11,5 +11,6 @@
 @interface NSNumber (CurrencyFormatter)
 
 - (NSString *)currencyFormatter;
+- (NSString *)decimalFormatter;
 
 @end

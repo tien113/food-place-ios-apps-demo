@@ -6,4 +6,4 @@
 //
 //
 
-#import "NSNumber+CurrencyFormatter.h"
+#import "NSNumber+CustomFormatter.h"

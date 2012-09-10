@@ -61,12 +61,12 @@
 // load data to outlet
 - (void)loadData {
     
-    self.foodNameLabel.text = [NSString stringWithFormat:@"%@", self.food.name];
+    self.foodNameLabel.text = self.food.name;
     [self.foodNameLabel sizeToFit];
-    self.placeNameLabel.text = [NSString stringWithFormat:@"%@", self.food.place.name];
+    self.placeNameLabel.text = self.food.place.name;
     [self.placeNameLabel sizeToFit];
-    self.priceLabel.text = [NSString stringWithFormat:@"%@", self.food.price.currencyFormatter];
-    self.foodIngredientTextView.text = [NSString stringWithFormat:@"%@", self.food.ingredient];
+    self.priceLabel.text = self.food.price.currencyFormatter;
+    self.foodIngredientTextView.text = self.food.ingredient;
     self.foodImageView.image = self.food.image;
     [self.addToCartButton setTitle:@"Add to Cart" forState:UIControlStateNormal];
     
