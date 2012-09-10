@@ -452,7 +452,7 @@
         
         [orderDetailParents    addObject:orderDetailChild]; // add order detail child to orderdetailparents
         [keyOrderDetailParents addObject:[NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithInt:idx]
-                                                                          numberStyle:NSNumberFormatterNoStyle]]; // add key orderdetailparent
+                                                                          numberStyle:NSNumberFormatterNoStyle]]; // add key orderdetailparents
     }];
     
     // alloc order detail parent
