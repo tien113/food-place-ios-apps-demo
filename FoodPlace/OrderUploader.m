@@ -16,7 +16,9 @@
 @synthesize orderData = _orderData;
 @synthesize delegate = _delegate;
 
-- (id)initWithURL:(NSURL *)url delegate:(id)delegate orderData:(NSData *)data {
+- (id)initWithURL:(NSURL *)url
+         delegate:(id)delegate
+        orderData:(NSData *)data {
     
     if (self = [super init]) {
         self.url = url;

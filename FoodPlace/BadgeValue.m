@@ -9,6 +9,7 @@
 #import "BadgeValue.h"
 #import "CoreDataTableViewController.h"
 #import "Cart+Food.h"
+#import "NSNumberE.h"
 
 @implementation BadgeValue
 
@@ -17,7 +18,9 @@
 @synthesize tabBarController = _tabBarController;
 
 // replace init with the fast way
-- (id)initWithDocument:(UIManagedDocument *)document delegate:(id)delegate tabBarController:(UITabBarController *)controller {
+- (id)initWithDocument:(UIManagedDocument *)document
+              delegate:(id)delegate
+      tabBarController:(UITabBarController *)controller {
     
     if (self = [super init]) {
         self.document = document;
@@ -34,9 +37,8 @@
         // [(self.tabBarController.tabBar.items)[3] setBadgeValue:nil]; // nil
         [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:nil];
     else {
-        NSString *countStr = [NSString stringWithFormat:@"%d", count];
         // [(self.tabBarController.tabBar.items)[3] setBadgeValue:countStr]; // number
-        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:countStr];
+        [[self.tabBarController.tabBar.items objectAtIndex:3] setBadgeValue:@( count ).noFormatter];
     }
 }
 
@@ -57,7 +59,7 @@
                                                                        error:&error];
     __block NSUInteger cartCount = 0;
     [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        cartCount += [cart.count intValue];
+        cartCount += cart.count.intValue;
     }];
     
     return cartCount;

@@ -27,13 +27,13 @@
 - (NSString *)title {
     
     // return self.place[PLACE_NAME];
-    return [self.place objectForKey:PLACE_NAME];
+    return [self.place valueForKey:PLACE_NAME];
 }
 
 // subtitle of MKAnnotation
 - (NSString *)subtitle {
     
-    return [self.place valueForKeyPath:PLACE_ADDRESS];
+    return [self.place valueForKey:PLACE_ADDRESS];
 }
 
 // coordinate of MKAnnotation
