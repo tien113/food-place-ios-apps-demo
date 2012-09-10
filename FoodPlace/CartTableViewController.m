@@ -401,7 +401,7 @@
         NSString *foodName  = cart.food.name;
         NSString *foodCount = cart.count.noFormatter;
         NSString *foodPrice = @( [Helpers timeNSDecimalNumber:cart.food.price
-                                                    andNumber:cart.count] ).noFormatter;
+                                                    andNumber:cart.count] ).stringValue; // can not use NSNumberFormatter because of conflict with the web service.
         NSString *foodPlace = cart.food.place.name;
 
         [orderDetailsAttributes setObject:@{ FOOD_NAME  : foodName,
@@ -412,7 +412,7 @@
     }];
     
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
-    NSString *orderTotal = @( [self totalOrder] ).noFormatter;
+    NSString *orderTotal = @( [self totalOrder] ).stringValue; // can not use NSNumberFormatter because of conflict with the web service.
     NSString *orderDate  = [[NSDate date] toString];
     NSString *orderDone  = FALSE_VALUE; // set order to FALSE
   
