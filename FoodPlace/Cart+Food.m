@@ -80,7 +80,7 @@
         return numA + numB;
     };
     
-    return @(plus(1,number));
+    return @( plus(1,number) );
 }
 
 @end
