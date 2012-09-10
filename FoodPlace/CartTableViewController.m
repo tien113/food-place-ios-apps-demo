@@ -71,26 +71,15 @@
 }
 
 // check total order label when it removes
-- (void)showTotalOrderLabelWhenRemove {
+- (void)showTotalOrderLabel {
     
     // check totalOrder is zero or not
     if (0 != [self totalOrder]) {
-        NSNumber *totalOrder = @( [self totalOrder] );
-        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@", totalOrder.currencyFormatter];
+        self.totalOrderLabel.enabled = YES; // set enable total order label
+        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@", @( [self totalOrder] ).currencyFormatter];
     } else
-        self.totalOrderLabel.hidden = YES; // set hidden total order label 
+        self.totalOrderLabel.enabled = NO; // set disable total order label
     
-}
-
-// show total order label when it adds
-- (void)showTotalOrderLabelWhenAdd {
-    
-    // check totalOrder is zero or not
-    if (0 != [self totalOrder]) {
-        self.totalOrderLabel.hidden = NO; // set hidden total order label
-        NSNumber *totalOrder = @( [self totalOrder] );
-        self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@", totalOrder.currencyFormatter];
-    }
 }
 
 #pragma mark - Place Order Bar Button Item
@@ -100,15 +89,10 @@
     
     // check totalOrder is zero or not
     if (0 == [self totalOrder])
-        self.placeOrderBarButtonItem.enabled = FALSE; // set disable
+        self.placeOrderBarButtonItem.enabled = NO; // set disable
     else 
-        self.placeOrderBarButtonItem.enabled = TRUE; // set enable
+        self.placeOrderBarButtonItem.enabled = YES; // set enable
     
-}
-
-// show Place Order bar button item when it adds
-- (void)showPlaceOrderBarButtonItemWhenAdd {
-    self.placeOrderBarButtonItem.enabled = TRUE; // set enable
 }
 
 #pragma mark - Empty Cart Bar Button Item
@@ -117,14 +101,9 @@
 - (void)showEmptyCartBarButtonItem {
     
     if (0 == [self totalOrder])
-        self.emptyCartBarButtonItem.enabled = FALSE;
+        self.emptyCartBarButtonItem.enabled = NO;
     else 
-        self.emptyCartBarButtonItem.enabled = TRUE;
-}
-
-// show Empty Cart bar button item when it adds
-- (void)showEmptyCartBarButtonItemWhenAdd {
-    self.emptyCartBarButtonItem.enabled = TRUE;
+        self.emptyCartBarButtonItem.enabled = YES;
 }
 
 #pragma mark - Check Cart Label
@@ -136,19 +115,20 @@
     }
 }
 
-- (void)initCartLabel {
+- (UILabel *)cartLabel {
     
-    // init cart label with frame
-    self.cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 30.0f)];
-    self.cartLabel.text = @"Your Shopping Cart is empty ...";
-    self.cartLabel.textColor = [UIColor grayColor];
-    self.cartLabel.textAlignment = UITextAlignmentCenter;
+    if (!_cartLabel) {
+        _cartLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 30.0f)];
+        _cartLabel.text = @"Your Shopping Cart is empty ...";
+        _cartLabel.textColor = [UIColor grayColor];
+        _cartLabel.textAlignment = UITextAlignmentCenter;
+    }
+    
+    return _cartLabel;
 }
 
 // check Cart Label
 - (void)showCartLabel {
-    
-    [self initCartLabel];
     
     // check totalOrder is zero or not
     if (0 == [self totalOrder])
@@ -273,9 +253,9 @@
     
     // outlet
     [self hiddenCartLabel];
-    [self showTotalOrderLabelWhenAdd];
-    [self showPlaceOrderBarButtonItemWhenAdd];
-    [self showEmptyCartBarButtonItemWhenAdd];
+    [self showTotalOrderLabel];
+    [self showPlaceOrderBarButtonItem];
+    [self showEmptyCartBarButtonItem];
     
     return cell;
 }
@@ -303,7 +283,7 @@
             [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
             
             // outlet
-            [self showTotalOrderLabelWhenRemove];
+            [self showTotalOrderLabel];
             [self showCartLabel];
             [self showPlaceOrderBarButtonItem];
             [self showEmptyCartBarButtonItem];

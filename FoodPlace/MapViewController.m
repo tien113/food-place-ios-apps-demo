@@ -39,20 +39,24 @@
 #pragma mark - Fetch Places from Web Service
 
 // fetch Places from Web Service
-- (void)fetchedData {
+- (NSArray *)places {
     
-    dispatch_queue_t downloadQ = dispatch_queue_create("Place downloader", NULL);
-    dispatch_async(downloadQ, ^{
-        self.places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
-    });
-    dispatch_release(downloadQ);
+    if (!_places) {
+        dispatch_queue_t downloadQ = dispatch_queue_create("Place downloader", NULL);
+        dispatch_async(downloadQ, ^{
+            _places = FoodPlaceFetcher.getPlaces; // get Places and return NSArray
+        });
+        dispatch_release(downloadQ);
+    }
+    
+    return _places;
 }
 
 // init data
 - (void)awakeFromNib {
     
     [super awakeFromNib];
-    [self fetchedData];
+    [self places];
 }
 
 - (void)setPlaces:(NSArray *)places {
