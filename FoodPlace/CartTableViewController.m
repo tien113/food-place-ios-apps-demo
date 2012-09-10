@@ -393,49 +393,44 @@
 }
 
 - (void)prepareOrder:(NSArray *)carts {
-
+    
+    __block NSMutableArray *arrayOfNumbers = [NSMutableArray array];
+    __block NSMutableArray *arrayOfFoods   = [NSMutableArray array];
+    
+    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
+        
+        NSString *foodName  = cart.food.name;
+        NSString *foodCount = cart.count.noFormatter;
+        NSString *foodPrice = @( [Helpers timeNSDecimalNumber:cart.food.price
+                                                    andNumber:cart.count] ).noFormatter;
+        NSString *foodPlace = cart.food.place.name;
+        
+        [arrayOfNumbers addObject:@( idx ).noFormatter];
+        [arrayOfFoods   addObject:@{ FOOD_NAME  : foodName,
+                                     FOOD_COUNT : foodCount,
+                                     FOOD_PRICE : foodPrice,
+                                     FOOD_PLACE : foodPlace }];
+    }];
+    
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
     NSString *orderTotal = @( [self totalOrder] ).noFormatter;
     NSString *orderDate  = [[NSDate date] toString];
     NSString *orderDone  = FALSE_VALUE; // set order to FALSE
     
-    __block NSMutableArray *orderDetailParents    = [NSMutableArray array]; // init array
-    __block NSMutableArray *keyOrderDetailParents = [NSMutableArray array];
-
-    [carts enumerateObjectsUsingBlock:^(Cart *cart, NSUInteger idx, BOOL *stop) {
-        
-        NSString *foodName  = cart.food.name;
-        NSString *foodCount = [cart.count stringValue];
-        NSString *foodPrice = @( [Helpers timeNSDecimalNumber:cart.food.price
-                                                    andNumber:cart.count] ).noFormatter;
-        NSString *foodPlace = cart.food.place.name;
-
-        NSDictionary *orderDetailChild = @{ FOOD_NAME  : foodName,
-                                            FOOD_COUNT : foodCount,
-                                            FOOD_PRICE : foodPrice,
-                                            FOOD_PLACE : foodPlace };
-        
-        [orderDetailParents    addObject:orderDetailChild]; // add order detail child to orderdetailparents
-        [keyOrderDetailParents addObject:@( idx ).noFormatter]; // add key orderdetailparents
-    }];
+    NSDictionary *orderDetailsAttributes = [NSDictionary dictionaryWithObjects:arrayOfFoods
+                                                                       forKeys:arrayOfNumbers];
+  
+    NSDictionary *orderDict = @{ ORDER_UUID               : orderUuid,
+                                 ORDER_TOTAL              : orderTotal,
+                                 ORDER_DATE               : orderDate,
+                                 ORDER_DONE               : orderDone,
+                                 ORDER_DETAILS_ATTRIBUTES : orderDetailsAttributes };
     
-    // alloc order detail parent
-    NSDictionary *orderDetailParent = [NSDictionary dictionaryWithObjects:orderDetailParents
-                                                                  forKeys:keyOrderDetailParents];
-
-    NSDictionary *orderChild = @{ ORDER_UUID               : orderUuid,
-                                  ORDER_TOTAL              : orderTotal,
-                                  ORDER_DATE               : orderDate,
-                                  ORDER_DONE               : orderDone,
-                                  ORDER_DETAILS_ATTRIBUTES : orderDetailParent };
+    NSData *orderData = orderDict.toJSON; // convert nsdictionary to nsdata
     
-    NSDictionary *orderParent = @{ ORDER : orderChild };
-    // NSDictionary *orderParent = [NSDictionary dictionaryWithObjectsAndKeys: orderChild, ORDER, nil];
-    
-    NSData *orderData = orderParent.toJSON; // convert nsdictionary to nsdata
- 
     [self startOrderUpload:kFoodPlaceOrdersURL
                   withData:orderData];
+    
 }
 
 // uploader delegate
