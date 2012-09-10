@@ -74,12 +74,12 @@
 - (void)showTotalOrderLabel {
     
     // check totalOrder is zero or not
-    if (0 != [self totalOrder]) {
+    if (0 == [self totalOrder])
+        self.totalOrderLabel.enabled = NO; // set disable total order label
+    else {
         self.totalOrderLabel.enabled = YES; // set enable total order label
         self.totalOrderLabel.text = [NSString stringWithFormat:@"Total = %@", @( [self totalOrder] ).currencyFormatter];
-    } else
-        self.totalOrderLabel.enabled = NO; // set disable total order label
-    
+    }
 }
 
 #pragma mark - Place Order Bar Button Item
@@ -101,9 +101,9 @@
 - (void)showEmptyCartBarButtonItem {
     
     if (0 == [self totalOrder])
-        self.emptyCartBarButtonItem.enabled = NO;
+        self.emptyCartBarButtonItem.enabled = NO; // set disable
     else 
-        self.emptyCartBarButtonItem.enabled = YES;
+        self.emptyCartBarButtonItem.enabled = YES; // set enable
 }
 
 #pragma mark - Check Cart Label
@@ -134,14 +134,8 @@
     if (0 == [self totalOrder])
         [self.tableView addSubview:self.cartLabel]; // add cart label to tableView
     else 
-        [self hiddenCartLabel];
+        [self.cartLabel removeFromSuperview]; // remove cart label from tableView
     
-}
-
-- (void)hiddenCartLabel {
-    
-    // remove cart label from tableView
-    [self.cartLabel removeFromSuperview]; 
 }
 
 #pragma mark - Initialize Data
@@ -190,8 +184,6 @@
     
     // outlet
     [self showCartLabel];
-    [self showPlaceOrderBarButtonItem];
-    [self showEmptyCartBarButtonItem];
 }
 
 #pragma mark - View Controller Life Cycle
@@ -252,7 +244,7 @@
                                                  andNumber:cart.count] ).currencyFormatter;
     
     // outlet
-    [self hiddenCartLabel];
+    [self showCartLabel];
     [self showTotalOrderLabel];
     [self showPlaceOrderBarButtonItem];
     [self showEmptyCartBarButtonItem];
@@ -283,8 +275,8 @@
             [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
             
             // outlet
-            [self showTotalOrderLabel];
             [self showCartLabel];
+            [self showTotalOrderLabel];
             [self showPlaceOrderBarButtonItem];
             [self showEmptyCartBarButtonItem];
             
