@@ -266,10 +266,10 @@
     CartCell *cell = [sender dequeueReusableCellWithIdentifier:@"Cart Cell"];
     
     Cart *cart = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.foodNameLabel.text = [NSString stringWithFormat:@"%@", cart.food.name];
-    cell.countLabel.text = [NSString stringWithFormat:@"x%@", [cart.count stringValue]];
-    cell.priceLabel.text = [NSString stringWithFormat:@"%@", @( [Helpers timeNSDecimalNumber:cart.food.price
-                                                                                   andNumber:cart.count] ).currencyFormatter];
+    cell.foodNameLabel.text = cart.food.name;
+    cell.countLabel.text = [NSString stringWithFormat:@"x%@", cart.count.noFormatter];
+    cell.priceLabel.text = @( [Helpers timeNSDecimalNumber:cart.food.price
+                                                 andNumber:cart.count] ).currencyFormatter;
     
     // outlet
     [self hiddenCartLabel];
@@ -423,8 +423,7 @@
 - (void)prepareOrder:(NSArray *)carts {
 
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
-    NSString *orderTotal = [NSNumberFormatter localizedStringFromNumber:@( [self totalOrder] )
-                                                            numberStyle:NSNumberFormatterNoStyle];
+    NSString *orderTotal = @( [self totalOrder] ).noFormatter;
     NSString *orderDate  = [[NSDate date] toString];
     NSString *orderDone  = FALSE_VALUE; // set order to FALSE
     
@@ -435,13 +434,8 @@
         
         NSString *foodName  = cart.food.name;
         NSString *foodCount = [cart.count stringValue];
-        NSString *foodPrice = [NSNumberFormatter localizedStringFromNumber:@( [Helpers timeNSDecimalNumber:cart.food.price
-                                                                                                 andNumber:cart.count] )
-                                                               numberStyle:NSNumberFormatterNoStyle];
-        /*
-        NSString *foodPrice = [NSString stringWithFormat:@"%0.2f", [Helpers timeNSDecimalNumber:cart.food.price
-                                                                                      andNumber:cart.count]];
-        */
+        NSString *foodPrice = @( [Helpers timeNSDecimalNumber:cart.food.price
+                                                    andNumber:cart.count] ).noFormatter;
         NSString *foodPlace = cart.food.place.name;
 
         NSDictionary *orderDetailChild = @{ FOOD_NAME  : foodName,
@@ -450,8 +444,7 @@
                                             FOOD_PLACE : foodPlace };
         
         [orderDetailParents    addObject:orderDetailChild]; // add order detail child to orderdetailparents
-        [keyOrderDetailParents addObject:[NSNumberFormatter localizedStringFromNumber:@( idx )
-                                                                          numberStyle:NSNumberFormatterNoStyle]]; // add key orderdetailparents
+        [keyOrderDetailParents addObject:@( idx ).noFormatter]; // add key orderdetailparents
     }];
     
     // alloc order detail parent

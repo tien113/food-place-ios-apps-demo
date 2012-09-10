@@ -12,5 +12,6 @@
 
 - (NSString *)currencyFormatter;
 - (NSString *)decimalFormatter;
+- (NSString *)noFormatter;
 
 @end

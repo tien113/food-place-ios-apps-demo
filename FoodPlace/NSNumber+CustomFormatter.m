@@ -34,4 +34,14 @@
     return result;
 }
 
+- (NSString *)noFormatter {
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterNoStyle;
+    
+    NSString *result = [numberFormatter stringFromNumber:self];
+    
+    return result;
+}
+
 @end
