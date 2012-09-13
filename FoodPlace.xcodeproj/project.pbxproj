@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D40140B814FC0C1C00B42B86 /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40140B714FC0C1C00B42B86 /* AboutMeViewController.m */; };
+		D406FD711601CF8C00082223 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D406FD701601CF8C00082223 /* Default-568h@2x.png */; };
 		D4072B7B15288BAC00EF3198 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D4072B7A15288BAC00EF3198 /* Helpers.m */; };
 		D40C73EF14FA5CF3005FCD04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40C73EE14FA5CF3005FCD04 /* UIKit.framework */; };
 		D40C73F114FA5CF3005FCD04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40C73F014FA5CF3005FCD04 /* Foundation.framework */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		D40140B614FC0C1C00B42B86 /* AboutMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeViewController.h; sourceTree = "<group>"; };
 		D40140B714FC0C1C00B42B86 /* AboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeViewController.m; sourceTree = "<group>"; };
+		D406FD701601CF8C00082223 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		D4072B7915288BAC00EF3198 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		D4072B7A15288BAC00EF3198 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		D40C73EA14FA5CF3005FCD04 /* FoodPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +310,7 @@
 		D40C73F514FA5CF3005FCD04 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D406FD701601CF8C00082223 /* Default-568h@2x.png */,
 				D40C73FD14FA5CF3005FCD04 /* FoodPlaceAppDelegate.h */,
 				D40C73FE14FA5CF3005FCD04 /* FoodPlaceAppDelegate.m */,
 				D40C73F614FA5CF3005FCD04 /* FoodPlace-Info.plist */,
@@ -544,6 +547,7 @@
 				D464BFAC1557BEE0008CB840 /* Apps-thunderbird@2x.png in Resources */,
 				D464BFAF1557BF27008CB840 /* Apps-pidgin.png in Resources */,
 				D464BFB01557BF27008CB840 /* Apps-pidgin@2x.png in Resources */,
+				D406FD711601CF8C00082223 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
