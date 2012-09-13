@@ -88,7 +88,6 @@
 
 + (NSString *)urlStringForPlace:(NSDictionary *)place {
     
-    // NSString *urlStr = [NSString stringWithFormat:@"%@/%@", kHostURL, place[PLACE_IMAGE_URL]];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@", kHostURL, [place valueForKey:PLACE_IMAGE_URL]];
     
     return urlStr;

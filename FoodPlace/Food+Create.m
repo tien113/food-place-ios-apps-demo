@@ -19,7 +19,6 @@
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-    // request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", webService[FOOD_ID]];
     request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", [webService valueForKey:FOOD_ID]];
     // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
