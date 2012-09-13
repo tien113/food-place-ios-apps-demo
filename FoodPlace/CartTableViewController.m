@@ -404,11 +404,10 @@
                                                     andNumber:cart.count] ).stringValue; // can not use NSNumberFormatter because of conflict with the web service.
         NSString *foodPlace = cart.food.place.name;
 
-        [orderDetailsAttributes setObject:@{ FOOD_NAME  : foodName,
-                                             FOOD_COUNT : foodCount,
-                                             FOOD_PRICE : foodPrice,
-                                             FOOD_PLACE : foodPlace }
-                                   forKey:@( idx ).noFormatter];
+        orderDetailsAttributes[@( idx ).noFormatter] = @{ FOOD_NAME  : foodName,
+                                                          FOOD_COUNT : foodCount,
+                                                          FOOD_PRICE : foodPrice,
+                                                          FOOD_PLACE : foodPlace };
     }];
     
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
