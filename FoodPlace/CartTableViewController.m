@@ -131,9 +131,10 @@
 - (void)showCartLabel {
     
     // check totalOrder is zero or not
-    if (0 == [self totalOrder])
+    if (0 == [self totalOrder]) {
+        [self.totalOrderLabel removeFromSuperview];
         [self.tableView addSubview:self.cartLabel]; // add cart label to tableView
-    else 
+    } else
         [self.cartLabel removeFromSuperview]; // remove cart label from tableView
     
 }
