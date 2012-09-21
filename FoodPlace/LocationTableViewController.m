@@ -157,19 +157,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender 
 {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    Place *place = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    /*
-    // copy place object to next ViewController
-    if ([segue.destinationViewController respondsToSelector:@selector(setPlace:)]) {
-        [segue.destinationViewController performSelector:@selector(setPlace:)
-                                              withObject:place];
+    if ([segue.identifier isEqualToString:@"Location Detail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        Place * place = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [segue.destinationViewController setPlace:place];
     }
-    */
-    
-    LocationDetailTableViewController *locationController = segue.destinationViewController;
-    locationController.place = place;
 }
 
 @end

@@ -179,26 +179,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSIndexPath *indexPath =[self.tableView indexPathForCell:sender];
-    Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    /*
-    // copy food object to next ViewController
-    if ([segue.destinationViewController respondsToSelector:@selector(setFood:)]) {
-        [segue.destinationViewController performSelector:@selector(setFood:) 
-                                              withObject:food];
+    if ([segue.identifier isEqualToString:@"Food Detail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [segue.destinationViewController setFood:food];
+        [segue.destinationViewController setDocument:self.document];
     }
-    
-    // copy document object to next ViewController
-    if ([segue.destinationViewController respondsToSelector:@selector(setDocument:)]) {
-        [segue.destinationViewController performSelector:@selector(setDocument:) 
-                                              withObject:self.document];
-    }
-    */
-    
-    FoodDetailTableViewController *foodConntroller = segue.destinationViewController;
-    foodConntroller.food = food;
-    foodConntroller.document = self.document;
 }
 
 #pragma mark - Lazy Image Downloader support
