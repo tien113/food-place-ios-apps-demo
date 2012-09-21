@@ -259,11 +259,6 @@
 		D40C73DF14FA5CF3005FCD04 = {
 			isa = PBXGroup;
 			children = (
-				D42B59D1151907E700B77D7E /* QuartzCore.framework */,
-				D4B066F314FB99E100DF647F /* MessageUI.framework */,
-				D4CE349614FA663900F636AD /* CoreData.framework */,
-				D4CE349414FA663400F636AD /* CoreLocation.framework */,
-				D4CE349214FA662E00F636AD /* MapKit.framework */,
 				D40C73F414FA5CF3005FCD04 /* FoodPlace */,
 				D40C73ED14FA5CF3005FCD04 /* Frameworks */,
 				D40C73EB14FA5CF3005FCD04 /* Products */,
@@ -281,6 +276,11 @@
 		D40C73ED14FA5CF3005FCD04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D42B59D1151907E700B77D7E /* QuartzCore.framework */,
+				D4B066F314FB99E100DF647F /* MessageUI.framework */,
+				D4CE349614FA663900F636AD /* CoreData.framework */,
+				D4CE349414FA663400F636AD /* CoreLocation.framework */,
+				D4CE349214FA662E00F636AD /* MapKit.framework */,
 				D40C73EE14FA5CF3005FCD04 /* UIKit.framework */,
 				D40C73F014FA5CF3005FCD04 /* Foundation.framework */,
 				D40C73F214FA5CF3005FCD04 /* CoreGraphics.framework */,
