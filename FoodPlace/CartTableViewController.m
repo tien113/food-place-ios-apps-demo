@@ -300,6 +300,7 @@
             
             // outlet
             [self showCartLabel];
+            [self showTotalOrderLabel];
             [self showPlaceOrderBarButtonItem];
             [self showEmptyCartBarButtonItem];
             
