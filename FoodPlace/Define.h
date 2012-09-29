@@ -85,4 +85,7 @@
 // NSNumber+CustomFormatter.h
 #define LOCALE     @"fi_FI"
 
+// WebsiteViewController
+#define kFoodPlaceWebSiteURL [NSURL URLWithString:@"http://www.apple.com"]
+
 

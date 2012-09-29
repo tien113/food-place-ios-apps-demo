@@ -10,6 +10,7 @@
 #import "FoodPlaceAppDelegate.h"
 #import "Cart+Food.h"
 #import "Place+Create.h"
+#import "Food+Create.h"
 #import "CartCell.h"
 #import "Helpers.h"
 #import "JSONE.h"
@@ -17,8 +18,10 @@
 #import "Cryptography.h"
 #import "NSDateE.h"
 #import "NSNumberE.h"
+#import "OrderUploader.h"
+#import "BadgeValue.h"
 
-@interface CartTableViewController ()
+@interface CartTableViewController () <OrderUploaderDelegate, BadgeValueDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) UILabel *cartLabel;
 

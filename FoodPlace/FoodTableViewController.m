@@ -18,8 +18,10 @@
 #import "Define.h"
 #import "NSNumberE.h"
 #import "FoodDetailTableViewController.h"
+#import "BadgeValue.h"
+#import "LazyImageDownloader.h"
 
-@interface FoodTableViewController ()
+@interface FoodTableViewController () <BadgeValueDelegate, LazyImageDownloaderDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) SpinnerView *spinner;
 

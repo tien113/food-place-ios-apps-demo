@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
-#import "LazyImageDownloader.h"
-#import "BadgeValue.h"
 
-@interface FoodTableViewController : CoreDataTableViewController <UIScrollViewDelegate, LazyImageDownloaderDelegate, BadgeValueDelegate>
+@interface FoodTableViewController : CoreDataTableViewController
 
 @property (nonatomic, strong) UIManagedDocument *document;
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;

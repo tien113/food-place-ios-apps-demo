@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CoreDataTableViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CoreDataTableViewController.h"
 
 @interface LocationTableViewController : CoreDataTableViewController <CLLocationManagerDelegate>
 

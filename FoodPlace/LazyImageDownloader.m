@@ -9,6 +9,7 @@
 #import "LazyImageDownloader.h"
 #import "Define.h"
 #import "Helpers.h"
+#import "Food+Create.h"
 
 @implementation LazyImageDownloader
 

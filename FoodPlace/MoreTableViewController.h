@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WebsiteViewController.h"
-#import "AboutMeViewController.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
 @interface MoreTableViewController : UITableViewController <MFMailComposeViewControllerDelegate>

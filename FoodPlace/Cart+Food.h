@@ -7,7 +7,6 @@
 //
 
 #import "Cart.h"
-#import "Food.h"
 
 @interface Cart (Food)
 

@@ -8,7 +8,7 @@
 
 #import "EmailViewController.h"
 
-@interface EmailViewController () 
+@interface EmailViewController () <UIAlertViewDelegate>
 @end
 
 @implementation EmailViewController

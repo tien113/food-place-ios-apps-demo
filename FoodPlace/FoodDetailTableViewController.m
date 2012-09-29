@@ -8,12 +8,15 @@
 
 #import "FoodDetailTableViewController.h"
 #import "Place+Create.h"
+#import "Cart+Food.h"
+#import "Food+Create.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Helpers.h"
 #import "Define.h"
 #import "NSNumberE.h"
+#import "BadgeValue.h"
 
-@interface FoodDetailTableViewController ()
+@interface FoodDetailTableViewController () <BadgeValueDelegate>
 
 @end
 
