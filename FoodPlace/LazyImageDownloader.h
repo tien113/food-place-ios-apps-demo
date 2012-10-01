@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class Food;
 
-@protocol LazyImageDownloaderDelegate
+@protocol LazyImageDownloaderDelegate <NSObject>
 
 - (void)imageDidLoad:(NSIndexPath *)indexPath;
 

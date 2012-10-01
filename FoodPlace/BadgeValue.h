@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BadgeValueDelegate
+@protocol BadgeValueDelegate <NSObject>
 
 @end
 

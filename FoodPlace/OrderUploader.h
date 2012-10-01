@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol OrderUploaderDelegate
+@protocol OrderUploaderDelegate <NSObject>
 
 @end
 
