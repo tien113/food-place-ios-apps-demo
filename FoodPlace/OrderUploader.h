@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSData *orderData;
-@property (nonatomic, strong) id <OrderUploaderDelegate> delegate;
+@property (nonatomic, weak) id <OrderUploaderDelegate> delegate;
 
 - (void)startUpload;
 - (id)initWithURL:(NSURL *)url delegate:(id)delegate orderData:(NSData *)data;

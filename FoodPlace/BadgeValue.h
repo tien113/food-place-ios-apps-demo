@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UIManagedDocument *document;
-@property (nonatomic, strong) id <BadgeValueDelegate> delegate;
+@property (nonatomic, weak) id <BadgeValueDelegate> delegate;
 
 - (void)startSetBadgeValue;
 - (id)initWithDocument:(UIManagedDocument *)document delegate:(id)delegate tabBarController:(UITabBarController *)tabBarController;

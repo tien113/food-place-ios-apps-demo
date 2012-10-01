@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) Food *food;
 @property (nonatomic, strong) NSIndexPath *indexPathInTableView;
-@property (nonatomic, strong) id <LazyImageDownloaderDelegate> delegate;
+@property (nonatomic, weak) id <LazyImageDownloaderDelegate> delegate;
 
 - (void)startDownload;
 - (id)initWithObject:(Food *)food delegate:(id)delegate atIndexPathInTableView:(NSIndexPath *)indexPath;
