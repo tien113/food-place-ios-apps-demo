@@ -8,6 +8,7 @@
 
 // Host URL
 #define kHostURL @"http://91.156.195.133:3000"
+// #define kHostURL @"https://foodplace.herokuapp.com"
 
 // JSON URL
 #define kPlacesJSON  @"places.json"
