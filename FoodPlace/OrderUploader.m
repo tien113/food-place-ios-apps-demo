@@ -35,7 +35,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"]; // set accepting JSON
     request.HTTPMethod = @"POST"; // set method to POST
     request.HTTPBody = self.orderData; // set data to HTTPBody
-    
+
     // log JSON 
     NSLog(@"%@", [[NSString alloc] initWithData:self.orderData encoding:NSUTF8StringEncoding]);
     NSLog(@"order data length: %d", [self.orderData length]);

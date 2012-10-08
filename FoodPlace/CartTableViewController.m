@@ -336,7 +336,7 @@
                                                         cancelButtonTitle:@"Cancel"
                                                    destructiveButtonTitle:nil
                                                         otherButtonTitles:@"Do it!", nil];
-        [actionSheet showInView:self.view];
+        [actionSheet showFromTabBar:self.tabBarController.tabBar];
     });
 }
 
@@ -416,6 +416,7 @@
     NSString *orderUuid  = [MacAddress getMacAddress].toSHA1; // get UUID
     NSString *orderTotal = @( [self totalOrder] ).stringValue; // can not use NSNumberFormatter because of conflict with the web service.
     NSString *orderDate  = [[NSDate date] toString];
+    //NSString *orderDate  = @"";
     NSString *orderDone  = FALSE_VALUE; // set order to FALSE
   
     NSDictionary *orderDict = @{ ORDER_UUID               : orderUuid,

@@ -7,8 +7,8 @@
 //
 
 // Host URL
-#define kHostURL @"http://91.156.195.133:3000"
-// #define kHostURL @"https://foodplace.herokuapp.com"
+// #define kHostURL @"http://91.156.195.133:3000"
+#define kHostURL @"https://foodplace.herokuapp.com"
 
 // JSON URL
 #define kPlacesJSON  @"places.json"
@@ -81,7 +81,7 @@
 #define CART_COUNT          @"count"
 
 // prepareOrder
-#define FALSE_VALUE         @"0"
+#define FALSE_VALUE         @"f"
 
 // NSNumber+CustomFormatter.h
 #define LOCALE     @"fi_FI"
