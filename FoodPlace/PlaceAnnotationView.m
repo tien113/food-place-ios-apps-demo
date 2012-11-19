@@ -25,23 +25,22 @@
 
 // title of MKAnnotation
 - (NSString *)title {
-    
-    // return self.place[PLACE_NAME];
-    return [self.place valueForKey:PLACE_NAME];
+
+    return _place[PLACE_NAME];
 }
 
 // subtitle of MKAnnotation
 - (NSString *)subtitle {
-    
-    return [self.place valueForKey:PLACE_ADDRESS];
+
+    return _place[PLACE_ADDRESS];
 }
 
 // coordinate of MKAnnotation
 - (CLLocationCoordinate2D)coordinate {
     
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude  = [[self.place valueForKey:PLACE_LAT] doubleValue];
-    coordinate.longitude = [[self.place valueForKey:PLACE_LOG] doubleValue];
+    coordinate.latitude = [_place[PLACE_LAT] doubleValue];
+    coordinate.longitude = [_place[PLACE_LOG] doubleValue];
     return coordinate;
 }
 

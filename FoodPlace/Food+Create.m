@@ -19,7 +19,7 @@
     
     // fetch request with entity
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-    request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", [webService valueForKey:FOOD_ID]];
+    request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", webService[FOOD_ID]];
     // sort with name
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                      ascending:YES];
@@ -34,12 +34,20 @@
     } else if (matches.count == 0) {
         // insert data to Core Data
         food            = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
-        food.unique     = [webService valueForKey:FOOD_ID];
+        /* food.unique     = [webService valueForKey:FOOD_ID];
         food.name       = [webService valueForKey:FOOD_NAME];
         food.price      = [NSDecimalNumber decimalNumberWithString:[webService valueForKey:FOOD_PRICE]]; // convert string to decimal number
         food.ingredient = [webService valueForKey:FOOD_INGREDIENT];
         food.image_url  = [webService valueForKey:FOOD_IMAGE_URL];
         food.place      = [Place placeWithWebService:[webService valueForKey:PLACE] inManagedObjectContext:context];
+         */
+        
+        food.unique     = webService[FOOD_ID];
+        food.name       = webService[FOOD_NAME];
+        food.price      = [NSDecimalNumber decimalNumberWithString:webService[FOOD_PRICE]]; // convert string to decimal number
+        food.ingredient = webService[FOOD_INGREDIENT];
+        food.image_url  = webService[FOOD_IMAGE_URL];
+        food.place      = [Place placeWithWebService:webService[PLACE] inManagedObjectContext:context];
         
         NSLog(@"%@", food);
     } else {
