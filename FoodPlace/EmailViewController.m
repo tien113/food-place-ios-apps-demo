@@ -54,6 +54,11 @@
     [self showAlert];
 }
 
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

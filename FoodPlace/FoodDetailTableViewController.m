@@ -86,6 +86,11 @@
     [self loadData];
 }
 
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
 - (void)viewDidUnload {
     [self setDocument:nil];
     [self setFood:nil];

@@ -83,6 +83,11 @@
     [self loadData];
 }
 
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
 - (void)viewDidUnload {
     
     self.document = nil;

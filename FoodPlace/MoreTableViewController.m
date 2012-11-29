@@ -93,6 +93,11 @@
     [self loadData];
 }
 
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

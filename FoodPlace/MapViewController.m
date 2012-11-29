@@ -239,6 +239,11 @@
     [self loadData]; // load data
 }
 
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
+}
+
 - (void)viewDidUnload
 {
     [self setMapView:nil];
