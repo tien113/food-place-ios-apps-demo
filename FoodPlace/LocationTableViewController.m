@@ -119,11 +119,10 @@
 }
 
 // update location
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocatio
-{
-    [self sortPlacesByDistanceFrom:newLocation]; // distance from places
-    // [self.tableView reloadData]; // reload data tableView
-    [manager stopUpdatingLocation]; // stop updating location  
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    [self sortPlacesByDistanceFrom:locations.lastObject]; // distance from places
+    [manager stopUpdatingLocation]; // stop updating location
 }
 
 // error with alert
